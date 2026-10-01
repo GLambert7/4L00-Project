@@ -1329,6 +1329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController1Script
   _moveSpeed: 5
+  _acceleration: 10
   _runMultiplier: 1.5
   _canRun: 1
   _riseSpeed: 5

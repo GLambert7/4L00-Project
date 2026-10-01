@@ -5,6 +5,7 @@ public class PlayerController1Script : MonoBehaviour
 {
     [Header("Player Movement Settings")]
     [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] private float _acceleration = 10f;
     [SerializeField] private float _runMultiplier = 1.5f;
     [SerializeField] private bool _canRun = true;
     [Space(10)]
@@ -81,27 +82,45 @@ public class PlayerController1Script : MonoBehaviour
 
     private void HandleMovement()
     {
-        // Check for Rise or Sink input and set the vertical movement accordingly
+        // Check for Rise or Sink input and set the vertical movement accordingly uses mathf to add the "slippery" feeling
+
+
+
+        float targetVerticalMovement = 0f;
+
         if (_inputHandler.RiseInput)
         {
-            _currentMovement.y = _riseSpeed;
+            targetVerticalMovement = _riseSpeed;
         }
         else if (_inputHandler.SinkInput)
         {
-            _currentMovement.y = -_fallSpeed;
+            targetVerticalMovement = -_fallSpeed;
         }
-        else
-        {
-            _currentMovement.y = 0f;
-        }
+
+        _currentMovement.y = Mathf.MoveTowards(
+            _currentMovement.y,
+            targetVerticalMovement,
+            _acceleration * Time.deltaTime
+        );
 
         // Transform the MoveInput from local space to world space and apply the movement speed
         Vector3 localInput = new Vector3(_inputHandler.MoveInput.x, 0f, _inputHandler.MoveInput.y);
         Vector3 worldInput = transform.TransformDirection(localInput) * _moveSpeed;
-        
-        // Set the horizontal movement based on the MoveInput from the PlayerInputHandler
-        _currentMovement.x = worldInput.x;
-        _currentMovement.z = worldInput.z;
+
+ 
+
+        // Set the horizontal movement based on the MoveInput from the PlayerInputHandler and uses mathf to add the "slippery" feeling
+        _currentMovement.x = Mathf.MoveTowards(
+            _currentMovement.x,
+            worldInput.x,
+            _acceleration * Time.deltaTime
+        );
+
+        _currentMovement.z = Mathf.MoveTowards(
+            _currentMovement.z,
+            worldInput.z,
+            _acceleration * Time.deltaTime
+        );
 
         // Apply the movement to the CharacterController
         _characterController.Move(_currentMovement * Time.deltaTime);

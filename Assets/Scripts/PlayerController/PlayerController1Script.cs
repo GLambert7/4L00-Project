@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerController1Script : MonoBehaviour
 {
+    #region Variables
     [Header("Player Movement Settings")]
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _acceleration = 10f;
@@ -31,12 +32,15 @@ public class PlayerController1Script : MonoBehaviour
     */
     private CharacterController _characterController;
     private Camera _mainCam;
+    private float _manualVerticalMovement = 0f;
 
     private Vector3 _currentMovement = Vector3.zero;
 
     private float _horizontalRotation;
     private float _verticalRotation;
+    #endregion
 
+    #region Unity Methods
     private void Awake()
     {
         // Get the CharacterController and Camera components
@@ -58,7 +62,9 @@ public class PlayerController1Script : MonoBehaviour
         HandleRotation();
         HandleMovement();
     }
+    #endregion
 
+    #region Movement Methods
     private void HandleRotation()
     {
         // Update the horizontal and vertical rotation based on the LookInput from the PlayerInputHandler
@@ -80,36 +86,41 @@ public class PlayerController1Script : MonoBehaviour
         }
     }
 
+    #region Secret Message
+    // If you see this comment and mention it to me (Emily), I'll buy you something from Tims.
+    // Sincerely, Emilyyyyyyyyyyyyyyy
+    #endregion
+
     private void HandleMovement()
     {
         // Check for Rise or Sink input and set the vertical movement accordingly uses mathf to add the "slippery" feeling
 
-
-
-        float targetVerticalMovement = 0f;
-
         if (_inputHandler.RiseInput)
         {
-            targetVerticalMovement = _riseSpeed;
+            _manualVerticalMovement = _riseSpeed;
         }
         else if (_inputHandler.SinkInput)
         {
-            targetVerticalMovement = -_fallSpeed;
+            _manualVerticalMovement = -_fallSpeed;
         }
 
-        _currentMovement.y = Mathf.MoveTowards(
-            _currentMovement.y,
-            targetVerticalMovement,
-            _acceleration * Time.deltaTime
-        );
+        
 
-        // Transform the MoveInput from local space to world space and apply the movement speed
-        Vector3 localInput = new Vector3(_inputHandler.MoveInput.x, 0f, _inputHandler.MoveInput.y);
-        Vector3 worldInput = transform.TransformDirection(localInput) * _moveSpeed;
+        // Get the camera's forward direction
+        Vector3 cameraForward = _mainCam.transform.forward;
+        Vector3 cameraRight = _mainCam.transform.right;
 
- 
+        // Transform the MoveInput to world space and apply the movement speed
+        Vector3 worldInput = ((cameraRight * _inputHandler.MoveInput.x) + (cameraForward * _inputHandler.MoveInput.y)).normalized * _moveSpeed;
+
+        // If the player is able to run and holding the run input, apply the run multiplier to the movement speed
+        if (_canRun && _inputHandler.RunInput)
+        {
+            worldInput *= _runMultiplier;
+        }
 
         // Set the horizontal movement based on the MoveInput from the PlayerInputHandler and uses mathf to add the "slippery" feeling
+
         _currentMovement.x = Mathf.MoveTowards(
             _currentMovement.x,
             worldInput.x,
@@ -122,7 +133,28 @@ public class PlayerController1Script : MonoBehaviour
             _acceleration * Time.deltaTime
         );
 
+        // Calculate vertical movement
+
+        if (_inputHandler.RiseInput || _inputHandler.SinkInput)
+        {
+        _currentMovement.y = Mathf.MoveTowards(
+            _currentMovement.y,
+            _manualVerticalMovement,
+            _acceleration * Time.deltaTime
+        );        
+        }
+        else
+        {
+            _currentMovement.y = Mathf.MoveTowards(
+                _currentMovement.y,
+                worldInput.y,
+                _acceleration * Time.deltaTime
+            ); 
+        }
+
         // Apply the movement to the CharacterController
         _characterController.Move(_currentMovement * Time.deltaTime);
     }
+    #endregion
+
 }

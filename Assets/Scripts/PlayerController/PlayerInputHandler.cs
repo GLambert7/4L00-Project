@@ -16,6 +16,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private string _look = "Look";
     [SerializeField] private string _interact = "Interact";
     [SerializeField] private string _pause = "Pause";
+    [SerializeField] private string _dash = "Dash";
 
     // Input action references
     private InputAction _moveAction;
@@ -25,6 +26,7 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction _lookAction;
     private InputAction _interactAction;
     private InputAction _pauseAction;
+    private InputAction _dashAction;
 
     // Public values to be accessed by other scripts
     public Vector2 MoveInput { get; private set; }
@@ -34,6 +36,7 @@ public class PlayerInputHandler : MonoBehaviour
     public bool SinkInput { get; private set; }
     public bool InteractInput { get; private set; }
     public bool PauseInput { get; private set; }
+    public bool DashInput { get; private set; }
 
     public static PlayerInputHandler Instance { get; private set; }
 
@@ -58,6 +61,7 @@ public class PlayerInputHandler : MonoBehaviour
         _lookAction = _inputActions.FindActionMap(_actionMapName).FindAction(_look);
         _interactAction = _inputActions.FindActionMap(_actionMapName).FindAction(_interact);
         _pauseAction = _inputActions.FindActionMap(_actionMapName).FindAction(_pause);
+        _dashAction = _inputActions.FindActionMap(_actionMapName).FindAction(_dash);
         RegisterInputAction();
 
 
@@ -97,6 +101,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         InteractInput = _interactAction?.IsPressed() ?? false;
         PauseInput = _pauseAction?.IsPressed() ?? false;
+        DashInput = _dashAction?.IsPressed() ?? false;
     }
 
     private void OnEnable()
@@ -108,6 +113,7 @@ public class PlayerInputHandler : MonoBehaviour
         _lookAction?.Enable();
         _interactAction?.Enable();
         _pauseAction?.Enable();
+        _dashAction?.Enable();
     }
 
     private void OnDisable()
@@ -121,5 +127,6 @@ public class PlayerInputHandler : MonoBehaviour
         _lookAction?.Disable();
         _interactAction?.Disable();
         _pauseAction?.Disable();
+        _dashAction?.Disable();
     }
 }

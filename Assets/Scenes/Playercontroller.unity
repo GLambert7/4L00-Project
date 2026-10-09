@@ -173,6 +173,7 @@ MonoBehaviour:
   _look: Look
   _interact: Interact
   _pause: Pause
+  _dash: Dash
 --- !u!1 &177006358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,13 +1547,16 @@ MonoBehaviour:
   _moveSpeed: 5
   _acceleration: 30
   _runMultiplier: 2.5
-  _canRun: 1
+  _canRun: 0
   _riseSpeed: 5
   _fallSpeed: 5
   _mouseSensitivityHorizontal: 10
   _mouseSensitivityVertical: 10
   _upDownRange: 80
   _camPivot: {fileID: 157606750}
+  _dashMult: 10
+  _dashDuration: 0.5
+  _dashCooldown: 2
   _inputHandler: {fileID: 157606751}
 --- !u!136 &1244414884
 CapsuleCollider:

@@ -19,12 +19,19 @@ public class PlayerController1Script : MonoBehaviour
     [SerializeField] private float _upDownRange = 80.0f;
     [SerializeField] private Transform _camPivot;
 
+    [Header("Dash Settings")]
+    [SerializeField] private float _dashMult = 3f;
+    [SerializeField] private float _dashDuration = 1f;
+    [SerializeField] private float _dashCooldown = 3f;
+    private float _timeSinceLastDash = 99f;
+
+
     [Header("Player Input Handler")]
     [SerializeField] private PlayerInputHandler _inputHandler;
 
     /*TO ADD: 
      * Stamina?
-     * Impulse Dash?
+     * Burst Dash WIP
      * Convert to State Machine
      * Smoother movement (decelleration and acceleration between states)
      * 
@@ -35,6 +42,7 @@ public class PlayerController1Script : MonoBehaviour
     private float _manualVerticalMovement = 0f;
 
     private Vector3 _currentMovement = Vector3.zero;
+    private Vector3 _dashInput = Vector3.zero;
 
     private float _horizontalRotation;
     private float _verticalRotation;
@@ -59,6 +67,7 @@ public class PlayerController1Script : MonoBehaviour
     // Update is called once per frame (You know what Update() is lol)
     void Update()
     {
+        _timeSinceLastDash += Time.deltaTime;
         HandleRotation();
         HandleMovement();
     }
@@ -93,6 +102,8 @@ public class PlayerController1Script : MonoBehaviour
 
     private void HandleMovement()
     {
+        
+
         // Check for Rise or Sink input and set the vertical movement accordingly uses mathf to add the "slippery" feeling
 
         if (_inputHandler.RiseInput)
@@ -119,37 +130,94 @@ public class PlayerController1Script : MonoBehaviour
             worldInput *= _runMultiplier;
         }
 
-        // Set the horizontal movement based on the MoveInput from the PlayerInputHandler and uses mathf to add the "slippery" feeling
-
-        _currentMovement.x = Mathf.MoveTowards(
-            _currentMovement.x,
-            worldInput.x,
-            _acceleration * Time.deltaTime
-        );
-
-        _currentMovement.z = Mathf.MoveTowards(
-            _currentMovement.z,
-            worldInput.z,
-            _acceleration * Time.deltaTime
-        );
-
-        // Calculate vertical movement
-
-        if (_inputHandler.RiseInput || _inputHandler.SinkInput)
+        // Check for Dash input, and if it's been long enough since the last dash, or if we are currently in a Dash state. If true, run the dash movement, otherwise run the regular movement code
+        if ((_inputHandler.DashInput && _timeSinceLastDash > _dashCooldown) || _timeSinceLastDash < _dashDuration)
         {
-        _currentMovement.y = Mathf.MoveTowards(
-            _currentMovement.y,
-            _manualVerticalMovement,
-            _acceleration * Time.deltaTime
-        );        
+            // Reset time since last dash on dash use
+            if (_timeSinceLastDash > _dashCooldown) { _timeSinceLastDash = 0f; }
+
+            // If we just started the dash, apply the burst movement
+            if (_timeSinceLastDash == 0f)
+            {
+                _dashInput = ((cameraRight * _inputHandler.MoveInput.x) + (cameraForward * _inputHandler.MoveInput.y)).normalized * _moveSpeed;
+
+
+                _currentMovement.x = Mathf.MoveTowards(
+                    _currentMovement.x * _dashMult,
+                    _dashInput.x,
+                    _acceleration * Time.deltaTime
+                );
+
+                _currentMovement.y = Mathf.MoveTowards(
+                    _currentMovement.y * _dashMult,
+                    _dashInput.y ,
+                    _acceleration * Time.deltaTime
+                );
+
+                _currentMovement.z = Mathf.MoveTowards(
+                    _currentMovement.z * _dashMult,
+                    _dashInput.z,
+                    _acceleration * Time.deltaTime
+                );
+            }
+            // If not, just apply normal movement towards the saved dash direction
+            else
+            {
+                _currentMovement.x = Mathf.MoveTowards(
+                    _currentMovement.x,
+                    _dashInput.x,
+                    _acceleration * Time.deltaTime
+                );
+
+                _currentMovement.y = Mathf.MoveTowards(
+                    _currentMovement.y,
+                    _dashInput.y,
+                    _acceleration * Time.deltaTime
+                );
+
+                _currentMovement.z = Mathf.MoveTowards(
+                    _currentMovement.z,
+                    _dashInput.z,
+                    _acceleration * Time.deltaTime
+                );
+            }
+
         }
         else
         {
-            _currentMovement.y = Mathf.MoveTowards(
-                _currentMovement.y,
-                worldInput.y,
+
+            // Set the horizontal movement based on the MoveInput from the PlayerInputHandler and uses mathf to add the "slippery" feeling
+
+            _currentMovement.x = Mathf.MoveTowards(
+                _currentMovement.x,
+                worldInput.x,
                 _acceleration * Time.deltaTime
-            ); 
+            );
+
+            _currentMovement.z = Mathf.MoveTowards(
+                _currentMovement.z,
+                worldInput.z,
+                _acceleration * Time.deltaTime
+            );
+
+            // Calculate vertical movement based on whether or not the player is holding Rise or Sink, or if we are moving using the camera's look direction
+
+            if (_inputHandler.RiseInput || _inputHandler.SinkInput)
+            {
+                _currentMovement.y = Mathf.MoveTowards(
+                    _currentMovement.y,
+                    _manualVerticalMovement,
+                    _acceleration * Time.deltaTime
+                );
+            }
+            else
+            {
+                _currentMovement.y = Mathf.MoveTowards(
+                    _currentMovement.y,
+                    worldInput.y,
+                    _acceleration * Time.deltaTime
+                );
+            }
         }
 
         // Apply the movement to the CharacterController

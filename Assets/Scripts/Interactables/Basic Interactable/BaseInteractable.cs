@@ -1,0 +1,137 @@
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class BaseInteractable : MonoBehaviour
+{
+    #region Variables
+    // Who can interact with this object? These booleans can be set in the Unity Inspector for each interactable object.
+    public bool interactableByDolphin = false; // Can the dolphin interact with this object?
+    public bool interactableByOctopus = false; // Can the octopus interact with this object?
+    public bool interactableByEel = false; // Can the eel interact with this object?
+    public bool interactableByPlayer = false; // Can player interact with this object?
+
+    // Basic requirements for each interactable object to function properly.
+    [Header("Player Input Handler")]
+    [SerializeField] protected PlayerInputHandler _inputHandler; // Reference to the PlayerInputHandler script, which handles player input. This should be set up in the Unity Editor.
+    [SerializeField] protected Collider interactionArea; // The area in which the creature can interact with the object. This is a trigger collider that should be set up in the Unity Editor.
+    [SerializeField] protected AudioSource cantUseSound; // The sound that plays when the creature tries to interact with the object but cannot. This should be set up in the Unity Editor.
+
+    protected bool canInteract = false; // Is the creature in range to interact with the object? This is set to true when the creature enters the interaction area, and false when it exits.
+
+    #endregion
+
+    #region Unity Methods
+    void Update()
+    {
+        InteractionCheck();
+    }
+    #endregion
+
+    #region Interaction Methods
+    public virtual void DolphinInteract()
+    {
+        if (interactableByDolphin)
+        {
+            // Implement dolphin interaction logic here
+            Debug.Log("Dolphin interacted with " + gameObject.name);
+        }
+        else
+        {
+            Debug.Log("Dolphin cannot interact with " + gameObject.name);
+            // Extremely Loud Incorrect Buzzer Sound Effect
+            cantUseSound.Play();
+            return;
+        }
+    }
+
+    public virtual void OctopusInteract()
+    {
+        if (interactableByOctopus)
+        {
+            // Implement octopus interaction logic here
+            Debug.Log("Octopus interacted with " + gameObject.name);
+        }
+        else
+        {
+            Debug.Log("Octopus cannot interact with " + gameObject.name);
+            // Extremely Loud Incorrect Buzzer Sound Effect
+            cantUseSound.Play();
+            return;
+        }
+    }
+
+    public virtual void EelInteract()
+    {
+        if (interactableByEel)
+        {
+            // Implement eel interaction logic here
+            Debug.Log("Eel interacted with " + gameObject.name);
+        }
+        else
+        {
+            Debug.Log("Eel cannot interact with " + gameObject.name);
+            // Extremely Loud Incorrect Buzzer Sound Effect
+            cantUseSound.Play();
+            return;
+        }
+    }
+    public virtual void PlayerInteract()
+    {
+        if (interactableByPlayer)
+        {
+            // Implement player interaction logic here
+            Debug.Log("Player interacted with " + gameObject.name);
+        }
+        else
+        {
+            Debug.Log("Player cannot interact with " + gameObject.name);
+            // Extremely Loud Incorrect Buzzer Sound Effect
+            cantUseSound.Play();
+            return;
+        }
+    }
+
+    // Check if the player is in range and has pressed the interact button, if so, set isMoving to true, starting the movement of the block
+    protected void InteractionCheck()
+    // Restructure so there is a different check for each creature, and if the creature is in range and has pressed the interact button, call the appropriate interaction method for that creature
+    // This will be overridden by the child classes, but this is the basic structure for the interaction check
+    {
+        if (canInteract && _inputHandler.PlayerInteractInput)
+        {
+            PlayerInteract();
+        }
+        else if (canInteract && _inputHandler.DolphinInteractInput)
+        {
+            DolphinInteract();
+        }
+        else if (canInteract && _inputHandler.OctopusInteractInput)
+        {
+            OctopusInteract();
+        }
+        else if (canInteract && _inputHandler.EelInteractInput)
+        {
+            EelInteract();
+        }
+    }
+    #endregion
+
+
+    #region Trigger Events
+    // Trigger events to check if the player is entering or exiting the range of the block, and setting canInteract to true or false accordingly
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canInteract = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canInteract = false;
+        }
+    }
+    #endregion
+}

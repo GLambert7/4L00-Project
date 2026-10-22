@@ -57,16 +57,6 @@
                     "priority": 0
                 },
                 {
-                    "name": "Interact",
-                    "type": "Button",
-                    "id": "6a0542ee-4733-4d5b-b8a3-ad6fea9b088d",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false,
-                    "priority": 0
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "59a6f033-8734-434c-b900-18f41f0179dc",
@@ -80,6 +70,46 @@
                     "name": "Dash",
                     "type": "Button",
                     "id": "e0e4a526-2ed9-4b89-afc5-09e6c0c888bd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "PlayerInteract",
+                    "type": "Button",
+                    "id": "6a0542ee-4733-4d5b-b8a3-ad6fea9b088d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "DolphinInteract",
+                    "type": "Button",
+                    "id": "ad065df2-03e7-4761-af84-da8a6d4ce243",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "OctopusInteract",
+                    "type": "Button",
+                    "id": "baca581f-5b3c-4983-abfc-31a14a3af354",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "EelInteract",
+                    "type": "Button",
+                    "id": "cd99cf8f-7941-429b-8f6a-48a7d77a41a7",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -190,11 +220,11 @@
                 {
                     "name": "",
                     "id": "d18c5d24-facd-453b-804d-bc0b733a360c",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "PlayerInteract",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -217,6 +247,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "99430bcc-a6b2-4af0-be9b-d8081260d264",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DolphinInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "defe6333-1dad-4d72-8e59-0a9d5bc4f7bd",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OctopusInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7576ca6f-5088-4fa8-8268-65e8fbdd5683",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EelInteract",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -23,7 +23,7 @@ public class InteractableAppear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_playerInRange && _inputHandler.InteractInput)
+        if (_playerInRange && _inputHandler.PlayerInteractInput)
         {
             // Perform the interaction logic here
             Debug.Log("Interacted with: " + gameObject.name);

@@ -1,8 +1,23 @@
 using UnityEngine;
 
-public class PushBlock : MonoBehaviour
+public class PushBlock : BaseInteractable
 {
-    // Attach this script to the block you wish to move. Create two empty game objects and place them at the two points you want the block to move between, then assign these two empty game objects to the startPoint and endPoint variables in the inspector. Add an additional collider to the block to define the interaction area, and ensure it is set to "Is Trigger". The block will move between the two set points when the player interacts with it. Interacting with the block will cause it to move from its current position to the other point. The block will only start moving when the player is in range and presses the interact button. The player should be tagged as "Player" to ensure it is detected correctly. More logic can be added onto this script in the future depending on the needs of the puzzle designers, such as adding more points for the block to move between, conditions for the block to move, or adding a grid system for the block to move on. I made it simple and easy for now tho.
+    /// <summary>
+    /// How the script should function:
+    /// - The block exists on a grid system, and when pushed moves as far as possible along the grid until it hits an obstacle or reaches the end of the grid.
+    /// - The block is always moved by the Dolphin
+    /// - Moves based on look direction
+    /// - 
+    /// </summary>
+
+
+    // Attach this script to the block you wish to move. Create two empty game objects and place them at the two points you want the block to move between, then assign these two empty game objects to the
+    // startPoint and endPoint variables in the inspector. Add an additional collider to the block to define the interaction area, and ensure it is set to "Is Trigger". The block will move between the two
+    // set points when the player interacts with it. Interacting with the block will cause it to move from its current position to the other point. The block will only start moving when the player is in range
+    // and presses the interact button. The player should be tagged as "Player" to ensure it is detected correctly. More logic can be added onto this script in the future depending on the needs of the puzzle
+    // designers, such as adding more points for the block to move between, conditions for the block to move, or adding a grid system for the block to move on. I made it simple and easy for now tho.
+
+
 
     /*
      * TODO:
@@ -10,7 +25,8 @@ public class PushBlock : MonoBehaviour
      * Add conditions that allow or prevent the block from to moving
      * 
      * CURRENT BUGS:
-     * Cube can kind of clip through player during movement, need to make sure the player is pushed out of the way when the block moves. Currently I am handling this via a rigidbody on the block, but this is not a perfect solution, as it seems to pop the player up instead of pushing them out of the way or smoothly moving them with the block. I will need to look into this more and find a better solution.
+     * Cube can kind of clip through player during movement, need to make sure the player is pushed out of the way when the block moves. Currently I am handling this via a rigidbody on the block, but this is not a 
+     * perfect solution, as it seems to pop the player up instead of pushing them out of the way or smoothly moving them with the block. I will need to look into this more and find a better solution.
      * 
      * If there's anything else you want me to add, please let me know and I will do my best to implement it. 
      */
@@ -20,14 +36,8 @@ public class PushBlock : MonoBehaviour
     [SerializeField] private Transform startPoint;
     [SerializeField] private Transform endPoint;
     [SerializeField] private float timeToMove = 5f;
-    [Space(10)]
-    [SerializeField] private Collider interactionArea;
-
-    [Header("Player Input Handler")]
-    [SerializeField] private PlayerInputHandler _inputHandler;
 
     //Non-Inspector Variables
-    private bool canInteract = false;
     private bool isMoving = false;
     private bool atPointA = true;
     private float timeElapsed = 0f;
@@ -73,33 +83,16 @@ public class PushBlock : MonoBehaviour
         }
     }
 
-    // Check if the player is in range and has pressed the interact button, if so, set isMoving to true, starting the movement of the block
-    private void InteractionCheck()
+    public override void DolphinInteract()
     {
-        if (canInteract && _inputHandler.InteractInput)
+        base.DolphinInteract();
+        if (interactableByDolphin)
         {
             isMoving = true;
         }
     }
 
+
     #endregion
 
-    #region Trigger Events
-    // Trigger events to check if the player is entering or exiting the range of the block, and setting canInteract to true or false accordingly
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            canInteract = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            canInteract = false;
-        }
-    }
-    #endregion
 }

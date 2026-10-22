@@ -1,0 +1,105 @@
+using UnityEngine;
+
+public class PushBlock : MonoBehaviour
+{
+    // Attach this script to the block you wish to move. Create two empty game objects and place them at the two points you want the block to move between, then assign these two empty game objects to the startPoint and endPoint variables in the inspector. Add an additional collider to the block to define the interaction area, and ensure it is set to "Is Trigger". The block will move between the two set points when the player interacts with it. Interacting with the block will cause it to move from its current position to the other point. The block will only start moving when the player is in range and presses the interact button. The player should be tagged as "Player" to ensure it is detected correctly. More logic can be added onto this script in the future depending on the needs of the puzzle designers, such as adding more points for the block to move between, conditions for the block to move, or adding a grid system for the block to move on. I made it simple and easy for now tho.
+
+    /*
+     * TODO:
+     * Add more points for the block to move between (currently only supports two points)
+     * Add conditions that allow or prevent the block from to moving
+     * 
+     * CURRENT BUGS:
+     * Cube can kind of clip through player during movement, need to make sure the player is pushed out of the way when the block moves. Currently I am handling this via a rigidbody on the block, but this is not a perfect solution, as it seems to pop the player up instead of pushing them out of the way or smoothly moving them with the block. I will need to look into this more and find a better solution.
+     * 
+     * If there's anything else you want me to add, please let me know and I will do my best to implement it. 
+     */
+    #region Variables
+
+    //Inspector Variables
+    [SerializeField] private Transform startPoint;
+    [SerializeField] private Transform endPoint;
+    [SerializeField] private float timeToMove = 5f;
+    [Space(10)]
+    [SerializeField] private Collider interactionArea;
+
+    [Header("Player Input Handler")]
+    [SerializeField] private PlayerInputHandler _inputHandler;
+
+    //Non-Inspector Variables
+    private bool canInteract = false;
+    private bool isMoving = false;
+    private bool atPointA = true;
+    private float timeElapsed = 0f;
+
+    #endregion
+
+    #region Unity Methods
+    // Update is called once per frame
+    void Update()
+    {
+        InteractionCheck();
+        HandleMovement();
+    }
+    #endregion
+
+    #region Movement and Interaction Methods
+    private void HandleMovement()
+    {
+        // Check if the block is allowed to move
+        if (isMoving)
+        {
+            // Calculate the time elapsed and the interpolation factor
+            timeElapsed += Time.deltaTime;
+            float t = timeElapsed / timeToMove;
+
+            // Check the block's current position (for now this is just A or B, but we can add more points later if we want to, change it to a grid system, the works) then lerp between the two points based on the interpolation factor
+            if (atPointA)
+            {
+                transform.position = Vector3.Lerp(startPoint.position, endPoint.position, t);
+            }
+            else
+            {
+                transform.position = Vector3.Lerp(endPoint.position, startPoint.position, t);
+            }
+
+            // If the interpolation factor is greater than or equal to 1, the block has reached its destination, so we stop moving and reset the time elapsed
+            if (t >= 1f)
+            {
+                isMoving = false;
+                atPointA = !atPointA;
+                timeElapsed = 0f;
+            }
+        }
+    }
+
+    // Check if the player is in range and has pressed the interact button, if so, set isMoving to true, starting the movement of the block
+    private void InteractionCheck()
+    {
+        if (canInteract && _inputHandler.InteractInput)
+        {
+            isMoving = true;
+        }
+    }
+
+    #endregion
+
+    #region Trigger Events
+    // Trigger events to check if the player is entering or exiting the range of the block, and setting canInteract to true or false accordingly
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canInteract = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canInteract = false;
+        }
+    }
+    #endregion
+}

@@ -42,6 +42,15 @@ public class PushBlock : BaseInteractable
     private bool atPointA = true;
     private float timeElapsed = 0f;
 
+    //Movecheck Variables
+    private bool canMoveNorth = false;
+    private bool canMoveSouth = false;
+    private bool canMoveEast = false;
+    private bool canMoveWest = false;
+
+    // DrawGizmos Variables
+    
+
     #endregion
 
     #region Unity Methods
@@ -83,6 +92,17 @@ public class PushBlock : BaseInteractable
         }
     }
 
+    public void MoveCheck()
+    {
+        // Boxcast in the 4 cardinal directions, if we detech an object that notates that the block can move to that location, set the corresponding variable to true. 
+        // For interactions, check where the player is relative to the block. If they are +x +y move it accordingly, should the block be allowed to move in that direction.
+        // Set a boolean for blocks with continuous/ice movement. Those blocks, once interacted with, will continue to move until they encounter an area they cannot move past (no indicator object)
+        // Invisible tagged objects will handle the grid system, and I will use coloured planes to indicate their locations for now.
+        // MAKE SURE that these objects CANNOT BE SEEN FROM OTHER GRIDS bc then we could get boxes moving way off track from where they should be.
+        // For ice mode, make the object check at the end of the LERP but ONLY in the direction it was moving, and check if an object occupies that spot already (blocks can block blocks)
+        // When detected, get the object's position and allow movement directly to that position via LERP
+    }
+
     public override void DolphinInteract()
     {
         base.DolphinInteract();
@@ -92,6 +112,23 @@ public class PushBlock : BaseInteractable
         }
     }
 
+
+    #endregion
+
+    #region BoxCasts
+    private void FixedUpdate()
+    {
+        //canMoveNorth = Physics.BoxCast() WIP
+    }
+
+    #endregion
+
+    #region DrawGizmos
+
+    private void OnDrawGizmos()
+    {
+        transform.position +
+    }
 
     #endregion
 

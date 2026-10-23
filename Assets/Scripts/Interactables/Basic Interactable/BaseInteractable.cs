@@ -17,7 +17,7 @@ public class BaseInteractable : MonoBehaviour
     [SerializeField] protected AudioSource cantUseSound; // The sound that plays when the creature tries to interact with the object but cannot. This should be set up in the Unity Editor.
 
     protected bool canInteract = false; // Is the creature in range to interact with the object? This is set to true when the creature enters the interaction area, and false when it exits.
-
+    protected bool hasInteracted = false; // Has the creature already interacted with the object? This is set to true when the creature interacts with the object, and false when the interaction key for all creatures is in the released state.
     #endregion
 
     #region Unity Methods
@@ -43,7 +43,6 @@ public class BaseInteractable : MonoBehaviour
             return;
         }
     }
-
     public virtual void OctopusInteract()
     {
         if (interactableByOctopus)
@@ -59,7 +58,6 @@ public class BaseInteractable : MonoBehaviour
             return;
         }
     }
-
     public virtual void EelInteract()
     {
         if (interactableByEel)
@@ -93,23 +91,33 @@ public class BaseInteractable : MonoBehaviour
 
     // Check if the player is in range and has pressed the interact button, if so, set isMoving to true, starting the movement of the block
     protected void InteractionCheck()
-    // Restructure so there is a different check for each creature, and if the creature is in range and has pressed the interact button, call the appropriate interaction method for that creature
-    // This will be overridden by the child classes, but this is the basic structure for the interaction check
+    // Each creature has its own interact button, so we check for each one separately. If the player is in range and presses the interact button, we call the appropriate interaction method for that creature.
     {
+        if (!_inputHandler.PlayerInteractInput && !_inputHandler.DolphinInteractInput && !_inputHandler.OctopusInteractInput && !_inputHandler.EelInteractInput)
+        {
+            hasInteracted = false;
+        }
+
+        if (hasInteracted) return;
+
         if (canInteract && _inputHandler.PlayerInteractInput)
         {
+            hasInteracted = true;
             PlayerInteract();
         }
         else if (canInteract && _inputHandler.DolphinInteractInput)
         {
+            hasInteracted = true;
             DolphinInteract();
         }
         else if (canInteract && _inputHandler.OctopusInteractInput)
         {
+            hasInteracted = true;
             OctopusInteract();
         }
         else if (canInteract && _inputHandler.EelInteractInput)
         {
+            hasInteracted = true;
             EelInteract();
         }
     }

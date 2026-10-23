@@ -31,7 +31,6 @@ public class PlayerController1Script : MonoBehaviour
 
     /*TO ADD: 
      * Stamina?
-     * Burst Dash WIP
      * Convert to State Machine
      * Smoother movement (decelleration and acceleration between states)
      * 

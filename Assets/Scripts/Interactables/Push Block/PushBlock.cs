@@ -127,7 +127,7 @@ public class PushBlock : BaseInteractable
 
     private void OnDrawGizmos()
     {
-        transform.position +
+        //transform.position +
     }
 
     #endregion

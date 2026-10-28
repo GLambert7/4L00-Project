@@ -345,6 +345,8 @@ public class PushBlock : BaseInteractable
 
         );
 
+        // FOR NOW the only thing we are checking for is other moving blocks. Adding other raycasts that detect things in the way will be easy as copying the above code for obstructed and switching the target layer, but since we haven't set up normal wall obstacles or anything yet between the grid, I'll leave it to take care of at a later date
+
         if ( obstructed ) { 
             canMove = false; 
         }

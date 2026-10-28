@@ -15,6 +15,7 @@ public class BaseInteractable : MonoBehaviour
     [SerializeField] protected PlayerInputHandler _inputHandler; // Reference to the PlayerInputHandler script, which handles player input. This should be set up in the Unity Editor.
     [SerializeField] protected Collider interactionArea; // The area in which the creature can interact with the object. This is a trigger collider that should be set up in the Unity Editor.
     [SerializeField] protected AudioSource cantUseSound; // The sound that plays when the creature tries to interact with the object but cannot. This should be set up in the Unity Editor.
+    [SerializeField] protected GameObject PlayerRef; // Reference to our player object
 
     protected bool canInteract = false; // Is the creature in range to interact with the object? This is set to true when the creature enters the interaction area, and false when it exits.
     protected bool hasInteracted = false; // Has the creature already interacted with the object? This is set to true when the creature interacts with the object, and false when the interaction key for all creatures is in the released state.

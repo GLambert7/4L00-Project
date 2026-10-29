@@ -1,0 +1,44 @@
+.menu-buttons {
+    border-top-left-radius: 52px;
+    border-top-right-radius: 52px;
+    border-bottom-right-radius: 52px;
+    border-bottom-left-radius: 52px;
+    border-left-color: rgb(56, 156, 168);
+    border-right-color: rgb(56, 156, 168);
+    border-top-color: rgb(56, 156, 168);
+    border-bottom-color: rgb(56, 156, 168);
+    background-color: rgba(255, 255, 255, 0);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 10px;
+    border-left-width: 4px;
+    padding-top: 15px;
+    padding-right: 35px;
+    padding-bottom: 15px;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.menu-buttons:hover {
+    border-top-left-radius: 52px;
+    border-top-right-radius: 52px;
+    border-bottom-right-radius: 52px;
+    border-bottom-left-radius: 52px;
+    border-left-color: rgb(56, 156, 168);
+    border-right-color: rgb(56, 156, 168);
+    border-top-color: rgb(56, 156, 168);
+    border-bottom-color: rgb(56, 156, 168);
+    background-color: rgb(56, 156, 168);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 10px;
+    border-left-width: 4px;
+    padding-top: 15px;
+    padding-right: 35px;
+    padding-bottom: 15px;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: rgb(255, 255, 255);
+}

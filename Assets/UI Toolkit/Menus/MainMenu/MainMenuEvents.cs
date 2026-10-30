@@ -49,6 +49,8 @@ public class MainMenuEvents : MonoBehaviour
     private void OnCreditsClick(ClickEvent evt)
     {
         Debug.Log("Pressed Credits");
+
+        SceneManager.LoadScene("Credits");
     }
 
     // On Quit click

@@ -1,9 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ui:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ui="UnityEngine.UIElements"
-    xmlns:uie="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
->
-    
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Universal%20Stylesheets/Universal.uss?fileID=7433441132597879392&amp;guid=26e9159df86912247bab5dc10a8e07d8&amp;type=3#Universal"/>
+    <Style src="project://database/Assets/UI%20Toolkit/Menus/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=036d353d9df5b464394d7c2925c8e7c4&amp;type=3#MainMenu"/>
+    <Style src="project://database/Assets/UI%20Toolkit/Menus/OptionsMenu/OptionsMenu.uss?fileID=7433441132597879392&amp;guid=5673bccdb9d744f47bd59d503728bca7&amp;type=3#OptionsMenu"/>
+    <ui:VisualElement name="Container" class="centered-container" style="background-color: rgb(255, 252, 239);">
+        <ui:VisualElement name="HelpText" style="flex-grow: 0; position: absolute; top: 0; right: 0; align-items: flex-end; padding-top: 30px; padding-right: 3%;">
+            <ui:Label text="NOTE: All unfinished menu options will have an asterisk* next to them" name="Asterisk" style="font-size: 20px; -unity-font-style: bold; color: rgb(63, 63, 63);"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="Heading" class="heading-container" style="padding-bottom: 65px;">
+            <ui:Label text="Options&#10;" name="Title" class="title-text header-text heading-text" style="width: 407px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="Sliders" style="flex-grow: 0; width: 511px;">
+            <ui:Label text="SFX" name="SFX" style="height: 23px; width: 240px;"/>
+            <ui:Label text="Music" name="Music" style="height: 26px; width: 48px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="MenuOptionsGroup" style="height: auto; align-items: center; justify-content: center; -unity-text-align: middle-center; width: 472px; flex-direction: column;">
+            <ui:VisualElement name="RadioButtons" style="flex-grow: 0; width: 511px;">
+                <ui:RadioButton label="Skip Cut Scene" name="Cutscene"/>
+                <ui:RadioButton label="Subtitles" name="Subtitles"/>
+            </ui:VisualElement>
+            <ui:Button text="Save Options*" name="SaveOptionsButton" class="subheading-text menu-buttons"/>
+            <ui:Button text="Quit" name="QuitButton" class="subheading-text menu-buttons"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>

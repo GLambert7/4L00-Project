@@ -15,7 +15,7 @@ public class LightEmitter : MonoBehaviour
     private int layerMask;
     private void Awake()
     {
-        layerMask = ~LayerMask.GetMask("Player");
+        layerMask = ~LayerMask.GetMask("Player", "PassThrough");
     }
 
     private void Update()

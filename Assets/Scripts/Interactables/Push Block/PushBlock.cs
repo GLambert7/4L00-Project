@@ -43,12 +43,6 @@ public class PushBlock : BaseInteractable
 
     private float timeElapsed = 0f;
 
-    [Header("Boxcast Center Check Transforms")]
-    [SerializeField] private Transform MovePointNorth;
-    [SerializeField] private Transform MovePointSouth;
-    [SerializeField] private Transform MovePointEast;
-    [SerializeField] private Transform MovePointWest;
-
     [Header("Boxcast Vars")]
     private Vector3 boxSize = Vector3.one;
     private float MaxCheckDistance = 4f; 

@@ -4,34 +4,73 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuEvents : MonoBehaviour
 {
-    private UIDocument _document;
+    #region Variables and Awake
+    // Documents
+    private VisualElement _root;
+    private VisualElement _titleMenuRoot;
+    private VisualElement _optionsRoot;
+    private VisualElement _creditsRoot;
 
+    // *** UI VisualElement Variables ***
+    // Title
     private Button startButton;
     private Button optionsButton;
     private Button creditsButton;
     private Button quitButton;
 
-    // Assigning needed elements on Awake
+    // Options and Credits
+    private Button returnButton;
+
     private void Awake()
     {
-        _document = GetComponent<UIDocument>();
+        // Query root visual elements for each menu screen
+        _root = GetComponent<UIDocument>().rootVisualElement;
+        _titleMenuRoot = _root.Q<VisualElement>("TitleMenu");
+        _optionsRoot = _root.Q<VisualElement>("OptionsMenu");
+        _creditsRoot = _root.Q<VisualElement>("CreditsMenu");
 
-        // Button definitions
-        startButton = _document.rootVisualElement.Q("StartButton") as Button;
-        optionsButton = _document.rootVisualElement.Q("OptionsButton") as Button;
-        creditsButton = _document.rootVisualElement.Q("CreditsButton") as Button;
-        quitButton = _document.rootVisualElement.Q("QuitButton") as Button;
+        // *** Assign Buttons ***
+        //Title Menu
+        startButton = _titleMenuRoot.Q("StartButton") as Button;
+        optionsButton = _titleMenuRoot.Q("OptionsButton") as Button;
+        creditsButton = _titleMenuRoot.Q("CreditsButton") as Button;
+        quitButton = _titleMenuRoot.Q("QuitButton") as Button;
 
-        // Register click events
-        startButton.RegisterCallback<ClickEvent>(OnStartClick);
-        optionsButton.RegisterCallback<ClickEvent>(OnOptionsClick);
-        creditsButton.RegisterCallback<ClickEvent>(OnCreditsClick);
-        quitButton.RegisterCallback<ClickEvent>(OnQuitClick);
+        // Options and Credits
+        returnButton = _root.Q("ReturnButton") as Button;
 
+        // *** Register Click Events ***
+        // Title Menu
+        startButton.clicked += () => OnStartClick();
+        optionsButton.clicked += () => MenuEnter(_optionsRoot);
+        creditsButton.clicked += () => MenuEnter(_creditsRoot);
+        quitButton.clicked += () => OnQuitClick();
+
+        // Options Menu
+        returnButton.clicked += () => MenuEnter(_titleMenuRoot);
+
+        // Credits Menu
+
+        // Default menu visibility
+        _optionsRoot.style.display = DisplayStyle.None;
+        _creditsRoot.style.display = DisplayStyle.None;
+    }
+    #endregion
+
+    // NOTE: This method is kinda important for univeral UI So I will maybe move it and make it public at some point -Cadence
+    private void MenuEnter(VisualElement enter)
+    {
+        // Turn off all menu displays
+        _titleMenuRoot.style.display = DisplayStyle.None;
+        _optionsRoot.style.display = DisplayStyle.None;
+        _creditsRoot.style.display = DisplayStyle.None;
+
+        // Turn on menu user is entering
+        enter.style.display = DisplayStyle.Flex;
     }
 
-    // On Start click
-    private void OnStartClick(ClickEvent evt)
+    #region Title Menu Button Events
+    private void OnStartClick()
     {
         Debug.Log("Pressed Start");
 
@@ -39,22 +78,7 @@ public class MainMenuEvents : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    // On Options click
-    private void OnOptionsClick(ClickEvent evt)
-    {
-        Debug.Log("Pressed Options");
-    }
-
-    // On Credits click
-    private void OnCreditsClick(ClickEvent evt)
-    {
-        Debug.Log("Pressed Credits");
-
-        SceneManager.LoadScene("Credits");
-    }
-
-    // On Quit click
-    private void OnQuitClick(ClickEvent evt)
+    private void OnQuitClick()
     {
         Debug.Log("Pressed Quit");
 
@@ -65,4 +89,5 @@ public class MainMenuEvents : MonoBehaviour
             Application.Quit();
         #endif
     }
+    #endregion
 }

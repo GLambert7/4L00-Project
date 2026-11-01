@@ -14,8 +14,13 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private string _rise = "Rise";
     [SerializeField] private string _sink = "Sink";
     [SerializeField] private string _look = "Look";
-    [SerializeField] private string _interact = "Interact";
     [SerializeField] private string _pause = "Pause";
+    [SerializeField] private string _dash = "Dash";
+    [SerializeField] private string _playerInteract = "PlayerInteract";
+    [SerializeField] private string _dolphinInteract = "DolphinInteract";
+    [SerializeField] private string _octopusInteract = "OctopusInteract";
+    [SerializeField] private string _eelInteract = "EelInteract";
+
 
     // Input action references
     private InputAction _moveAction;
@@ -23,8 +28,12 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction _riseAction;
     private InputAction _sinkAction;
     private InputAction _lookAction;
-    private InputAction _interactAction;
     private InputAction _pauseAction;
+    private InputAction _dashAction;
+    private InputAction _playerInteractAction;
+    private InputAction _dolphinInteractAction;
+    private InputAction _octopusInteractAction;
+    private InputAction _eelInteractAction;
 
     // Public values to be accessed by other scripts
     public Vector2 MoveInput { get; private set; }
@@ -32,8 +41,13 @@ public class PlayerInputHandler : MonoBehaviour
     public bool RunInput { get; private set; }
     public bool RiseInput { get; private set; }
     public bool SinkInput { get; private set; }
-    public bool InteractInput { get; private set; }
     public bool PauseInput { get; private set; }
+    public bool DashInput { get; private set; }
+    public bool PlayerInteractInput { get; private set; }
+    public bool DolphinInteractInput { get; private set; }
+    public bool OctopusInteractInput { get; private set; }
+    public bool EelInteractInput { get; private set; }
+
 
     public static PlayerInputHandler Instance { get; private set; }
 
@@ -56,8 +70,12 @@ public class PlayerInputHandler : MonoBehaviour
         _riseAction = _inputActions.FindActionMap(_actionMapName).FindAction(_rise);
         _sinkAction = _inputActions.FindActionMap(_actionMapName).FindAction(_sink);
         _lookAction = _inputActions.FindActionMap(_actionMapName).FindAction(_look);
-        _interactAction = _inputActions.FindActionMap(_actionMapName).FindAction(_interact);
         _pauseAction = _inputActions.FindActionMap(_actionMapName).FindAction(_pause);
+        _dashAction = _inputActions.FindActionMap(_actionMapName).FindAction(_dash);
+        _playerInteractAction = _inputActions.FindActionMap(_actionMapName).FindAction(_playerInteract);
+        _dolphinInteractAction = _inputActions.FindActionMap(_actionMapName).FindAction(_dolphinInteract);
+        _octopusInteractAction = _inputActions.FindActionMap(_actionMapName).FindAction(_octopusInteract);
+        _eelInteractAction = _inputActions.FindActionMap(_actionMapName).FindAction(_eelInteract);
         RegisterInputAction();
 
 
@@ -95,8 +113,12 @@ public class PlayerInputHandler : MonoBehaviour
 
     void Update()
     {
-        InteractInput = _interactAction?.IsPressed() ?? false;
         PauseInput = _pauseAction?.IsPressed() ?? false;
+        DashInput = _dashAction?.IsPressed() ?? false;
+        PlayerInteractInput = _playerInteractAction?.IsPressed() ?? false;
+        DolphinInteractInput = _dolphinInteractAction?.IsPressed() ?? false;
+        OctopusInteractInput = _octopusInteractAction?.IsPressed() ?? false;
+        EelInteractInput = _eelInteractAction?.IsPressed() ?? false;
     }
 
     private void OnEnable()
@@ -106,8 +128,12 @@ public class PlayerInputHandler : MonoBehaviour
         _riseAction?.Enable();
         _sinkAction?.Enable();
         _lookAction?.Enable();
-        _interactAction?.Enable();
         _pauseAction?.Enable();
+        _dashAction?.Enable();
+        _playerInteractAction?.Enable();
+        _dolphinInteractAction?.Enable();
+        _octopusInteractAction?.Enable();
+        _eelInteractAction?.Enable();
     }
 
     private void OnDisable()
@@ -119,7 +145,11 @@ public class PlayerInputHandler : MonoBehaviour
         _riseAction?.Disable();
         _sinkAction?.Disable();
         _lookAction?.Disable();
-        _interactAction?.Disable();
         _pauseAction?.Disable();
+        _dashAction?.Disable();
+        _playerInteractAction?.Disable();
+        _dolphinInteractAction?.Disable();
+        _octopusInteractAction?.Disable();
+        _eelInteractAction?.Disable();
     }
 }

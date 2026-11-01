@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuEvents : MonoBehaviour
 {
+    #region Variables and Awake
+    // Elements
+    private VisualElement _root;
+
     public bool isPaused;
-    
-    private UIDocument _document;
 
     private Button resumeButton;
     private Button optionsButton;
@@ -16,24 +18,29 @@ public class PauseMenuEvents : MonoBehaviour
     // Assigning needed elements on Awake
     private void Awake()
     {
-        _document = GetComponent<UIDocument>();
+        // Query root visual elements for each menu screen
+        _root = GetComponent<UIDocument>().rootVisualElement;
 
         // Button definitions
-        resumeButton = _document.rootVisualElement.Q("ResumeButton") as Button;
-        optionsButton = _document.rootVisualElement.Q("OptionsButton") as Button;
-        mainMenuButton = _document.rootVisualElement.Q("MainMenuButton") as Button;
-        quitButton = _document.rootVisualElement.Q("QuitButton") as Button;
+        resumeButton = _root.Q("ResumeButton") as Button;
+        //optionsButton = _document.rootVisualElement.Q("OptionsButton") as Button;
+        //mainMenuButton = _document.rootVisualElement.Q("MainMenuButton") as Button;
+        quitButton = _root.Q("QuitButton") as Button;
 
         // Register click events
-        resumeButton.RegisterCallback<ClickEvent>(OnResumeClick);
+        //resumeButton.RegisterCallback<ClickEvent>(OnResumeClick);
         //optionsButton.RegisterCallback<ClickEvent>(OnOptionsClick);
         //mainMenuButton.RegisterCallback<ClickEvent>(OnMainMenuClick);
-        quitButton.RegisterCallback<ClickEvent>(OnQuitClick);
+        //quitButton.RegisterCallback<ClickEvent>(OnQuitClick);
 
+        // Default visibility
+        _root.style.display = DisplayStyle.None;
     }
+    #endregion
 
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -45,6 +52,7 @@ public class PauseMenuEvents : MonoBehaviour
                 Pause();
             }
         }
+        */
     }
 
     // On Start click
@@ -62,7 +70,7 @@ public class PauseMenuEvents : MonoBehaviour
 
         // Quits game
         #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
         #else
                     Application.Quit();
         #endif
@@ -73,12 +81,13 @@ public class PauseMenuEvents : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0f;
-
+        _root.style.display = DisplayStyle.Flex;
     }
 
     public void Resume()
     {
         isPaused = false;
         Time.timeScale = 1f;
+        _root.style.display = DisplayStyle.None;
     }
 }

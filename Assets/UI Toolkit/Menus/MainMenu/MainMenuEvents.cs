@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class MainMenuEvents : MonoBehaviour
 {
     #region Variables and Awake
-    // Documents
+    // Elements
     private VisualElement _root;
     private VisualElement _titleMenuRoot;
     private VisualElement _optionsRoot;
@@ -22,7 +23,7 @@ public class MainMenuEvents : MonoBehaviour
     private Button returnButton;
 
     private void Awake()
-    {
+    {        
         // Query root visual elements for each menu screen
         _root = GetComponent<UIDocument>().rootVisualElement;
         _titleMenuRoot = _root.Q<VisualElement>("TitleMenu");
@@ -54,6 +55,8 @@ public class MainMenuEvents : MonoBehaviour
         // Default menu visibility
         _optionsRoot.style.display = DisplayStyle.None;
         _creditsRoot.style.display = DisplayStyle.None;
+
+        // *** Controller Support ***
     }
     #endregion
 

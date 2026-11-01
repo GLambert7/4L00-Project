@@ -43,6 +43,29 @@
     color: rgb(255, 255, 255);
 }
 
+.menu-buttons:focus {
+    border-top-left-radius: 52px;
+    border-top-right-radius: 52px;
+    border-bottom-right-radius: 52px;
+    border-bottom-left-radius: 52px;
+    border-left-color: rgb(56, 156, 168);
+    border-right-color: rgb(56, 156, 168);
+    border-top-color: rgb(56, 156, 168);
+    border-bottom-color: rgb(56, 156, 168);
+    background-color: rgb(56, 156, 168);
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 10px;
+    border-left-width: 4px;
+    padding-top: 15px;
+    padding-right: 35px;
+    padding-bottom: 15px;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: rgb(255, 255, 255);
+}
+
 .return-button {
     background-color: rgba(188, 188, 188, 0);
     border-top-width: 0;
@@ -53,9 +76,10 @@
     color: rgb(56, 156, 168);
     font-size: 46px;
     align-items: flex-start;
-    left: -40%;
-    top: -10%;
     -unity-text-align: middle-left;
+    position: absolute;
+    left: 10%;
+    top: 10%;
 }
 
 .return-button:hover {
@@ -68,7 +92,24 @@
     color: rgb(142, 222, 230);
     font-size: 46px;
     align-items: flex-start;
-    left: -40%;
-    top: -10%;
+    left: 10%;
+    top: 10%;
     -unity-text-align: middle-left;
+    position: absolute;
+}
+
+.return-button:focus {
+    background-color: rgba(188, 188, 188, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    -unity-font-style: bold;
+    color: rgb(142, 222, 230);
+    font-size: 46px;
+    align-items: flex-start;
+    left: 10%;
+    top: 10%;
+    -unity-text-align: middle-left;
+    position: absolute;
 }

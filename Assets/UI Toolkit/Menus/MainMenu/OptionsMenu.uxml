@@ -6,17 +6,19 @@
         <ui:VisualElement name="Heading" class="heading-container" style="padding-bottom: 65px;">
             <ui:Label text="Options&#10;" name="Title" class="title-text header-text heading-text" style="width: 407px;"/>
         </ui:VisualElement>
-        <ui:VisualElement name="Sliders" style="flex-grow: 0; width: 511px;">
-            <ui:Label text="SFX" name="SFX" style="height: 23px; width: 240px;"/>
-            <ui:Label text="Music" name="Music" style="height: 26px; width: 48px;"/>
-        </ui:VisualElement>
-        <ui:VisualElement name="MenuOptionsGroup" style="height: auto; align-items: center; justify-content: center; -unity-text-align: middle-center; width: 472px; flex-direction: column;">
-            <ui:VisualElement name="RadioButtons" style="flex-grow: 0; width: 511px;">
-                <ui:RadioButton label="Skip Cut Scene" name="Cutscene"/>
-                <ui:RadioButton label="Subtitles" name="Subtitles"/>
+        <ui:VisualElement name="Container" style="flex-grow: 0; flex-direction: row;">
+            <ui:VisualElement name="MenuOptionsGroup" style="height: auto; align-items: center; justify-content: center; -unity-text-align: middle-center; width: auto; flex-direction: column;">
+                <ui:VisualElement name="Sliders" style="flex-grow: 0; width: 511px; align-items: center;">
+                    <ui:Label text="SFX" name="SFX" style="height: 23px; width: 240px;"/>
+                    <ui:Label text="Music" name="Music" style="height: 26px; width: 48px;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="RadioButtons" style="flex-grow: 0; width: 511px; align-items: center;">
+                    <ui:RadioButton label="Skip Cut Scene" name="Cutscene"/>
+                    <ui:RadioButton label="Subtitles" name="Subtitles"/>
+                </ui:VisualElement>
+                <ui:Button text="Save Options*" name="SaveOptionsButton" class="subheading-text menu-buttons"/>
+                <ui:Button text="Quit" name="QuitButton" class="subheading-text menu-buttons"/>
             </ui:VisualElement>
-            <ui:Button text="Save Options*" name="SaveOptionsButton" class="subheading-text menu-buttons"/>
-            <ui:Button text="Quit" name="QuitButton" class="subheading-text menu-buttons"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

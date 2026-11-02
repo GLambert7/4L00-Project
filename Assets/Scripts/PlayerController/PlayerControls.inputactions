@@ -130,6 +130,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "21fb51fa-043e-44c8-b464-96a6aad26ecb",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "2D Vector",
                     "id": "7ed8deef-ea01-4a44-ab54-0948293ffc4d",
                     "path": "2DVector",
@@ -186,6 +197,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ee9ddb40-ec4e-4642-8bcd-5e9cdc936074",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "30f22505-e12f-42d3-83f2-586aec925ca6",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
@@ -208,8 +230,30 @@
                 },
                 {
                     "name": "",
+                    "id": "366a7ab8-6665-4189-b6fb-783bba53f3a7",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9bd1ad28-d2e3-427c-afcc-1023e5a6b64b",
                     "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sink",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eea4a479-b5be-4b8b-846d-f97877f74564",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -230,8 +274,30 @@
                 },
                 {
                     "name": "",
+                    "id": "a05ebcc1-d82d-4334-9147-1924e5e36ad1",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "5dbb9ab2-9552-473d-8d16-ee0aa3293549",
                     "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "484a6ea8-4b99-409c-9043-49d5fce4ca63",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -252,8 +318,30 @@
                 },
                 {
                     "name": "",
+                    "id": "917750b2-915b-477b-8356-8fbfb2180bb6",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "99430bcc-a6b2-4af0-be9b-d8081260d264",
                     "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DolphinInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bca17b65-784b-4961-b1e0-597fcfeab54e",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -274,8 +362,30 @@
                 },
                 {
                     "name": "",
+                    "id": "770e64c9-27ed-4966-9781-53c54405c3b4",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OctopusInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "7576ca6f-5088-4fa8-8268-65e8fbdd5683",
                     "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EelInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "abb23368-a5fd-4482-a088-00b6971e0dd6",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

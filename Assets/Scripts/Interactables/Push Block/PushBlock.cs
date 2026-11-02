@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 using UnityEngine;
 
@@ -61,6 +62,10 @@ public class PushBlock : BaseInteractable
     private GameObject eastHit = null;
     private GameObject westHit = null;
 
+    private GameObject fallHit = null;
+    [SerializeField] private float fallSpeed = 5f;
+    [SerializeField] private bool canFall = true;
+
     #endregion
 
     #region Unity Methods
@@ -74,6 +79,7 @@ public class PushBlock : BaseInteractable
     void Update()
     {
         InteractionCheck();
+        if (canFall) FallCheck();
         HandleMovement();
     }
     #endregion
@@ -88,6 +94,7 @@ public class PushBlock : BaseInteractable
         {
             // prevent extra interactions
             interactable = false;
+            canFall = false;
 
             // Calculate the time elapsed and the interpolation factor
             timeElapsed += Time.deltaTime;
@@ -112,15 +119,37 @@ public class PushBlock : BaseInteractable
         }
     }
 
-    public void MoveCheck()
+    private void FallCheck()
     {
-        // Boxcast in the 4 cardinal directions, if we detech an object that notates that the block can move to that location, set the corresponding variable to true. 
-        // For interactions, check where the player is relative to the block. If they are +x +y move it accordingly, should the block be allowed to move in that direction.
-        // Set a boolean for blocks with continuous/ice movement. Those blocks, once interacted with, will continue to move until they encounter an area they cannot move past (no indicator object)
-        // Invisible tagged objects will handle the grid system, and I will use coloured planes to indicate their locations for now.
-        // MAKE SURE that these objects CANNOT BE SEEN FROM OTHER GRIDS bc then we could get boxes moving way off track from where they should be.
-        // For ice mode, make the object check at the end of the LERP but ONLY in the direction it was moving, and check if an object occupies that spot already (blocks can block blocks)
-        // When detected, get the object's position and allow movement directly to that position via LERP
+        //Grab our position
+        Vector3 origin = transform.position;
+
+        //halfExtents is half the size of the box bc that's what the method checks for
+        Vector3 halfExtents = boxSize * 0.5f;
+
+        // Convert the local direction into world space.
+        Vector3 direction = transform.TransformDirection(Vector3.down).normalized;
+
+        // Use the same rotation for both the cast and the Gizmos.
+        Quaternion boxRotation = transform.rotation;
+
+        LayerMask fallMask = ~LayerMask.GetMask("MoveTargets", "Player");
+
+        // Do the BoxCast with our calc'd info
+        bool floorDetected = Physics.BoxCast(
+            origin, // position the cast starts from
+            halfExtents, // how big the cast area is (half of the size of our box)
+            direction, // Which way we're casting the box
+            out RaycastHit hit, // The Raycast
+            boxRotation, // In case the box is rotated this will correct it
+            0.5f, // How far is being checked
+            fallMask // Exclusive layermask so we don't hit the moveTarget objects or the player
+
+        );
+
+        if (!floorDetected) {
+            transform.Translate( Vector3.down * fallSpeed * Time.deltaTime);
+        }
     }
 
     public void iceSlide()
@@ -276,6 +305,7 @@ public class PushBlock : BaseInteractable
     {
         isMoving = false;
         timeElapsed = 0f;
+        canFall = true;
 
         northHit = null;
         eastHit = null;

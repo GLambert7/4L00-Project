@@ -13,8 +13,8 @@
                     <ui:Toggle label="Cut Scenes" name="CutScene" class="body-button"/>
                 </ui:VisualElement>
                 <ui:VisualElement name="Sliders" style="flex-grow: 0; width: 511px; align-items: center;">
-                    <ui:Slider label="SFX" value="42" high-value="100" name="SFX" class="body-button" style="width: 398px; height: 32px;"/>
-                    <ui:Slider label="Music" value="42" high-value="100" name="Music" class="body-button" style="width: 398px; height: 32px;"/>
+                    <ui:Slider label="SFX" value="42" high-value="100" name="SFX" class="body-button" style="width: 398px; height: 70px;"/>
+                    <ui:Slider label="Music" value="42" high-value="100" name="Music" class="body-button" style="width: 398px; height: 74px;"/>
                 </ui:VisualElement>
                 <ui:Button text="Save Options*" name="SaveOptionsButton" class="menu-buttons body-text"/>
             </ui:VisualElement>

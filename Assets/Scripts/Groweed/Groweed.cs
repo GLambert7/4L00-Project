@@ -49,12 +49,14 @@ public class Groweed : MonoBehaviour
         Bounds plantBounds = plantRenderer.bounds;
         float plantTop = plantBounds.max.y;
 
+        //choses where to look for blocks
         Vector3 checkPosition = new Vector3(
             plantBounds.center.x,
             plantTop,
             plantBounds.center.z
         );
 
+        //makes an iunvisible detector box and return every collider that is overlaping with it (I think) so it looks for blocks on move blocks layer
         Collider[] blocks = Physics.OverlapBox(
             checkPosition,
             new Vector3(0.5f, 1f, 0.5f),
@@ -64,6 +66,7 @@ public class Groweed : MonoBehaviour
 
         PushBlock detectedBlock = null;
 
+        //this goes through all the coliders detected by the collider[] thing
         foreach (Collider block in blocks)
         {
             PushBlock pushBlock = block.GetComponentInParent<PushBlock>();
@@ -75,21 +78,24 @@ public class Groweed : MonoBehaviour
             }
         }
 
-        // Allow the previous block to fall if it leaves the plant
+       //check the plant is holding a block
         if (liftedBlock != null)
         {
+            //finds the blocks collider
             Collider blockCollider = liftedBlock.GetComponent<Collider>();
 
             if (blockCollider != null)
             {
                 Bounds blockBounds = blockCollider.bounds;
 
+                //this part checks if the block is still on top of the plant horizontally while ignoring its height
                 bool horizontallyOverlapping =
                     blockBounds.max.x > plantBounds.min.x &&
                     blockBounds.min.x < plantBounds.max.x &&
                     blockBounds.max.z > plantBounds.min.z &&
                     blockBounds.min.z < plantBounds.max.z;
 
+                //basically just tells the push block script the plant is no longer being l;ifted
                 if (!horizontallyOverlapping)
                 {
                     liftedBlock.SetBeingLifted(false);

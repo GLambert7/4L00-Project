@@ -38,6 +38,7 @@ public class PushBlock : BaseInteractable
 
     //Non-Inspector Variables
     private bool isMoving = false;
+    public bool IsMoving => isMoving;
     private bool interactable = true;
     private Transform startPoint;
     private Transform endPoint;
@@ -66,6 +67,14 @@ public class PushBlock : BaseInteractable
     [SerializeField] private float fallSpeed = 5f;
     [SerializeField] private bool canFall = true;
 
+    private bool beingLifted = false;
+
+    // Called by the plant to control if the block is being lifted
+    public void SetBeingLifted(bool lifted)
+    {
+        beingLifted = lifted;
+    }
+
     #endregion
 
     #region Unity Methods
@@ -79,7 +88,13 @@ public class PushBlock : BaseInteractable
     void Update()
     {
         InteractionCheck();
-        if (canFall) FallCheck();
+
+        // Don't apply falling while the plant is lifting the block.
+        if (canFall && !beingLifted)
+        {
+            FallCheck();
+        }
+
         HandleMovement();
     }
     #endregion

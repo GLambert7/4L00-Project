@@ -132,6 +132,7 @@ public class Reflector : BaseInteractable
             }
             if (reflectReceiveEast)
             {
+            
                 boxCastChecker(Vector3.right, ref eastHit); // East Check
             }
             if (reflectReceiveSouth)
@@ -275,7 +276,7 @@ public class Reflector : BaseInteractable
             }
         }
     }
-
+    
     public void EmitterEnable(bool enable)
     {
         if (northLightEmitter != null) northLightEmitter.SetActive(enable);
@@ -374,7 +375,7 @@ public class Reflector : BaseInteractable
     #endregion
 
     #region DrawGizmos
-
+    
     private void OnDrawGizmos()
     {
         boxCastChecker(Vector3.forward, ref northHit); // North Check
@@ -385,6 +386,7 @@ public class Reflector : BaseInteractable
         boxCastChecker(Vector3.down, ref belowHit); // Below Check
 
     }
+    
 
     private void DrawBox(Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation)
     {

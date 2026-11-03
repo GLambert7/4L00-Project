@@ -20,7 +20,7 @@ public class LightEmitter : MonoBehaviour
 
     private void Awake()
     {
-        layerMask = ~LayerMask.GetMask("Player", "PassThrough");
+        layerMask = ~LayerMask.GetMask("Player", "PassThrough", "MoveTargets");
     }
 
     private void Update()
@@ -35,6 +35,7 @@ public class LightEmitter : MonoBehaviour
         // Check for hits
         if (Physics.Raycast(lightRay, out hit, maxDistance, layerMask))
         {
+         
             // Hit
             Vector3 targetPoint = hit.point + lightRay.direction * targetOffset;
             lightBeam.SetPosition(1, targetPoint);

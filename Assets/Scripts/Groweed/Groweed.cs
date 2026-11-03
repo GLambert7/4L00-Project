@@ -6,11 +6,14 @@ public class Groweed : MonoBehaviour
     [SerializeField] private float growthSpeed = 0.5f;
     [SerializeField] private float startingSize = 0.2f;
     [SerializeField] private float maxSize = 1f;
+    [SerializeField] private LayerMask blockLayer;
 
     private float currentSize;
     private bool receivingLight;
     private Vector3 startingPosition;
     private float originalHeight;
+
+    private PushBlock liftedBlock;
 
     private void Start()
     {
@@ -41,12 +44,97 @@ public class Groweed : MonoBehaviour
             transform.localPosition = startingPosition + Vector3.up * (heightDifference / 2f);
         }
 
+        // Check for blocks above the plant, even when it isn't growing
+        Renderer plantRenderer = GetComponent<Renderer>();
+        Bounds plantBounds = plantRenderer.bounds;
+        float plantTop = plantBounds.max.y;
+
+        Vector3 checkPosition = new Vector3(
+            plantBounds.center.x,
+            plantTop,
+            plantBounds.center.z
+        );
+
+        Collider[] blocks = Physics.OverlapBox(
+            checkPosition,
+            new Vector3(0.5f, 1f, 0.5f),
+            Quaternion.identity,
+            blockLayer
+        );
+
+        PushBlock detectedBlock = null;
+
+        foreach (Collider block in blocks)
+        {
+            PushBlock pushBlock = block.GetComponentInParent<PushBlock>();
+
+            if (pushBlock != null)
+            {
+                detectedBlock = pushBlock;
+                break;
+            }
+        }
+
+        // Allow the previous block to fall if it leaves the plant
+        if (liftedBlock != null)
+        {
+            Collider blockCollider = liftedBlock.GetComponent<Collider>();
+
+            if (blockCollider != null)
+            {
+                Bounds blockBounds = blockCollider.bounds;
+
+                bool horizontallyOverlapping =
+                    blockBounds.max.x > plantBounds.min.x &&
+                    blockBounds.min.x < plantBounds.max.x &&
+                    blockBounds.max.z > plantBounds.min.z &&
+                    blockBounds.min.z < plantBounds.max.z;
+
+                if (!horizontallyOverlapping)
+                {
+                    liftedBlock.SetBeingLifted(false);
+                    liftedBlock = null;
+                }
+            }
+        }
+
+        if (liftedBlock == null && detectedBlock != null && !detectedBlock.IsMoving)
+        {
+            liftedBlock = detectedBlock;
+        }
+
+        if (liftedBlock != null && !liftedBlock.IsMoving)
+        {
+            // Prevent the block from falling through the plant
+            liftedBlock.SetBeingLifted(true);
+
+            // Find the top of the plant
+            float currentPlantTop = plantRenderer.bounds.max.y;
+
+            // Find half the height of the block
+            Collider blockCollider = liftedBlock.GetComponent<Collider>();
+
+            if (blockCollider != null)
+            {
+                float blockHalfHeight = blockCollider.bounds.extents.y;
+                float blockBottom = liftedBlock.transform.position.y - blockHalfHeight;
+                float heightAdjustment = currentPlantTop - blockBottom;
+
+                // Place the bottom of the block on top of the plant
+                Vector3 blockPosition = liftedBlock.transform.position;
+                blockPosition.y += heightAdjustment;
+
+                liftedBlock.transform.position = blockPosition;
+            }
+        }
+
         // Reset every frame unless the light hits again
         receivingLight = false;
     }
 
     public void ReceiveLight()
     {
+        Debug.Log("Plant received light! Current size: " + currentSize);
         receivingLight = true;
     }
 }

@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 
 public class MainMenuEvents : MonoBehaviour
 {
@@ -31,7 +30,7 @@ public class MainMenuEvents : MonoBehaviour
         _creditsRoot = _root.Q<VisualElement>("CreditsMenu");
 
         // *** Assign Buttons ***
-        //Title Menu
+        // Title Menu
         startButton = _titleMenuRoot.Q("StartButton") as Button;
         optionsButton = _titleMenuRoot.Q("OptionsButton") as Button;
         creditsButton = _titleMenuRoot.Q("CreditsButton") as Button;
@@ -42,7 +41,7 @@ public class MainMenuEvents : MonoBehaviour
 
         // *** Register Click Events ***
         // Title Menu
-        startButton.clicked += () => OnStartClick();
+        startButton.clicked += () => SceneManager.LoadScene(1);
         optionsButton.clicked += () => MenuEnter(_optionsRoot);
         creditsButton.clicked += () => MenuEnter(_creditsRoot);
         quitButton.clicked += () => OnQuitClick();
@@ -55,12 +54,10 @@ public class MainMenuEvents : MonoBehaviour
         // Default menu visibility
         _optionsRoot.style.display = DisplayStyle.None;
         _creditsRoot.style.display = DisplayStyle.None;
-
-        // *** Controller Support ***
     }
     #endregion
 
-    // NOTE: This method is kinda important for univeral UI So I will maybe move it and make it public at some point -Cadence
+    #region Title Menu Button Events
     private void MenuEnter(VisualElement enter)
     {
         // Turn off all menu displays
@@ -72,19 +69,8 @@ public class MainMenuEvents : MonoBehaviour
         enter.style.display = DisplayStyle.Flex;
     }
 
-    #region Title Menu Button Events
-    private void OnStartClick()
-    {
-        Debug.Log("Pressed Start");
-
-        // Switch scenes to main game
-        SceneManager.LoadScene(1);
-    }
-
     private void OnQuitClick()
     {
-        Debug.Log("Pressed Quit");
-
         // Quits game
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;

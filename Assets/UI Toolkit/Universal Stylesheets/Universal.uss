@@ -41,4 +41,9 @@
     padding-left: 100px;
 }
 
+.body-text {
+    -unity-font-style: normal;
+    font-size: 30px;
+    color: rgb(56, 156, 168);
+}
 

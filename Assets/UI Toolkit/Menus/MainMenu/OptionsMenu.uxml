@@ -8,16 +8,15 @@
         </ui:VisualElement>
         <ui:VisualElement name="Container" style="flex-grow: 0; flex-direction: row;">
             <ui:VisualElement name="MenuOptionsGroup" style="height: auto; align-items: center; justify-content: center; -unity-text-align: middle-center; width: auto; flex-direction: column;">
+                <ui:VisualElement name="Toggles" style="flex-grow: 1; flex-direction: column;">
+                    <ui:Toggle label="Subtitles" name="Subtitle" class="body-button"/>
+                    <ui:Toggle label="Cut Scenes" name="CutScene" class="body-button"/>
+                </ui:VisualElement>
                 <ui:VisualElement name="Sliders" style="flex-grow: 0; width: 511px; align-items: center;">
-                    <ui:Label text="SFX" name="SFX" style="height: 23px; width: 240px;"/>
-                    <ui:Label text="Music" name="Music" style="height: 26px; width: 48px;"/>
+                    <ui:Slider label="SFX" value="42" high-value="100" name="SFX" class="body-button" style="width: 398px; height: 32px;"/>
+                    <ui:Slider label="Music" value="42" high-value="100" name="Music" class="body-button" style="width: 398px; height: 32px;"/>
                 </ui:VisualElement>
-                <ui:VisualElement name="RadioButtons" style="flex-grow: 0; width: 511px; align-items: center;">
-                    <ui:RadioButton label="Skip Cut Scene" name="Cutscene"/>
-                    <ui:RadioButton label="Subtitles" name="Subtitles"/>
-                </ui:VisualElement>
-                <ui:Button text="Save Options*" name="SaveOptionsButton" class="subheading-text menu-buttons"/>
-                <ui:Button text="Quit" name="QuitButton" class="subheading-text menu-buttons"/>
+                <ui:Button text="Save Options*" name="SaveOptionsButton" class="menu-buttons body-text"/>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

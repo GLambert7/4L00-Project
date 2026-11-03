@@ -12,7 +12,12 @@ public class LightEmitter : MonoBehaviour
 
     private ChildOrb childOrb;
 
+    //tracks the objects hit to avoid spawning like 100 orbs
+    private Collider previousHit;
+
     private int layerMask;
+
+
     private void Awake()
     {
         layerMask = ~LayerMask.GetMask("Player", "PassThrough");
@@ -26,14 +31,32 @@ public class LightEmitter : MonoBehaviour
         // Line start location
         lightBeam.SetPosition(0, transform.position);
 
-        if (!hitSomething)
+
+        // Check for hits
+        if (Physics.Raycast(lightRay, out hit, maxDistance, layerMask))
         {
-            // Check for hits
-            if (Physics.Raycast(lightRay, out hit, maxDistance, layerMask))
+            // Hit
+            Vector3 targetPoint = hit.point + lightRay.direction * targetOffset;
+            lightBeam.SetPosition(1, targetPoint);
+            //checks if light is hitting a groweed
+            Groweed plant = hit.collider.GetComponentInParent<Groweed>();
+
+            //tell tjhe plant it is getting light
+            if (plant != null)
             {
-                // Hit
-                Vector3 targetPoint = hit.point + lightRay.direction * targetOffset;
-                lightBeam.SetPosition(1, targetPoint);
+                plant.ReceiveLight();
+            }
+            // Only create a new orb when the hit object changes
+            if (previousHit != hit.collider)
+            {
+
+
+                if (childOrb != null)
+                {
+                    Destroy(childOrb.gameObject);
+                    childOrb = null;
+                }
+                //create an orb at new hit location
                 GameObject orbForDetection = Instantiate(lightOrb, targetPoint, Quaternion.identity);
                 childOrb = orbForDetection.GetComponent<ChildOrb>();
 
@@ -41,15 +64,30 @@ public class LightEmitter : MonoBehaviour
                 {
                     childOrb.Initialize(this);
                 }
+                //remember which object was hit
+                previousHit = hit.collider;
 
-                hitSomething = true;
             }
-            else
+
+            if (childOrb != null)
             {
-                // no hit
-                lightBeam.SetPosition(1, lightRay.GetPoint(maxDistance));
+                childOrb.transform.position = targetPoint;
             }
         }
+        else
+        {
+            // no hit
+            lightBeam.SetPosition(1, lightRay.GetPoint(maxDistance));
+
+            if (childOrb != null)
+            {
+                Destroy(childOrb.gameObject);
+                childOrb = null;
+            }
+
+            previousHit = null;
+        }
+        
         
 
     }
@@ -62,7 +100,7 @@ public class LightEmitter : MonoBehaviour
             lightBeam.enabled = true;
         }
 
-        hitSomething = false;
+        previousHit = null;
     }
 
     private void OnDisable()
@@ -73,7 +111,7 @@ public class LightEmitter : MonoBehaviour
             lightBeam.positionCount = 0;
         }
 
-        hitSomething = false;
+        previousHit = null;
 
         if (childOrb != null)
         {

@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class PauseManager : MonoBehaviour
@@ -7,6 +6,9 @@ public class PauseManager : MonoBehaviour
 
     //made this one so that it doesnt spam pause and unpause
     private bool wasPausePressed = false;
+
+    // Pause menu
+    [SerializeField] GameObject pauseMenu;
 
     void Update()
     {
@@ -29,8 +31,23 @@ public class PauseManager : MonoBehaviour
     {
         isPaused = !isPaused;
 
+        // Set menu as active based on pause bool
+        pauseMenu.SetActive(isPaused);
+
         // Pause or resume the game
         Time.timeScale = isPaused ? 0f : 1f;
+
+        // Cursor lock toggle
+        if (isPaused)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         Debug.Log("Game Paused: " + isPaused);
     }

@@ -1,0 +1,24 @@
+.button-display {
+    flex-grow: 1;
+    border-top-width: 8px;
+    border-right-width: 8px;
+    border-bottom-width: 8px;
+    border-left-width: 8px;
+    width: 60px;
+    height: 60px;
+    align-items: stretch;
+    justify-content: center;
+    border-left-color: rgba(0, 0, 0, 0.314);
+    border-right-color: rgba(0, 0, 0, 0.314);
+    border-top-color: rgba(0, 0, 0, 0.314);
+    border-bottom-color: rgba(0, 0, 0, 0.314);
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+
+.btn-mapping-columns {
+    margin-left: -6px;
+    margin-right: -6px;
+}

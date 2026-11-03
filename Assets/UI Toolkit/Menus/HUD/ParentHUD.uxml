@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="KeybindsMenu" src="project://database/Assets/UI%20Toolkit/Menus/HUD/KeybindsMenu.uxml?fileID=9197481963319205126&amp;guid=4dc7f208e9dc135438c5365316d24d12&amp;type=3#KeybindsMenu"/>
+    <ui:VisualElement name="Root" style="flex-grow: 1; justify-content: flex-end;">
+        <ui:Instance template="KeybindsMenu"/>
+    </ui:VisualElement>
+</ui:UXML>

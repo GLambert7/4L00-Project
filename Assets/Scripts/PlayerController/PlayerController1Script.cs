@@ -14,6 +14,7 @@ public class PlayerController1Script : MonoBehaviour
     [Space(10)]
     [SerializeField] private float _riseSpeed = 2f;
     [SerializeField] private float _fallSpeed = 2f;
+    [SerializeField] private GameObject _playerModel; // Reference to the player model for rotation purposes
 
     [Header("Camera Settings")]
     [SerializeField] private float _mouseSensitivityHorizontal = 10f;
@@ -155,6 +156,19 @@ public class PlayerController1Script : MonoBehaviour
         else if (_mainCam != null)
         {
             _mainCam.transform.localRotation = Quaternion.Euler(_verticalRotation, 0, 0);
+        }
+
+        // Handle player model rotation: Horizontal if moving, vertical if stationary
+        if (_inputHandler.MoveInput.magnitude > 0.1f)
+        {
+            Vector3 modelRotation = new Vector3(_verticalRotation+75, _horizontalRotation, 0);
+            _playerModel.transform.rotation = Quaternion.Euler(modelRotation);
+        }
+        else
+        {
+            Vector3 modelRotation = new Vector3(0, _horizontalRotation, 0);
+            _playerModel.transform.rotation = Quaternion.Euler(modelRotation);
+            
         }
     }
 

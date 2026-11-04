@@ -8,6 +8,9 @@ public class Groweed : MonoBehaviour
     [SerializeField] private float maxSize = 1f;
     [SerializeField] private LayerMask blockLayer;
 
+    [Space(10)]
+    [SerializeField] private bool canShrink = false; // Whether the plant can shrink when not receiving light
+
     private float currentSize;
     private bool receivingLight;
     private Vector3 startingPosition;
@@ -24,11 +27,19 @@ public class Groweed : MonoBehaviour
         originalHeight = GetComponent<MeshFilter>().sharedMesh.bounds.size.y;
 
         currentSize = startingSize;
-        transform.localScale = new Vector3(1f, currentSize, 1f);
+        transform.localScale = new Vector3(transform.localScale.x, currentSize, transform.localScale.z);
     }
 
     private void Update()
     {
+        if (!receivingLight && currentSize <= startingSize)
+        {
+            gameObject.layer = LayerMask.NameToLayer("GroWeedInactive");
+        } else
+        {
+            gameObject.layer = LayerMask.NameToLayer("GroWeed");
+        }
+
         if (receivingLight && currentSize < maxSize)
         {
             currentSize += growthSpeed * Time.deltaTime;
@@ -37,10 +48,21 @@ public class Groweed : MonoBehaviour
             currentSize = Mathf.Min(currentSize, maxSize);
 
             //these following 3 lines are for naking the polant grow upwards while moving the object so it looks normal
-            transform.localScale = new Vector3(1f, currentSize, 1f);
+            transform.localScale = new Vector3(transform.localScale.x, currentSize, transform.localScale.z);
 
             float heightDifference = (currentSize - startingSize) * originalHeight;
 
+            transform.localPosition = startingPosition + Vector3.up * (heightDifference / 2f);
+        }
+        else if (!receivingLight && canShrink && currentSize > startingSize)
+        {
+            currentSize -= growthSpeed * Time.deltaTime;
+            //makes sure that the plant never goes under the min size
+            currentSize = Mathf.Max(currentSize, startingSize);
+
+            //What grayson said above, but down instead of up
+            transform.localScale = new Vector3(transform.localScale.x, currentSize, transform.localScale.z);
+            float heightDifference = (currentSize - startingSize) * originalHeight;
             transform.localPosition = startingPosition + Vector3.up * (heightDifference / 2f);
         }
 
@@ -140,7 +162,7 @@ public class Groweed : MonoBehaviour
 
     public void ReceiveLight()
     {
-        Debug.Log("Plant received light! Current size: " + currentSize);
+        //Debug.Log("Plant received light! Current size: " + currentSize);
         receivingLight = true;
     }
 }

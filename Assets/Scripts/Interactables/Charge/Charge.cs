@@ -7,7 +7,10 @@ public class Charge : BaseInteractable
     [SerializeField] private GameObject[] poweredObjects; // Array of objects that are powered by this charge object
 
     private Renderer objectRenderer;
-    private bool isCharged = false;
+    [SerializeField] private float chargeAmount = 0f;
+    [SerializeField] private float maxChargeAmount = 5f; // Maximum charge amount
+    [SerializeField] private float chargeRate = 1f; // Rate at which the charge increases
+    [SerializeField] private float dischargeRate = 1f; // Rate at which the charge decreases
 
     void Start()
     {
@@ -18,25 +21,29 @@ public class Charge : BaseInteractable
     // Update is called once per frame
     void Update()
     {
+        chargeAmount -= Time.deltaTime * dischargeRate;
+        if (chargeAmount < 0f) { chargeAmount = 0f; }
+        else if (chargeAmount > maxChargeAmount) { chargeAmount = maxChargeAmount; }
+        switchPowerState();
         //Checks if player is in range and interacting
         InteractionCheck();
     }
 
-    public override void EelInteract()
+    public void switchPowerState()
     {
-        base.EelInteract();
-
-        //Check if the eel is allowed to interact with this object
-        if (interactableByEel)
+        if (chargeAmount > 0f)
         {
-            //marks object as interacted to avoid multiple triggers
-            isCharged = !isCharged;
-
-            //CHanges the material depending on if object is charged or uncharged
-            objectRenderer.material = isCharged
-                ? chargedMaterial
-                : unchargedMaterial;
-            Debug.Log(gameObject.name + " state: " + (isCharged ? "Charged" : "Uncharged"));
+            objectRenderer.material = chargedMaterial;
         }
+        else
+        {
+            objectRenderer.material = unchargedMaterial;
+        }
+    }
+
+    override public void Activate()
+    {
+        base.Activate();
+        chargeAmount += Time.deltaTime * chargeRate;
     }
 }

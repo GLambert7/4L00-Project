@@ -344,7 +344,8 @@ public class Reflector : BaseInteractable
             out RaycastHit hit, // The Raycast
             boxRotation, // In case the box is rotated this will correct it
             MaxCheckDistance, // How far is being checked
-            TargetLayer // What layer are we looking for?
+            TargetLayer, // What layer are we looking for?
+            QueryTriggerInteraction.Collide // Should we hit triggers?
         );
 
         hitLocation = reflectionDetection ? hit.collider.gameObject : null;

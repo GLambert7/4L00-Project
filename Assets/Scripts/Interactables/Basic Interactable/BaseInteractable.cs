@@ -99,6 +99,8 @@ public class BaseInteractable : MonoBehaviour
     protected void InteractionCheck()
     // Each creature has its own interact button, so we check for each one separately. If the player is in range and presses the interact button, we call the appropriate interaction method for that creature.
     {
+        if (!canInteract) return;
+        if (!interactableByPlayer && !interactableByDolphin && !interactableByOctopus && !interactableByEel) return;
         if (!_inputHandler.PlayerInteractInput && !_inputHandler.DolphinInteractInput && !_inputHandler.OctopusInteractInput && !_inputHandler.EelInteractInput)
         {
             hasInteracted = false;
@@ -127,6 +129,13 @@ public class BaseInteractable : MonoBehaviour
             EelInteract();
         }
     }
+
+    public virtual void Activate()
+    {
+        // Implement activation logic here
+        // Debug.Log(gameObject.name + " has been activated.");
+    }
+
     #endregion
 
 

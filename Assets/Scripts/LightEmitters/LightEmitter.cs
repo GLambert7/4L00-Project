@@ -42,16 +42,11 @@ public class LightEmitter : BaseInteractable
             // Check for hits
             if (hits.Length > 0)
             {
-                foreach (RaycastHit hit in hits)
-                {                
-                    // Checks if light is hitting a groweed
-                    Groweed plant = hit.collider.GetComponentInParent<Groweed>();
+                Groweed plant = hits[0].collider.GetComponentInParent<Groweed>();
 
-                    // Tell the plant it is getting light
-                    if (plant != null)
-                    {
-                        plant.ReceiveLight();
-                    }
+                if (plant != null)
+                {
+                    plant.ReceiveLight();
                 }
 
                 // Hit

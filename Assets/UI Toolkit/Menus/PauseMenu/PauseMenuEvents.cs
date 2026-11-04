@@ -18,13 +18,16 @@ public class PauseMenuEvents : MonoBehaviour
     private Button mainMenuButton;
     private Button quitButton;
 
+    //Options Menu
+    private Button returnButton;
+
     // Assigning needed elements OnEnable
     private void OnEnable()
     {
         // Query root visual elements for each menu screen
         _root = GetComponent<UIDocument>().rootVisualElement;
         _pauseMenuRoot = _root.Q<VisualElement>("PauseMenu");
-        //_optionsRoot = _root.Q<VisualElement>("OptionsMenu");
+        _optionsRoot = _root.Q<VisualElement>("OptionsMenu");
 
         // *** Assign Buttons ***
         // Pause Menu
@@ -33,12 +36,19 @@ public class PauseMenuEvents : MonoBehaviour
         mainMenuButton = _root.Q("MainMenuButton") as Button;
         quitButton = _root.Q("QuitButton") as Button;
 
+        //Options menu
+        returnButton = _optionsRoot.Q("ReturnButton") as Button;
+
         // *** Register Click Events ***
         // Pause Menu
         resumeButton.clicked += () => _manager.TogglePause();
         optionsButton.clicked += () => MenuEnter(_optionsRoot);
         mainMenuButton.clicked += () => SceneManager.LoadScene(0);
         quitButton.clicked += () => OnQuitClick();
+
+
+        //Options menu
+        returnButton.clicked += () => MenuEnter(_pauseMenuRoot);
     }
     #endregion
 

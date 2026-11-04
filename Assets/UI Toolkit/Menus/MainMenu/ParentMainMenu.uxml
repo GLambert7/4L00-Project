@@ -5,7 +5,7 @@
     <Style src="project://database/Assets/UI%20Toolkit/Universal%20Stylesheets/Universal.uss?fileID=7433441132597879392&amp;guid=26e9159df86912247bab5dc10a8e07d8&amp;type=3#Universal"/>
     <Style src="project://database/Assets/UI%20Toolkit/Menus/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=036d353d9df5b464394d7c2925c8e7c4&amp;type=3#MainMenu"/>
     <ui:VisualElement name="Root" style="flex-grow: 1;">
-        <ui:Instance template="CreditsMenu" name="CreditsMenu"/>
+        <ui:Instance template="CreditsMenu" name="CreditsMenu" class="root" />
         <ui:Instance template="OptionsMenu" name="OptionsMenu" class="root"/>
         <ui:Instance template="MainMenu" name="TitleMenu" class="root"/>
         <ui:VisualElement name="HelpText" style="flex-grow: 0; position: absolute; top: 0; right: 0; align-items: flex-end; padding-top: 30px; padding-right: 3%;">

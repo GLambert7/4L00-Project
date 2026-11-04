@@ -19,7 +19,8 @@ public class MainMenuEvents : MonoBehaviour
     private Button quitButton;
 
     // Options and Credits
-    private Button returnButton;
+    private Button optionsReturnButton;
+    private Button creditsReturnButton;
 
     private void Awake()
     {        
@@ -37,7 +38,8 @@ public class MainMenuEvents : MonoBehaviour
         quitButton = _titleMenuRoot.Q("QuitButton") as Button;
 
         // Options and Credits
-        returnButton = _root.Q("ReturnButton") as Button;
+        optionsReturnButton = _optionsRoot.Q("ReturnButton") as Button;
+        creditsReturnButton = _creditsRoot.Q("ReturnButton") as Button;
 
         // *** Register Click Events ***
         // Title Menu
@@ -47,9 +49,10 @@ public class MainMenuEvents : MonoBehaviour
         quitButton.clicked += () => OnQuitClick();
 
         // Options Menu
-        returnButton.clicked += () => MenuEnter(_titleMenuRoot);
+        optionsReturnButton.clicked += () => MenuEnter(_titleMenuRoot);
 
         // Credits Menu
+        creditsReturnButton.clicked += () => MenuEnter(_titleMenuRoot);
 
         // Default menu visibility
         _optionsRoot.style.display = DisplayStyle.None;

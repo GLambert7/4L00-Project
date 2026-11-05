@@ -34,7 +34,7 @@ public class PushBlock : BaseInteractable
 
     //Inspector Variables
     [Header("Push Block Specifics")]
-    [SerializeField] private float timeToMove = 5f;
+    [SerializeField] private float timeToMove = 1f;
 
     //Non-Inspector Variables
     private bool isMoving = false;
@@ -68,6 +68,9 @@ public class PushBlock : BaseInteractable
     [SerializeField] private bool canFall = true;
 
     private bool beingLifted = false;
+
+    private float timeBetweenChecks = .15f;
+    private float checksTimer = 0f;
 
     // Called by the plant to control if the block is being lifted
     public void SetBeingLifted(bool lifted)
@@ -105,33 +108,36 @@ public class PushBlock : BaseInteractable
     private void HandleMovement()
     {
         // Check if the block is allowed to move
-        if (isMoving && startPoint != null && endPoint != null)
+        if (!isMoving || startPoint == null || endPoint == null)
         {
-            // prevent extra interactions
-            interactable = false;
-            canFall = false;
-
-            // Calculate the time elapsed and the interpolation factor
-            timeElapsed += Time.deltaTime;
-            float t = timeElapsed / timeToMove;
-
-            // Lerp block from set start point to set end point
-           
-            transform.position = Vector3.Lerp(startPoint.position, endPoint.position, t);
-
-            if (transform.position == endPoint.position) t = 1f;
-            
-            // If the interpolation factor is greater than or equal to 1, the block has reached its destination, so we stop moving and reset the time elapsed
-            if (t >= 1f)
-            {
-                PostMoveReset();
-                if (iceBlock)
-                {
-                    iceSlide();
-                }
-                
-            }
+            return;
         }
+
+        // prevent extra interactions
+        interactable = false;
+        canFall = false;
+
+        // Calculate the time elapsed and the interpolation factor
+        timeElapsed += Time.deltaTime;
+        float t = timeElapsed / timeToMove;
+
+        // Lerp block from set start point to set end point
+           
+        transform.position = Vector3.Lerp(startPoint.position, endPoint.position, t);
+
+        if (transform.position == endPoint.position) t = 1f;
+            
+        // If the interpolation factor is greater than or equal to 1, the block has reached its destination, so we stop moving and reset the time elapsed
+        if (t >= 1f)
+        {
+            PostMoveReset();
+            if (iceBlock)
+            {
+                iceSlide();
+            }
+                
+        }
+        
     }
 
     private void FallCheck()
@@ -340,11 +346,15 @@ public class PushBlock : BaseInteractable
     #region BoxCasts
     // Handle Boxcasts in FixedUpdate
     private void FixedUpdate()
-    { 
-        boxCastChecker(Vector3.forward, ref northHit); // North Check
-        boxCastChecker(Vector3.right, ref eastHit); // East Check
-        boxCastChecker(Vector3.back, ref southHit); // South Check
-        boxCastChecker(Vector3.left, ref westHit); // West Check
+    {
+        checksTimer += Time.fixedDeltaTime;
+        if (checksTimer >= timeBetweenChecks) {
+            boxCastChecker(Vector3.forward, ref northHit); // North Check
+            boxCastChecker(Vector3.right, ref eastHit); // East Check
+            boxCastChecker(Vector3.back, ref southHit); // South Check
+            boxCastChecker(Vector3.left, ref westHit); // West Check
+            checksTimer = 0f;
+        }
     }
 
 

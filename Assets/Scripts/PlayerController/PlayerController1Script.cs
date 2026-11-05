@@ -21,6 +21,7 @@ public class PlayerController1Script : MonoBehaviour
     [SerializeField] private float _mouseSensitivityVertical = 10f;
     [SerializeField] private float _controllerSensitivityHorizontal = 100f;
     [SerializeField] private float _controllerSensitivityVertical = 100f;
+    [SerializeField] private float _sensitivityMult= 1f;
 
     [SerializeField] private float _upDownRange = 80.0f;
     [SerializeField] private Transform _camPivot;
@@ -129,8 +130,8 @@ public class PlayerController1Script : MonoBehaviour
         if (currentMode == DeviceType.Controller)
         {
             // Update the horizontal and vertical rotation based on the LookInput from the PlayerInputHandler
-            _horizontalRotation += _inputHandler.LookInput.x * _controllerSensitivityHorizontal * Time.deltaTime;
-            _verticalRotation -= _inputHandler.LookInput.y * _controllerSensitivityVertical * Time.deltaTime;
+            _horizontalRotation += _inputHandler.LookInput.x * _controllerSensitivityHorizontal * _sensitivityMult* Time.deltaTime;
+            _verticalRotation -= _inputHandler.LookInput.y * _controllerSensitivityVertical * _sensitivityMult * Time.deltaTime;
             _verticalRotation = Mathf.Clamp(_verticalRotation, -_upDownRange, _upDownRange);
 
             // Apply the rotation to the player and camera
@@ -139,8 +140,8 @@ public class PlayerController1Script : MonoBehaviour
         else
         {
             // Update the horizontal and vertical rotation based on the LookInput from the PlayerInputHandler
-            _horizontalRotation += _inputHandler.LookInput.x * _mouseSensitivityHorizontal * Time.deltaTime;
-            _verticalRotation -= _inputHandler.LookInput.y * _mouseSensitivityVertical * Time.deltaTime;
+            _horizontalRotation += _inputHandler.LookInput.x * _mouseSensitivityHorizontal * _sensitivityMult * Time.deltaTime;
+            _verticalRotation -= _inputHandler.LookInput.y * _mouseSensitivityVertical * _sensitivityMult * Time.deltaTime;
             _verticalRotation = Mathf.Clamp(_verticalRotation, -_upDownRange, _upDownRange);
 
             // Apply the rotation to the player and camera

@@ -16,6 +16,9 @@ public class BaseInteractable : MonoBehaviour
     [SerializeField] protected Collider interactionArea; // The area in which the creature can interact with the object. This is a trigger collider that should be set up in the Unity Editor.
     [SerializeField] protected AudioSource cantUseSound; // The sound that plays when the creature tries to interact with the object but cannot. This should be set up in the Unity Editor.
     [SerializeField] protected AudioSource useSound; // The sound that plays when the creature interacts with the object. This should be set up in the Unity Editor.
+    [SerializeField] protected AudioSource useSoundDolphin; // The sound that plays when the dolphin interacts with the object. This should be set up in the Unity Editor.
+    [SerializeField] protected AudioSource useSoundOctopus; // The sound that plays when the octopus interacts with the object. This should be set up in the Unity Editor.
+    [SerializeField] protected AudioSource useSoundEel; // The sound that plays when the eel interacts with the object. This should be set up in the Unity Editor.
     [SerializeField] protected GameObject PlayerRef; // Reference to our player object
 
     public bool canInteract = false; // Is the creature in range to interact with the object? This is set to true when the creature enters the interaction area, and false when it exits.
@@ -36,7 +39,7 @@ public class BaseInteractable : MonoBehaviour
         {
             // Implement dolphin interaction logic here
             Debug.Log("Dolphin interacted with " + gameObject.name);
-            if (useSound != null) useSound.Play();
+            if (useSoundDolphin != null) useSoundDolphin.Play();
         }
         else
         {
@@ -52,7 +55,7 @@ public class BaseInteractable : MonoBehaviour
         {
             // Implement octopus interaction logic here
             Debug.Log("Octopus interacted with " + gameObject.name);
-            if (useSound != null) useSound.Play();
+            if (useSoundOctopus != null) useSoundOctopus.Play();
         }
         else
         {
@@ -68,7 +71,7 @@ public class BaseInteractable : MonoBehaviour
         {
             // Implement eel interaction logic here
             Debug.Log("Eel interacted with " + gameObject.name);
-            if (useSound != null) useSound.Play();
+            if (useSoundEel != null) useSoundEel.Play();
         }
         else
         {

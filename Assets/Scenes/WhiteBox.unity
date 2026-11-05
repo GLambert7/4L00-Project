@@ -761,6 +761,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 427475294}
+  canInteract: 0
+  hasInteracted: 0
   objectToActivate: {fileID: 1432467498}
   disableInstead: 1
 --- !u!4 &52074352
@@ -1081,6 +1083,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 65443386}
   maxDistance: 100
   lightEmitLocation: {fileID: 288550148}
@@ -1420,6 +1424,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 88532739}
   maxDistance: 100
   lightEmitLocation: {fileID: 1681300897}
@@ -2550,6 +2556,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 145986619}
   maxDistance: 100
   lightEmitLocation: {fileID: 1622297615}
@@ -3130,6 +3138,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 156482779}
   maxDistance: 100
   lightEmitLocation: {fileID: 92011949}
@@ -4944,6 +4954,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 255797795}
   maxDistance: 100
   lightEmitLocation: {fileID: 1489102027}
@@ -6262,6 +6274,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 318980386}
   maxDistance: 100
   lightEmitLocation: {fileID: 1959498472}
@@ -6516,6 +6530,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 320504348}
   maxDistance: 100
   lightEmitLocation: {fileID: 1621883697}
@@ -7179,6 +7195,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 331252286}
   useSound: {fileID: 331252292}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   recievingDirections: 05000000
   sendingDirections: 0000000001000000020000000300000004000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
@@ -7539,6 +7557,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 331908259}
   maxDistance: 100
   lightEmitLocation: {fileID: 1446968686}
@@ -7682,6 +7702,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   recievingDirections: 0200000003000000
   sendingDirections: 0300000002000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
@@ -8065,6 +8087,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 345414939}
   maxDistance: 100
   lightEmitLocation: {fileID: 856396393}
@@ -9047,6 +9071,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 375368844}
   maxDistance: 100
   lightEmitLocation: {fileID: 1085684930}
@@ -9478,6 +9504,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 390219835}
   maxDistance: 100
   lightEmitLocation: {fileID: 529674771}
@@ -10848,6 +10876,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 983528105}
   useSound: {fileID: 431291143}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   unchargedMaterial: {fileID: 2100000, guid: 737a9dda9c1ea204bbe38ad0f91dbdd6, type: 2}
   chargedMaterial: {fileID: 2100000, guid: 1fc5816996933294a9f737413a9b1fa3, type: 2}
   poweredObjects: []
@@ -11263,6 +11293,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 439318482}
   maxDistance: 100
   lightEmitLocation: {fileID: 2027292203}
@@ -11517,6 +11549,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 444664824}
   maxDistance: 100
   lightEmitLocation: {fileID: 1565284376}
@@ -12223,6 +12257,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 477555185}
   maxDistance: 100
   lightEmitLocation: {fileID: 463000580}
@@ -12930,6 +12966,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 494086920}
   maxDistance: 100
   lightEmitLocation: {fileID: 262549493}
@@ -13790,6 +13828,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 533923674}
   useSound: {fileID: 533923680}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   recievingDirections: 00000000
   sendingDirections: 04000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
@@ -14379,6 +14419,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 541055625}
   maxDistance: 100
   lightEmitLocation: {fileID: 187523997}
@@ -14731,6 +14773,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 557178478}
   maxDistance: 100
   lightEmitLocation: {fileID: 1720600890}
@@ -15001,6 +15045,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 567567444}
   maxDistance: 100
   lightEmitLocation: {fileID: 1102355281}
@@ -15425,6 +15471,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   poweredByPanelObjects:
   - {fileID: 431291136}
   boxSize: {x: 2, y: 2, z: 2}
@@ -15928,6 +15976,67 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 3.87
   m_Center: {x: -0.000030517578, y: 0, z: 0}
+--- !u!1001 &604676592
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1564738457315185839, guid: dd12a67dcd6596343bd3c09162dbb42c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882716697764948022, guid: dd12a67dcd6596343bd3c09162dbb42c, type: 3}
+      propertyPath: m_Name
+      value: UI Toolkit Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174786121190233798, guid: dd12a67dcd6596343bd3c09162dbb42c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 99.79335
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174786121190233798, guid: dd12a67dcd6596343bd3c09162dbb42c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 73.59085
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174786121190233798, guid: dd12a67dcd6596343bd3c09162dbb42c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 112.84001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174786121190233798, guid: dd12a67dcd6596343bd3c09162dbb42c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174786121190233798, guid: dd12a67dcd6596343bd3c09162dbb42c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174786121190233798, guid: dd12a67dcd6596343bd3c09162dbb42c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174786121190233798, guid: dd12a67dcd6596343bd3c09162dbb42c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174786121190233798, guid: dd12a67dcd6596343bd3c09162dbb42c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174786121190233798, guid: dd12a67dcd6596343bd3c09162dbb42c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174786121190233798, guid: dd12a67dcd6596343bd3c09162dbb42c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dd12a67dcd6596343bd3c09162dbb42c, type: 3}
 --- !u!1 &605995700
 GameObject:
   m_ObjectHideFlags: 0
@@ -16208,6 +16317,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 617948176}
   maxDistance: 100
   lightEmitLocation: {fileID: 2015137799}
@@ -16686,6 +16797,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 625777271}
   maxDistance: 100
   lightEmitLocation: {fileID: 922810841}
@@ -17282,6 +17395,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 654531440}
   maxDistance: 100
   lightEmitLocation: {fileID: 172547916}
@@ -17855,6 +17970,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 666898265}
   useSound: {fileID: 666898264}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   recievingDirections: 01000000
   sendingDirections: 0000000002000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
@@ -18370,6 +18487,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 686486842}
   maxDistance: 100
   lightEmitLocation: {fileID: 1593246304}
@@ -18979,6 +19098,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 709690225}
   maxDistance: 100
   lightEmitLocation: {fileID: 1535751547}
@@ -19257,6 +19378,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   recievingDirections: 04000000
   sendingDirections: 03000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
@@ -19434,6 +19557,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   dialogueUI: {fileID: 202467043}
   characterName: 
   dialogue: 'For puzzle 1 you must use the Vaquita push ability (E) to stack the
@@ -19928,6 +20053,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 748239185}
   maxDistance: 100
   lightEmitLocation: {fileID: 1578668376}
@@ -20327,6 +20454,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 763757752}
   maxDistance: 100
   lightEmitLocation: {fileID: 1180097291}
@@ -21217,6 +21346,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 786910378}
   useSound: {fileID: 786910384}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   recievingDirections: 05000000
   sendingDirections: 0000000001000000020000000300000004000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
@@ -22073,6 +22204,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 851389589}
   maxDistance: 100
   lightEmitLocation: {fileID: 993816726}
@@ -22828,6 +22961,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   poweredByPanelObjects:
   - {fileID: 431291136}
   boxSize: {x: 2, y: 2, z: 2}
@@ -23839,6 +23974,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 928506362}
   maxDistance: 100
   lightEmitLocation: {fileID: 591493941}
@@ -24205,6 +24342,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 930588947}
   maxDistance: 100
   lightEmitLocation: {fileID: 1097858368}
@@ -24459,6 +24598,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 933390091}
   maxDistance: 100
   lightEmitLocation: {fileID: 2016550129}
@@ -25536,6 +25677,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 991043920}
   maxDistance: 100
   lightEmitLocation: {fileID: 435231346}
@@ -26052,6 +26195,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1009084531}
   maxDistance: 100
   lightEmitLocation: {fileID: 1053912334}
@@ -26377,6 +26522,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 1025958017}
   useSound: {fileID: 1025958019}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   recievingDirections: 01000000
   sendingDirections: 0000000002000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
@@ -26860,6 +27007,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1026952304}
   maxDistance: 100
   lightEmitLocation: {fileID: 1673824030}
@@ -27321,6 +27470,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1054935274}
   maxDistance: 100
   lightEmitLocation: {fileID: 1052070754}
@@ -27703,6 +27854,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1066206353}
   maxDistance: 100
   lightEmitLocation: {fileID: 990271954}
@@ -28126,6 +28279,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1096218560}
   maxDistance: 100
   lightEmitLocation: {fileID: 1360055393}
@@ -28243,6 +28398,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   recievingDirections: 01000000
   sendingDirections: 02000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
@@ -28927,6 +29084,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1124174806}
   maxDistance: 100
   lightEmitLocation: {fileID: 1432570164}
@@ -29165,6 +29324,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1125824563}
   maxDistance: 100
   lightEmitLocation: {fileID: 753789676}
@@ -29716,6 +29877,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1148262762}
   maxDistance: 100
   lightEmitLocation: {fileID: 332098109}
@@ -29954,6 +30117,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1151537204}
   maxDistance: 100
   lightEmitLocation: {fileID: 1052832018}
@@ -30224,6 +30389,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1152272487}
   maxDistance: 100
   lightEmitLocation: {fileID: 1394997140}
@@ -30341,6 +30508,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   recievingDirections: 05000000
   sendingDirections: 03000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
@@ -30962,6 +31131,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1175058977}
   maxDistance: 100
   lightEmitLocation: {fileID: 492221888}
@@ -31236,6 +31407,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1182498129}
   maxDistance: 100
   lightEmitLocation: {fileID: 254874838}
@@ -31602,6 +31775,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1184754085}
   maxDistance: 100
   lightEmitLocation: {fileID: 1091426847}
@@ -32250,6 +32425,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   dialogueUI: {fileID: 202467043}
   characterName: 
   dialogue: 'For puzzle 2 you must activate the lamp using the Eel charge ability
@@ -32503,6 +32680,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1224199130}
   maxDistance: 100
   lightEmitLocation: {fileID: 1279770198}
@@ -33030,6 +33209,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1241919274}
   maxDistance: 100
   lightEmitLocation: {fileID: 1487953402}
@@ -33704,6 +33885,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1248834063}
   maxDistance: 100
   lightEmitLocation: {fileID: 204089568}
@@ -34503,6 +34686,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1296226500}
   maxDistance: 100
   lightEmitLocation: {fileID: 1231942131}
@@ -34772,6 +34957,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1302712513}
   maxDistance: 100
   lightEmitLocation: {fileID: 1527881324}
@@ -35154,6 +35341,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1304597260}
   maxDistance: 100
   lightEmitLocation: {fileID: 1521684174}
@@ -35408,6 +35597,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1324833956}
   maxDistance: 100
   lightEmitLocation: {fileID: 180771808}
@@ -36112,6 +36303,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1347132334}
   maxDistance: 100
   lightEmitLocation: {fileID: 1439503021}
@@ -36366,6 +36559,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1359013868}
   maxDistance: 100
   lightEmitLocation: {fileID: 138998215}
@@ -38176,6 +38371,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1447595420}
   maxDistance: 100
   lightEmitLocation: {fileID: 1611861150}
@@ -38636,6 +38833,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 1462671589}
   useSound: {fileID: 1462671595}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   recievingDirections: 02000000
   sendingDirections: 04000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
@@ -39206,6 +39405,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1468079392}
   maxDistance: 100
   lightEmitLocation: {fileID: 479289772}
@@ -39323,6 +39524,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   recievingDirections: 01000000
   sendingDirections: 04000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
@@ -39468,6 +39671,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   recievingDirections: 02000000
   sendingDirections: 03000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
@@ -40473,6 +40678,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1531029878}
   maxDistance: 100
   lightEmitLocation: {fileID: 2139034558}
@@ -40870,6 +41077,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1541018431}
   maxDistance: 100
   lightEmitLocation: {fileID: 322532978}
@@ -42621,6 +42830,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1613611982}
   maxDistance: 100
   lightEmitLocation: {fileID: 44794101}
@@ -43483,6 +43694,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1652641038}
   maxDistance: 100
   lightEmitLocation: {fileID: 1608824246}
@@ -44663,6 +44876,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1702658142}
   maxDistance: 100
   lightEmitLocation: {fileID: 973335358}
@@ -45031,6 +45246,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1711748351}
   maxDistance: 100
   lightEmitLocation: {fileID: 1915157269}
@@ -45302,6 +45519,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   dialogueUI: {fileID: 202467043}
   characterName: 
   dialogue: 'for this puzzle you must take the beam of light shining downward and
@@ -46691,6 +46910,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1769314509}
   maxDistance: 100
   lightEmitLocation: {fileID: 428576380}
@@ -48079,6 +48300,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1839869684}
   maxDistance: 100
   lightEmitLocation: {fileID: 2039502461}
@@ -48181,6 +48404,63 @@ Transform:
   - {fileID: 2039502461}
   m_Father: {fileID: 1025958016}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1001 &1840032018
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4180256975292907221, guid: 5767c28e9e54aa543abc7e770abcdd2e, type: 3}
+      propertyPath: m_Name
+      value: uGUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846992297235057074, guid: 5767c28e9e54aa543abc7e770abcdd2e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 99.79335
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846992297235057074, guid: 5767c28e9e54aa543abc7e770abcdd2e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 73.59085
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846992297235057074, guid: 5767c28e9e54aa543abc7e770abcdd2e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 112.84001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846992297235057074, guid: 5767c28e9e54aa543abc7e770abcdd2e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846992297235057074, guid: 5767c28e9e54aa543abc7e770abcdd2e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846992297235057074, guid: 5767c28e9e54aa543abc7e770abcdd2e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846992297235057074, guid: 5767c28e9e54aa543abc7e770abcdd2e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846992297235057074, guid: 5767c28e9e54aa543abc7e770abcdd2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846992297235057074, guid: 5767c28e9e54aa543abc7e770abcdd2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846992297235057074, guid: 5767c28e9e54aa543abc7e770abcdd2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5767c28e9e54aa543abc7e770abcdd2e, type: 3}
 --- !u!1 &1841637060
 GameObject:
   m_ObjectHideFlags: 0
@@ -48380,6 +48660,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1848870925}
   maxDistance: 100
   lightEmitLocation: {fileID: 1841637061}
@@ -49209,6 +49491,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   poweredByGeneratorObjects:
   - {fileID: 1876489749}
   correctPosition: {fileID: 0}
@@ -49475,6 +49759,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1874837300}
   maxDistance: 100
   lightEmitLocation: {fileID: 1685527419}
@@ -50059,6 +50345,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1883485939}
   maxDistance: 100
   lightEmitLocation: {fileID: 859484324}
@@ -51545,6 +51833,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 1952614474}
   maxDistance: 100
   lightEmitLocation: {fileID: 718767224}
@@ -52196,6 +52486,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 1244414881}
+  canInteract: 0
+  hasInteracted: 0
   poweredByGeneratorObjects:
   - {fileID: 52074350}
   correctPosition: {fileID: 492099488}
@@ -52299,6 +52591,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 427475294}
+  canInteract: 0
+  hasInteracted: 0
   timeToMove: 0.5
   TargetLayer:
     serializedVersion: 2
@@ -52723,6 +53017,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 2005580154}
   maxDistance: 100
   lightEmitLocation: {fileID: 1078101160}
@@ -53263,6 +53559,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 2020826391}
   maxDistance: 100
   lightEmitLocation: {fileID: 204687384}
@@ -53920,6 +54218,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 2054708530}
   maxDistance: 100
   lightEmitLocation: {fileID: 525229272}
@@ -55038,6 +55338,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 2110522472}
   maxDistance: 100
   lightEmitLocation: {fileID: 1553117753}
@@ -55704,6 +56006,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 2142785927}
   maxDistance: 100
   lightEmitLocation: {fileID: 8664985}
@@ -63963,6 +64267,8 @@ MonoBehaviour:
   cantUseSound: {fileID: 0}
   useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
   lightBeam: {fileID: 2725256561315657212}
   maxDistance: 100
   lightEmitLocation: {fileID: 5575168505569837301}
@@ -70989,3 +71295,5 @@ SceneRoots:
   - {fileID: 1738846621}
   - {fileID: 1632961639}
   - {fileID: 1698196435}
+  - {fileID: 1840032018}
+  - {fileID: 604676592}

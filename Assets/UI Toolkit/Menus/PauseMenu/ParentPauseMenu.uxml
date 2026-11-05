@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="OptionsMenu" src="project://database/Assets/UI%20Toolkit/Menus/PauseMenu/OptionsMenu.uxml?fileID=9197481963319205126&amp;guid=9ec664083bb701445b5b197f0e3415fc&amp;type=3#OptionsMenu"/>
+    <ui:Template name="PauseMenu" src="project://database/Assets/UI%20Toolkit/Menus/PauseMenu/PauseMenu.uxml?fileID=9197481963319205126&amp;guid=9abb2b4f5ba6dbb45a800cd0e70b7df1&amp;type=3#PauseMenu"/>
+    <Style src="project://database/Assets/UI%20Toolkit/Menus/PauseMenu/PauseMenu.uss?fileID=7433441132597879392&amp;guid=5f5708e9a772ae348b0bacc46dbabf91&amp;type=3#PauseMenu"/>
+    <ui:VisualElement name="Root" style="flex-grow: 1;">
+        <ui:VisualElement name="TintOverlay" style="flex-grow: 0; width: 100%; height: 100%; position: absolute; background-color: rgb(0, 0, 0); opacity: 0.4;"/>
+        <ui:Instance template="OptionsMenu" name="OptionsMenu" style="height: 100%; width: 100%; position: absolute; display: none;"/>
+        <ui:Instance template="PauseMenu" name="PauseMenu" style="width: 100%; height: 100%; display: flex; position: absolute;"/>
+        <ui:VisualElement name="HelpText" class="pause-background" style="flex-grow: 0; position: absolute; top: 0; right: auto; align-items: center; padding-top: 30px; padding-right: 0%; left: auto; padding-left: 0%; width: 45%; background-color: rgba(255, 252, 239, 0);">
+            <ui:Label text="NOTE: All unfinished menu options will have an asterisk* next to them" name="Asterisk" style="font-size: 20px; -unity-font-style: bold; color: rgb(63, 63, 63);"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

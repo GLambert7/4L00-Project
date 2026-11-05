@@ -18,8 +18,8 @@ public class BaseInteractable : MonoBehaviour
     [SerializeField] protected AudioSource useSound; // The sound that plays when the creature interacts with the object. This should be set up in the Unity Editor.
     [SerializeField] protected GameObject PlayerRef; // Reference to our player object
 
-    protected bool canInteract = false; // Is the creature in range to interact with the object? This is set to true when the creature enters the interaction area, and false when it exits.
-    protected bool hasInteracted = false; // Has the creature already interacted with the object? This is set to true when the creature interacts with the object, and false when the interaction key for all creatures is in the released state.
+    public bool canInteract = false; // Is the creature in range to interact with the object? This is set to true when the creature enters the interaction area, and false when it exits.
+    public bool hasInteracted = false; // Has the creature already interacted with the object? This is set to true when the creature interacts with the object, and false when the interaction key for all creatures is in the released state.
     #endregion
 
     #region Unity Methods

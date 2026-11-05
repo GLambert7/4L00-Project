@@ -19436,9 +19436,10 @@ MonoBehaviour:
   PlayerRef: {fileID: 1244414881}
   dialogueUI: {fileID: 202467043}
   characterName: 
-  dialogue: 'For puzzle 1 you must stack the blocks of trash (blue blocks) high enought
-    to power the motor with the generator (purple block). Stack the trash as high
-    as you can before you push the generator on top. '
+  dialogue: 'For puzzle 1 you must use the Vaquita push ability (E) to stack the
+    blocks of trash (blue blocks) high enought to power the motor with the generator
+    (purple block). Stack the trash as high as you can before you push the generator
+    on top. use the eel to power the generator (T) '
 --- !u!65 &731358643
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32251,11 +32252,11 @@ MonoBehaviour:
   PlayerRef: {fileID: 1244414881}
   dialogueUI: {fileID: 202467043}
   characterName: 
-  dialogue: 'For puzzle 2 you must activate the lamp (T) (horizontal capsule) and
-    use the reflective objects (silver cubes) to grow the Groweed (Green cube). 
-    The reflective objects can be made reflective using the octopus (R). The trash
-    (blue cube) must also be on top of the growweed to stop the beam of light and
-    open the cave entrance '
+  dialogue: 'For puzzle 2 you must activate the lamp using the Eel charge ability
+    (T) (horizontal capsule) and use the reflective objects (silver cubes) to grow
+    the Groweed (Green cube).  The reflective objects can be made reflective using
+    the octopus (R). The trash (blue cube) must also be on top of the growweed to
+    stop the beam of light and open the cave entrance '
 --- !u!65 &1220709857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45305,7 +45306,7 @@ MonoBehaviour:
   characterName: 
   dialogue: 'for this puzzle you must take the beam of light shining downward and
     redirect it with the reflective objects (silver cubes) so that the light hits
-    the groweed (gree cube) and lifts the diver to the surface '
+    the groweed (green cube) and lifts the diver to the surface '
 --- !u!65 &1733125314
 BoxCollider:
   m_ObjectHideFlags: 0

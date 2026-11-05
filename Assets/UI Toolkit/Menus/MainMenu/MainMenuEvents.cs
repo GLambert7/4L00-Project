@@ -54,7 +54,7 @@ public class MainMenuEvents : MonoBehaviour
         // Credits Menu
         creditsReturnButton.clicked += () => MenuEnter(_titleMenuRoot);
 
-        // Default menu visibility
+        // *** Default menu visibility ***
         _optionsRoot.style.display = DisplayStyle.None;
         _creditsRoot.style.display = DisplayStyle.None;
     }

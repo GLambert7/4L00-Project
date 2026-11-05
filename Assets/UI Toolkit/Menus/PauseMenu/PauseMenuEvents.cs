@@ -11,7 +11,7 @@ public class PauseMenuEvents : MonoBehaviour
     private VisualElement _optionsRoot;
 
     // Reference PauseManager
-    [SerializeField] PauseManager _manager;
+    public PauseManager _manager;
 
     private Button resumeButton;
     private Button optionsButton;
@@ -21,7 +21,6 @@ public class PauseMenuEvents : MonoBehaviour
     //Options Menu
     private Button returnButton;
 
-    // Assigning needed elements OnEnable
     private void OnEnable()
     {
         // Query root visual elements for each menu screen
@@ -31,10 +30,10 @@ public class PauseMenuEvents : MonoBehaviour
 
         // *** Assign Buttons ***
         // Pause Menu
-        resumeButton = _root.Q("ResumeButton") as Button;
-        optionsButton = _root.Q("OptionsButton") as Button;
-        mainMenuButton = _root.Q("MainMenuButton") as Button;
-        quitButton = _root.Q("QuitButton") as Button;
+        resumeButton = _pauseMenuRoot.Q("ResumeButton") as Button;
+        optionsButton = _pauseMenuRoot.Q("OptionsButton") as Button;
+        mainMenuButton = _pauseMenuRoot.Q("MainMenuButton") as Button;
+        quitButton = _pauseMenuRoot.Q("QuitButton") as Button;
 
         //Options menu
         returnButton = _optionsRoot.Q("ReturnButton") as Button;
@@ -46,9 +45,11 @@ public class PauseMenuEvents : MonoBehaviour
         mainMenuButton.clicked += () => SceneManager.LoadScene(0);
         quitButton.clicked += () => OnQuitClick();
 
-
-        //Options menu
+        // Options menu
         returnButton.clicked += () => MenuEnter(_pauseMenuRoot);
+
+        // *** Default menu visibility ***
+        _optionsRoot.style.display = DisplayStyle.None;
     }
     #endregion
 

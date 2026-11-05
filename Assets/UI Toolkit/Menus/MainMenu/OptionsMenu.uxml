@@ -8,7 +8,7 @@
         </ui:VisualElement>
         <ui:VisualElement name="Container" style="flex-grow: 0; flex-direction: row;">
             <ui:VisualElement name="MenuOptionsGroup" style="height: auto; align-items: center; justify-content: center; -unity-text-align: middle-center; width: auto; flex-direction: column;">
-                <ui:VisualElement name="Toggles" style="flex-grow: 1; flex-direction: column;">
+                <ui:VisualElement name="Toggles" style="flex-grow: 1; flex-direction: column; align-items: center;">
                     <ui:Toggle label="Subtitles" name="Subtitle" class="body-button"/>
                     <ui:Toggle label="Cut Scenes" name="CutScene" class="body-button"/>
                 </ui:VisualElement>

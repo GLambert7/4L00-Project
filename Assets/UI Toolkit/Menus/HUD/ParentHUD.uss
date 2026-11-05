@@ -16,9 +16,36 @@
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
     border-bottom-left-radius: 100px;
+    padding-top: 27px;
+    padding-right: 27px;
+    padding-bottom: 27px;
+    padding-left: 27px;
 }
 
 .btn-mapping-columns {
     margin-left: -6px;
     margin-right: -6px;
+}
+
+.hud-text {
+    -unity-text-align: middle-left;
+    font-size: 35px;
+    -unity-font-style: bold;
+    -unity-text-outline-color: rgb(173, 173, 173);
+    -unity-text-outline-width: 0;
+}
+
+.btn-label {
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+    align-items: center;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    font-size: 35px;
 }

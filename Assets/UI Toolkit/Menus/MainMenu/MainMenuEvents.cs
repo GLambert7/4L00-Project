@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+using UnityEditorInternal.VersionControl;
+using System.Security.Cryptography;
 
 public class MainMenuEvents : MonoBehaviour
 {
@@ -22,13 +25,23 @@ public class MainMenuEvents : MonoBehaviour
     private Button optionsReturnButton;
     private Button creditsReturnButton;
 
+    private ScrollView _scrollView;
+    private VisualElement _targetItem;
+
+
     private void Awake()
-    {        
+    {
         // Query root visual elements for each menu screen
+
+
         _root = GetComponent<UIDocument>().rootVisualElement;
         _titleMenuRoot = _root.Q<VisualElement>("TitleMenu");
         _optionsRoot = _root.Q<VisualElement>("OptionsMenu");
         _creditsRoot = _root.Q<VisualElement>("CreditsMenu");
+
+        _scrollView = _root.Q<ScrollView>("Credits");
+        _targetItem = _root.Q<VisualElement>("LastName");
+        
 
         // *** Assign Buttons ***
         // Title Menu
@@ -41,12 +54,17 @@ public class MainMenuEvents : MonoBehaviour
         optionsReturnButton = _optionsRoot.Q("ReturnButton") as Button;
         creditsReturnButton = _creditsRoot.Q("ReturnButton") as Button;
 
+
+
+
         // *** Register Click Events ***
         // Title Menu
         startButton.clicked += () => SceneManager.LoadScene(1);
         optionsButton.clicked += () => MenuEnter(_optionsRoot);
         creditsButton.clicked += () => MenuEnter(_creditsRoot);
         quitButton.clicked += () => OnQuitClick();
+
+        
 
         // Options Menu
         optionsReturnButton.clicked += () => MenuEnter(_titleMenuRoot);
@@ -57,6 +75,9 @@ public class MainMenuEvents : MonoBehaviour
         // *** Default menu visibility ***
         _optionsRoot.style.display = DisplayStyle.None;
         _creditsRoot.style.display = DisplayStyle.None;
+
+        _scrollView.ScrollTo(_targetItem);
+
     }
     #endregion
 
@@ -77,9 +98,10 @@ public class MainMenuEvents : MonoBehaviour
         // Quits game
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#else
             Application.Quit();
-        #endif
+#endif
     }
+
     #endregion
 }

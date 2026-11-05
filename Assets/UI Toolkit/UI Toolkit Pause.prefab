@@ -194,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6174786121190233798}
   m_Layer: 0
-  m_Name: UI Toolkit
+  m_Name: UI Toolkit Pause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

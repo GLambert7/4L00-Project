@@ -15,6 +15,7 @@ public class DialogueInteract : BaseInteractable
 
     public override void PlayerInteract()
     {
+        Debug.Log("Interacting with: " + gameObject.name);
         base.PlayerInteract();
 
         if (dialogueOpen)
@@ -28,8 +29,10 @@ public class DialogueInteract : BaseInteractable
             dialogueOpen = true;
         }
     }
-    private void OnTriggerExit(Collider other)
+    protected override void OnTriggerExit(Collider other)
     {
+        base.OnTriggerExit(other);
+
         if (other.CompareTag("Player") && dialogueOpen)
         {
             dialogueUI.HideDialogue();

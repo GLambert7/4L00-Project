@@ -195,7 +195,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 678455929987008644}
-  - {fileID: 2301889557500390862}
+  - {fileID: 30759048846453938}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3072571040767732099
@@ -295,7 +295,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8790541242892250102
 MonoBehaviour:
@@ -316,6 +316,7 @@ MonoBehaviour:
   _inputHandler: {fileID: 0}
   interactionArea: {fileID: 4515247862749909287}
   cantUseSound: {fileID: 6039243840501105393}
+  useSound: {fileID: 0}
   PlayerRef: {fileID: 0}
   canInteract: 0
   hasInteracted: 0
@@ -427,7 +428,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &1400676545324089086
+--- !u!1001 &931260578782101378
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -477,7 +478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 901221022861005616, guid: 08590af9eb6b9a443adfab45319063b4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.018375
+      value: 61.059296
       objectReference: {fileID: 0}
     - target: {fileID: 901221022861005616, guid: 08590af9eb6b9a443adfab45319063b4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -497,11 +498,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 901221022861005616, guid: 08590af9eb6b9a443adfab45319063b4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 8.313375
+      value: 54.957184
       objectReference: {fileID: 0}
     - target: {fileID: 901221022861005616, guid: 08590af9eb6b9a443adfab45319063b4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.5
+      value: 34.79374
       objectReference: {fileID: 0}
     - target: {fileID: 901221022861005616, guid: 08590af9eb6b9a443adfab45319063b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -517,15 +518,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4996789441492404294, guid: 08590af9eb6b9a443adfab45319063b4, type: 3}
       propertyPath: m_Name
-      value: Interaction Indicator
+      value: InteractionIndicator
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08590af9eb6b9a443adfab45319063b4, type: 3}
---- !u!224 &2301889557500390862 stripped
+--- !u!224 &30759048846453938 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 901221022861005616, guid: 08590af9eb6b9a443adfab45319063b4, type: 3}
-  m_PrefabInstance: {fileID: 1400676545324089086}
+  m_PrefabInstance: {fileID: 931260578782101378}
   m_PrefabAsset: {fileID: 0}

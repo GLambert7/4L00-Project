@@ -20,9 +20,6 @@ public class BaseInteractable : MonoBehaviour
 
     public bool canInteract = false; // Is the creature in range to interact with the object? This is set to true when the creature enters the interaction area, and false when it exits.
     public bool hasInteracted = false; // Has the creature already interacted with the object? This is set to true when the creature interacts with the object, and false when the interaction key for all creatures is in the released state.
-    
-    // Note: I've made these bools public for ease of use by child UI elements
-    
     #endregion
 
     #region Unity Methods

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,7 +27,7 @@ public class PopupIndicator : MonoBehaviour
 
         // Get variables in scene
         mainCam = Camera.main.transform;
-        worldSpaceCanvas = FindFirstObjectByType<Canvas>().transform;
+        worldSpaceCanvas = GameObject.Find("WorldSpaceCanvas")?.GetComponent<Canvas>().transform;
         transform.SetParent(worldSpaceCanvas);
     }
 

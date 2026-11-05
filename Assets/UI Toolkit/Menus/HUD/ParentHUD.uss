@@ -23,13 +23,16 @@
 }
 
 .btn-mapping-columns {
-    margin-left: -6px;
-    margin-right: -6px;
+    margin-left: 6px;
+    margin-right: 6px;
+    align-items: center;
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
 
 .hud-text {
     -unity-text-align: middle-left;
-    font-size: 35px;
+    font-size: 34px;
     -unity-font-style: bold;
     -unity-text-outline-color: rgb(173, 173, 173);
     -unity-text-outline-width: 0;
@@ -47,5 +50,5 @@
     padding-right: 0;
     padding-bottom: 0;
     padding-left: 0;
-    font-size: 35px;
+    font-size: 39px;
 }

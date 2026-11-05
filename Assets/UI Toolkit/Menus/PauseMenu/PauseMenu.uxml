@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Universal%20Stylesheets/Universal.uss?fileID=7433441132597879392&amp;guid=26e9159df86912247bab5dc10a8e07d8&amp;type=3#Universal"/>
+    <Style src="project://database/Assets/UI%20Toolkit/Menus/PauseMenu/PauseMenu.uss?fileID=7433441132597879392&amp;guid=5f5708e9a772ae348b0bacc46dbabf91&amp;type=3#PauseMenu"/>
+    <Style src="project://database/Assets/UI%20Toolkit/Menus/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=036d353d9df5b464394d7c2925c8e7c4&amp;type=3#MainMenu"/>
+    <ui:VisualElement name="Container" class="centered-container pause-background" style="padding-left: 90px; align-items: flex-start;">
+        <ui:VisualElement name="Heading" class="heading-container" style="padding-bottom: 65px; -unity-text-align: middle-left;">
+            <ui:Label text="Fish n&apos; Guppies&#10;" name="Title" class="title-text header-text heading-text" style="font-size: 85px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="MenuOptionsGroup" style="height: auto; align-items: flex-start; justify-content: center; -unity-text-align: middle-center;">
+            <ui:Button text="Resume" name="ResumeButton" class="subheading-text menu-buttons"/>
+            <ui:Button text="Options*" name="OptionsButton" class="subheading-text menu-buttons"/>
+            <ui:Button text="Quit to Main Menu" name="MainMenuButton" class="subheading-text menu-buttons"/>
+            <ui:Button text="Quit Game" name="QuitButton" class="subheading-text menu-buttons"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

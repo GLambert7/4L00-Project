@@ -1,0 +1,23 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Universal%20Stylesheets/Universal.uss?fileID=7433441132597879392&amp;guid=26e9159df86912247bab5dc10a8e07d8&amp;type=3#Universal"/>
+    <Style src="project://database/Assets/UI%20Toolkit/Menus/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=036d353d9df5b464394d7c2925c8e7c4&amp;type=3#MainMenu"/>
+    <ui:VisualElement name="Background" class="centered-container background">
+        <ui:Button text="&lt; Return" name="ReturnButton" class="return-button"/>
+        <ui:VisualElement name="Heading" class="heading-container" style="padding-bottom: 65px;">
+            <ui:Label text="Options&#10;" name="Title" class="title-text header-text heading-text" style="width: 407px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="Container" style="flex-grow: 0; flex-direction: row;">
+            <ui:VisualElement name="MenuOptionsGroup" style="height: auto; align-items: center; justify-content: center; -unity-text-align: middle-center; width: auto; flex-direction: column;">
+                <ui:VisualElement name="Toggles" style="flex-grow: 1; flex-direction: column; align-items: center;">
+                    <ui:Toggle label="Subtitles" name="Subtitle" class="body-button"/>
+                    <ui:Toggle label="Cut Scenes" name="CutScene" class="body-button"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="Sliders" style="flex-grow: 0; width: 511px; align-items: center;">
+                    <ui:Slider label="SFX" value="42" high-value="100" name="SFX" class="body-button" style="width: 398px; height: 70px;"/>
+                    <ui:Slider label="Music" value="42" high-value="100" name="Music" class="body-button" style="width: 398px; height: 74px;"/>
+                </ui:VisualElement>
+                <ui:Button text="Save Options*" name="SaveOptionsButton" class="menu-buttons body-text"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

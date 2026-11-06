@@ -30,7 +30,7 @@ public class GroweedCutsceneTrigger : MonoBehaviour
     private void EndCutscene(VideoPlayer player)
     {
         // Load the main menu when the video finishes
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene(0);
     }
 
     private void OnDestroy()

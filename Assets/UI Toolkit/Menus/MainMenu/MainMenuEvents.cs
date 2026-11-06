@@ -23,7 +23,11 @@ public class MainMenuEvents : MonoBehaviour
     private Button creditsReturnButton;
 
     private void Awake()
-    {        
+    {
+        // Ensuring cursor is unlocked
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
+
         // Query root visual elements for each menu screen
         _root = GetComponent<UIDocument>().rootVisualElement;
         _titleMenuRoot = _root.Q<VisualElement>("TitleMenu");

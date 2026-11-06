@@ -16,10 +16,10 @@
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
     border-bottom-left-radius: 100px;
-    padding-top: 27px;
-    padding-right: 27px;
-    padding-bottom: 27px;
-    padding-left: 27px;
+    padding-top: 31px;
+    padding-right: 31px;
+    padding-bottom: 31px;
+    padding-left: 31px;
 }
 
 .btn-mapping-columns {

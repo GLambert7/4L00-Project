@@ -4511,6 +4511,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6369608664142963014, guid: 53f63763c1753454e9ce1b762ab0e16d, type: 3}
   m_PrefabInstance: {fileID: 406897944}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &216744325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7667901358065311670, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+  m_PrefabInstance: {fileID: 961897028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &218721335
 GameObject:
   m_ObjectHideFlags: 0
@@ -7640,6 +7645,8 @@ MonoBehaviour:
   sendingDirections: 0000000001000000020000000300000004000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
   reflectMaterial: {fileID: 2100000, guid: 4678ab44abaf3bf4c966fb5ba95bc3c0, type: 2}
+  reflectionSide1: {fileID: 0}
+  reflectionSide2: {fileID: 0}
   isReflective: 1
   MaxCheckDistance: 0.8
   TargetLayer:
@@ -8153,6 +8160,8 @@ MonoBehaviour:
   sendingDirections: 0300000002000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
   reflectMaterial: {fileID: 2100000, guid: 4678ab44abaf3bf4c966fb5ba95bc3c0, type: 2}
+  reflectionSide1: {fileID: 0}
+  reflectionSide2: {fileID: 0}
   isReflective: 0
   MaxCheckDistance: 0.8
   TargetLayer:
@@ -10152,6 +10161,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390219833}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &393087964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7667901358065311670, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+  m_PrefabInstance: {fileID: 990378170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &397111198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2106172708684864657, guid: 2ac525fcfd3de4440a98f27aa2a9548f, type: 3}
@@ -13899,8 +13913,8 @@ MonoBehaviour:
   hasInteracted: 0
   dialogueUI: {fileID: 202467043}
   characterName: 
-  dialogue: Use the Mirror blocks to redirect the beam uf light up to grow the groweed
-    and cover the diver
+  dialogue: Use the Mirror blocks to redirect the beam of light upwards to grow the
+    Groweed and cover the diver.
 --- !u!1 &513371553
 GameObject:
   m_ObjectHideFlags: 0
@@ -14013,6 +14027,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513371553}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &516519443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3503405425816923627, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+  m_PrefabInstance: {fileID: 1100234899}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &517799736
 GameObject:
   m_ObjectHideFlags: 0
@@ -14458,6 +14477,8 @@ MonoBehaviour:
   sendingDirections: 04000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
   reflectMaterial: {fileID: 2100000, guid: 4678ab44abaf3bf4c966fb5ba95bc3c0, type: 2}
+  reflectionSide1: {fileID: 0}
+  reflectionSide2: {fileID: 0}
   isReflective: 1
   MaxCheckDistance: 0.8
   TargetLayer:
@@ -16619,6 +16640,16 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1475109106}
   m_SourcePrefab: {fileID: 100100000, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+--- !u!1 &592384606 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7667901358065311670, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+  m_PrefabInstance: {fileID: 592384605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &592384607 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3503405425816923627, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+  m_PrefabInstance: {fileID: 592384605}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &596081536
 GameObject:
   m_ObjectHideFlags: 0
@@ -18774,6 +18805,8 @@ MonoBehaviour:
   sendingDirections: 0000000002000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
   reflectMaterial: {fileID: 2100000, guid: 4678ab44abaf3bf4c966fb5ba95bc3c0, type: 2}
+  reflectionSide1: {fileID: 0}
+  reflectionSide2: {fileID: 0}
   isReflective: 0
   MaxCheckDistance: 0.8
   TargetLayer:
@@ -20313,6 +20346,8 @@ MonoBehaviour:
   sendingDirections: 03000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
   reflectMaterial: {fileID: 2100000, guid: 4678ab44abaf3bf4c966fb5ba95bc3c0, type: 2}
+  reflectionSide1: {fileID: 1105168349}
+  reflectionSide2: {fileID: 393087964}
   isReflective: 1
   MaxCheckDistance: 0.8
   TargetLayer:
@@ -21489,10 +21524,10 @@ MonoBehaviour:
   hasInteracted: 0
   dialogueUI: {fileID: 202467043}
   characterName: 
-  dialogue: 'For puzzle 1 you must use the Vaquita push ability (E) to stack the
+  dialogue: 'For Puzzle 1 you must use the Vaquita push ability (E) to stack the
     blocks of trash (blue blocks) high enought to power the motor with the generator
     (purple block). Stack the trash as high as you can before you push the generator
-    on top. use the eel to power the generator (T) '
+    on top. Use the Eel to power the generator (T). '
 --- !u!1 &767942176
 GameObject:
   m_ObjectHideFlags: 0
@@ -22221,6 +22256,8 @@ MonoBehaviour:
   sendingDirections: 0000000001000000020000000300000004000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
   reflectMaterial: {fileID: 2100000, guid: 4678ab44abaf3bf4c966fb5ba95bc3c0, type: 2}
+  reflectionSide1: {fileID: 0}
+  reflectionSide2: {fileID: 0}
   isReflective: 1
   MaxCheckDistance: 0.8
   TargetLayer:
@@ -22598,6 +22635,16 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1096889843}
   m_SourcePrefab: {fileID: 100100000, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+--- !u!1 &789378280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7667901358065311670, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+  m_PrefabInstance: {fileID: 789378279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &789378281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3503405425816923627, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+  m_PrefabInstance: {fileID: 789378279}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &796246280
 GameObject:
   m_ObjectHideFlags: 0
@@ -28311,6 +28358,8 @@ MonoBehaviour:
   sendingDirections: 0000000002000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
   reflectMaterial: {fileID: 2100000, guid: 4678ab44abaf3bf4c966fb5ba95bc3c0, type: 2}
+  reflectionSide1: {fileID: 0}
+  reflectionSide2: {fileID: 0}
   isReflective: 0
   MaxCheckDistance: 0.8
   TargetLayer:
@@ -30202,6 +30251,8 @@ MonoBehaviour:
   sendingDirections: 02000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
   reflectMaterial: {fileID: 2100000, guid: 4678ab44abaf3bf4c966fb5ba95bc3c0, type: 2}
+  reflectionSide1: {fileID: 789378281}
+  reflectionSide2: {fileID: 789378280}
   isReflective: 0
   MaxCheckDistance: 0.8
   TargetLayer:
@@ -30660,6 +30711,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 567567443}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1105168349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3503405425816923627, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+  m_PrefabInstance: {fileID: 990378170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1106216895
 GameObject:
   m_ObjectHideFlags: 0
@@ -32616,6 +32672,8 @@ MonoBehaviour:
   sendingDirections: 03000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
   reflectMaterial: {fileID: 2100000, guid: 4678ab44abaf3bf4c966fb5ba95bc3c0, type: 2}
+  reflectionSide1: {fileID: 1190408733}
+  reflectionSide2: {fileID: 1735624930}
   isReflective: 1
   MaxCheckDistance: 0.8
   TargetLayer:
@@ -33221,11 +33279,12 @@ MonoBehaviour:
   hasInteracted: 0
   dialogueUI: {fileID: 202467043}
   characterName: 
-  dialogue: 'For puzzle 2 you must activate the lamp using the Eel charge ability
-    (T) (horizontal capsule) and use the reflective objects (silver cubes) to grow
-    the Groweed (Green cube).  The reflective objects can be made reflective using
-    the octopus (R). The trash (blue cube) must also be on top of the growweed to
-    stop the beam of light and open the cave entrance '
+  dialogue: 'For puzzle 2 you must activate the lamp (horizontal capsule) using the
+    Eel charge ability (T), then use the reflective objects (silver cubes) to grow
+    the Groweed (Green cube) and block the light beam. The reflective objects can
+    be made reflective using the Octopus'' ability (R). The trash (blue cube) must
+    also be pushed on top of the Groweed to stop the beam of light and open the cave
+    entrance '
 --- !u!1 &1173530195
 GameObject:
   m_ObjectHideFlags: 0
@@ -34410,6 +34469,11 @@ Transform:
   - {fileID: 1091426847}
   m_Father: {fileID: 341078159}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1190408733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3503405425816923627, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+  m_PrefabInstance: {fileID: 1954141150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1194813475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35829,7 +35893,7 @@ Transform:
   m_GameObject: {fileID: 1244414881}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 112.44, y: 63.8, z: 108.43}
+  m_LocalPosition: {x: 113.66, y: 65.09, z: 106.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41250,6 +41314,8 @@ MonoBehaviour:
   sendingDirections: 04000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
   reflectMaterial: {fileID: 2100000, guid: 4678ab44abaf3bf4c966fb5ba95bc3c0, type: 2}
+  reflectionSide1: {fileID: 0}
+  reflectionSide2: {fileID: 0}
   isReflective: 1
   MaxCheckDistance: 0.8
   TargetLayer:
@@ -41947,6 +42013,8 @@ MonoBehaviour:
   sendingDirections: 04000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
   reflectMaterial: {fileID: 2100000, guid: 4678ab44abaf3bf4c966fb5ba95bc3c0, type: 2}
+  reflectionSide1: {fileID: 2007297122}
+  reflectionSide2: {fileID: 216744325}
   isReflective: 1
   MaxCheckDistance: 0.8
   TargetLayer:
@@ -42300,6 +42368,8 @@ MonoBehaviour:
   sendingDirections: 03000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
   reflectMaterial: {fileID: 2100000, guid: 4678ab44abaf3bf4c966fb5ba95bc3c0, type: 2}
+  reflectionSide1: {fileID: 592384607}
+  reflectionSide2: {fileID: 592384606}
   isReflective: 0
   MaxCheckDistance: 0.8
   TargetLayer:
@@ -42714,6 +42784,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 255797794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1490252175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7667901358065311670, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+  m_PrefabInstance: {fileID: 1100234899}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1505690610
 GameObject:
   m_ObjectHideFlags: 0
@@ -48281,6 +48356,8 @@ MonoBehaviour:
   sendingDirections: 02000000
   nonReflectMaterial: {fileID: 2100000, guid: a739fe068473ea6429f772e62d5c5a04, type: 2}
   reflectMaterial: {fileID: 2100000, guid: 4678ab44abaf3bf4c966fb5ba95bc3c0, type: 2}
+  reflectionSide1: {fileID: 516519443}
+  reflectionSide2: {fileID: 1490252175}
   isReflective: 0
   MaxCheckDistance: 0.8
   TargetLayer:
@@ -48857,7 +48934,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c333f1d568f989146857033f5bb9ab59, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.37
+      value: -22.18
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c333f1d568f989146857033f5bb9ab59, type: 3}
       propertyPath: m_LocalPosition.y
@@ -48865,7 +48942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c333f1d568f989146857033f5bb9ab59, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -165.88
+      value: -166.15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c333f1d568f989146857033f5bb9ab59, type: 3}
       propertyPath: m_LocalRotation.w
@@ -49060,6 +49137,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 130217459}
   m_SourcePrefab: {fileID: 100100000, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+--- !u!1 &1735624930 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7667901358065311670, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+  m_PrefabInstance: {fileID: 1954141150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1736348075
 GameObject:
   m_ObjectHideFlags: 0
@@ -57239,6 +57321,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005956477}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2007297122 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3503405425816923627, guid: aaa64dcc80a9f5545927adacba7bad41, type: 3}
+  m_PrefabInstance: {fileID: 961897028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2015137798
 GameObject:
   m_ObjectHideFlags: 0

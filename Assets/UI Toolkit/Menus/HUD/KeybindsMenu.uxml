@@ -4,16 +4,16 @@
     <ui:VisualElement name="Container" style="flex-grow: 0; width: 100%; height: 100%; justify-content: flex-end; align-items: flex-end; padding-top: 60px; padding-right: 60px; padding-bottom: 60px; padding-left: 60px;">
         <ui:VisualElement name="CompanionsInteract" style="flex-grow: 0;">
             <ui:VisualElement name="Dash" style="flex-grow: 0; padding-bottom: 0; flex-direction: row-reverse; padding-top: 0; padding-right: 0; padding-left: 0; margin-bottom: 10px;">
-                <ui:VisualElement name="DashBtn" class="button-display" style="background-color: rgb(60, 122, 209); justify-content: center; flex-grow: 0; margin-right: 10px; margin-left: 10px;">
-                    <ui:Label text="Ctl" class="btn-label" style="padding-top: 9px; font-size: 30px;"/>
+                <ui:VisualElement name="DashBtn" class="button-display" style="background-color: rgb(60, 122, 209); justify-content: center; flex-grow: 0; margin-right: 10px; margin-left: 10px; align-items: center;">
+                    <ui:Label text="Ctrl" class="btn-label" style="font-size: 30px; padding-top: 17px;"/>
                 </ui:VisualElement>
                 <ui:Label text="Dash" class="hud-text"/>
             </ui:VisualElement>
             <ui:VisualElement name="PlayerInteract" style="flex-grow: 0; padding-bottom: 0; flex-direction: row-reverse; margin-bottom: 0;">
                 <ui:VisualElement name="PlayerBtn" class="button-display" style="background-color: rgb(209, 69, 60); justify-content: center; flex-grow: 0; margin-right: 10px; margin-left: 10px;">
-                    <ui:Label text="Q" class="btn-label" style="padding-top: 9px;"/>
+                    <ui:Label text="Q" class="btn-label" style="padding-top: 15px;"/>
                 </ui:VisualElement>
-                <ui:Label text="Read" class="hud-text"/>
+                <ui:Label text="Talk" class="hud-text"/>
             </ui:VisualElement>
             <ui:VisualElement name="Span" style="flex-grow: 0; align-items: flex-end;">
                 <ui:VisualElement name="ButtonMapping" style="flex-grow: 0; width: auto; height: 203px; flex-direction: row; align-items: stretch;">

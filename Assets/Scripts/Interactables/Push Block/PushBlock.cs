@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 using UnityEngine;
 
@@ -33,21 +34,16 @@ public class PushBlock : BaseInteractable
 
     //Inspector Variables
     [Header("Push Block Specifics")]
-    [SerializeField] private float timeToMove = 5f;
+    [SerializeField] private float timeToMove = 1f;
 
     //Non-Inspector Variables
     private bool isMoving = false;
+    public bool IsMoving => isMoving;
     private bool interactable = true;
     private Transform startPoint;
     private Transform endPoint;
 
     private float timeElapsed = 0f;
-
-    [Header("Boxcast Center Check Transforms")]
-    [SerializeField] private Transform MovePointNorth;
-    [SerializeField] private Transform MovePointSouth;
-    [SerializeField] private Transform MovePointEast;
-    [SerializeField] private Transform MovePointWest;
 
     [Header("Boxcast Vars")]
     private Vector3 boxSize = Vector3.one;
@@ -67,6 +63,21 @@ public class PushBlock : BaseInteractable
     private GameObject eastHit = null;
     private GameObject westHit = null;
 
+    private GameObject fallHit = null;
+    [SerializeField] private float fallSpeed = 5f;
+    [SerializeField] private bool canFall = true;
+
+    private bool beingLifted = false;
+
+    private float timeBetweenChecks = .15f;
+    private float checksTimer = 0f;
+
+    // Called by the plant to control if the block is being lifted
+    public void SetBeingLifted(bool lifted)
+    {
+        beingLifted = lifted;
+    }
+
     #endregion
 
     #region Unity Methods
@@ -80,6 +91,13 @@ public class PushBlock : BaseInteractable
     void Update()
     {
         InteractionCheck();
+
+        // Don't apply falling while the plant is lifting the block.
+        if (canFall && !beingLifted)
+        {
+            FallCheck();
+        }
+
         HandleMovement();
     }
     #endregion
@@ -90,43 +108,69 @@ public class PushBlock : BaseInteractable
     private void HandleMovement()
     {
         // Check if the block is allowed to move
-        if (isMoving && startPoint != null && endPoint != null)
+        if (!isMoving || startPoint == null || endPoint == null)
         {
-            // prevent extra interactions
-            interactable = false;
-
-            // Calculate the time elapsed and the interpolation factor
-            timeElapsed += Time.deltaTime;
-            float t = timeElapsed / timeToMove;
-
-            // Lerp block from set start point to set end point
-           
-            transform.position = Vector3.Lerp(startPoint.position, endPoint.position, t);
-
-            if (transform.position == endPoint.position) t = 1f;
-            
-            // If the interpolation factor is greater than or equal to 1, the block has reached its destination, so we stop moving and reset the time elapsed
-            if (t >= 1f)
-            {
-                PostMoveReset();
-                if (iceBlock)
-                {
-                    iceSlide();
-                }
-                
-            }
+            return;
         }
+
+        // prevent extra interactions
+        interactable = false;
+        canFall = false;
+
+        // Calculate the time elapsed and the interpolation factor
+        timeElapsed += Time.deltaTime;
+        float t = timeElapsed / timeToMove;
+
+        // Lerp block from set start point to set end point
+           
+        transform.position = Vector3.Lerp(startPoint.position, endPoint.position, t);
+
+        if (transform.position == endPoint.position) t = 1f;
+            
+        // If the interpolation factor is greater than or equal to 1, the block has reached its destination, so we stop moving and reset the time elapsed
+        if (t >= 1f)
+        {
+            PostMoveReset();
+            if (iceBlock)
+            {
+                iceSlide();
+            }
+                
+        }
+        
     }
 
-    public void MoveCheck()
+    private void FallCheck()
     {
-        // Boxcast in the 4 cardinal directions, if we detech an object that notates that the block can move to that location, set the corresponding variable to true. 
-        // For interactions, check where the player is relative to the block. If they are +x +y move it accordingly, should the block be allowed to move in that direction.
-        // Set a boolean for blocks with continuous/ice movement. Those blocks, once interacted with, will continue to move until they encounter an area they cannot move past (no indicator object)
-        // Invisible tagged objects will handle the grid system, and I will use coloured planes to indicate their locations for now.
-        // MAKE SURE that these objects CANNOT BE SEEN FROM OTHER GRIDS bc then we could get boxes moving way off track from where they should be.
-        // For ice mode, make the object check at the end of the LERP but ONLY in the direction it was moving, and check if an object occupies that spot already (blocks can block blocks)
-        // When detected, get the object's position and allow movement directly to that position via LERP
+        //Grab our position
+        Vector3 origin = transform.position;
+
+        //halfExtents is half the size of the box bc that's what the method checks for
+        Vector3 halfExtents = boxSize * 0.5f;
+
+        // Convert the local direction into world space.
+        Vector3 direction = transform.TransformDirection(Vector3.down).normalized;
+
+        // Use the same rotation for both the cast and the Gizmos.
+        Quaternion boxRotation = transform.rotation;
+
+        LayerMask fallMask = ~LayerMask.GetMask("MoveTargets", "Player");
+
+        // Do the BoxCast with our calc'd info
+        bool floorDetected = Physics.BoxCast(
+            origin, // position the cast starts from
+            halfExtents, // how big the cast area is (half of the size of our box)
+            direction, // Which way we're casting the box
+            out RaycastHit hit, // The Raycast
+            boxRotation, // In case the box is rotated this will correct it
+            0.5f, // How far is being checked
+            fallMask // Exclusive layermask so we don't hit the moveTarget objects or the player
+
+        );
+
+        if (!floorDetected) {
+            transform.Translate( Vector3.down * fallSpeed * Time.deltaTime);
+        }
     }
 
     public void iceSlide()
@@ -282,6 +326,7 @@ public class PushBlock : BaseInteractable
     {
         isMoving = false;
         timeElapsed = 0f;
+        canFall = true;
 
         northHit = null;
         eastHit = null;
@@ -301,11 +346,15 @@ public class PushBlock : BaseInteractable
     #region BoxCasts
     // Handle Boxcasts in FixedUpdate
     private void FixedUpdate()
-    { 
-        boxCastChecker(Vector3.forward, ref northHit); // North Check
-        boxCastChecker(Vector3.right, ref eastHit); // East Check
-        boxCastChecker(Vector3.back, ref southHit); // South Check
-        boxCastChecker(Vector3.left, ref westHit); // West Check
+    {
+        checksTimer += Time.fixedDeltaTime;
+        if (checksTimer >= timeBetweenChecks) {
+            boxCastChecker(Vector3.forward, ref northHit); // North Check
+            boxCastChecker(Vector3.right, ref eastHit); // East Check
+            boxCastChecker(Vector3.back, ref southHit); // South Check
+            boxCastChecker(Vector3.left, ref westHit); // West Check
+            checksTimer = 0f;
+        }
     }
 
 

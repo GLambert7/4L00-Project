@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class PlayerController1Script : MonoBehaviour
 {
@@ -12,10 +14,15 @@ public class PlayerController1Script : MonoBehaviour
     [Space(10)]
     [SerializeField] private float _riseSpeed = 2f;
     [SerializeField] private float _fallSpeed = 2f;
+    [SerializeField] private GameObject _playerModel; // Reference to the player model for rotation purposes
 
     [Header("Camera Settings")]
     [SerializeField] private float _mouseSensitivityHorizontal = 10f;
     [SerializeField] private float _mouseSensitivityVertical = 10f;
+    [SerializeField] private float _controllerSensitivityHorizontal = 100f;
+    [SerializeField] private float _controllerSensitivityVertical = 100f;
+    [SerializeField] private float _sensitivityMult= 1f;
+
     [SerializeField] private float _upDownRange = 80.0f;
     [SerializeField] private Transform _camPivot;
 
@@ -45,6 +52,10 @@ public class PlayerController1Script : MonoBehaviour
 
     private float _horizontalRotation;
     private float _verticalRotation;
+
+    // Device Type Detection
+    public enum DeviceType { Keyboard, Controller}
+    public DeviceType currentMode { get; private set; }
     #endregion
 
     #region Unity Methods
@@ -67,22 +78,77 @@ public class PlayerController1Script : MonoBehaviour
     void Update()
     {
         _timeSinceLastDash += Time.deltaTime;
+        HandleControllerType();
         HandleRotation();
         HandleMovement();
     }
+
+    private void HandleControllerType()
+    {
+        InputSystem.onActionChange += OnActionChange;
+    }
+
+    private void OnActionChange(object obj, InputActionChange change)
+    {
+        // Only check when an action is performed/triggered
+        if (change != InputActionChange.ActionStarted && change != InputActionChange.ActionPerformed)
+            return;
+
+        InputAction action = obj as InputAction;
+        if (action == null || action.activeControl == null) return;
+
+        // Get the device associated with the active control
+        InputDevice device = action.activeControl.device;
+
+        // Determine the device type based on its class/layout
+        if (device is Gamepad)
+        {
+            SwitchInputMode(DeviceType.Controller);
+        }
+        else if (device is Keyboard || device is Mouse)
+        {
+            SwitchInputMode(DeviceType.Keyboard);
+        }
+    }
+
+    private void SwitchInputMode(DeviceType newMode)
+    {
+        if (currentMode == newMode) return;
+
+        currentMode = newMode;
+        Debug.Log($"Switched Input Mode to: {currentMode}");
+
+        // This can also control the UI changes if we want
+    }
+
+
     #endregion
 
     #region Movement Methods
     private void HandleRotation()
     {
-        // Update the horizontal and vertical rotation based on the LookInput from the PlayerInputHandler
-        _horizontalRotation += _inputHandler.LookInput.x * _mouseSensitivityHorizontal * Time.deltaTime;
-        _verticalRotation -= _inputHandler.LookInput.y * _mouseSensitivityVertical * Time.deltaTime;
-        _verticalRotation = Mathf.Clamp(_verticalRotation, -_upDownRange, _upDownRange);
+        if (currentMode == DeviceType.Controller)
+        {
+            // Update the horizontal and vertical rotation based on the LookInput from the PlayerInputHandler
+            _horizontalRotation += _inputHandler.LookInput.x * _controllerSensitivityHorizontal * _sensitivityMult* Time.deltaTime;
+            _verticalRotation -= _inputHandler.LookInput.y * _controllerSensitivityVertical * _sensitivityMult * Time.deltaTime;
+            _verticalRotation = Mathf.Clamp(_verticalRotation, -_upDownRange, _upDownRange);
 
-        // Apply the rotation to the player and camera
-        transform.rotation = Quaternion.Euler(0, _horizontalRotation, 0);
+            // Apply the rotation to the player and camera
+            transform.rotation = Quaternion.Euler(0, _horizontalRotation, 0);
+        }
+        else
+        {
+            // Update the horizontal and vertical rotation based on the LookInput from the PlayerInputHandler
+            _horizontalRotation += _inputHandler.LookInput.x * _mouseSensitivityHorizontal * _sensitivityMult * Time.deltaTime;
+            _verticalRotation -= _inputHandler.LookInput.y * _mouseSensitivityVertical * _sensitivityMult * Time.deltaTime;
+            _verticalRotation = Mathf.Clamp(_verticalRotation, -_upDownRange, _upDownRange);
 
+            // Apply the rotation to the player and camera
+            transform.rotation = Quaternion.Euler(0, _horizontalRotation, 0);
+
+        }
+        
         // Apply the vertical rotation to the camera pivot or main camera if the pivot is not assigned
         if (_camPivot != null)
         {
@@ -91,6 +157,19 @@ public class PlayerController1Script : MonoBehaviour
         else if (_mainCam != null)
         {
             _mainCam.transform.localRotation = Quaternion.Euler(_verticalRotation, 0, 0);
+        }
+
+        // Handle player model rotation: Horizontal if moving, vertical if stationary
+        if (_inputHandler.MoveInput.magnitude > 0.1f)
+        {
+            Vector3 modelRotation = new Vector3(_verticalRotation+75, _horizontalRotation, 0);
+            _playerModel.transform.rotation = Quaternion.Euler(modelRotation);
+        }
+        else
+        {
+            Vector3 modelRotation = new Vector3(0, _horizontalRotation, 0);
+            _playerModel.transform.rotation = Quaternion.Euler(modelRotation);
+            
         }
     }
 

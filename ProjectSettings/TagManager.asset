@@ -8,16 +8,16 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - MoveTargets
   - MoveBlocks
-  - 
-  - 
-  - 
-  - 
-  - 
+  - LightRays
+  - LightEmitter
+  - PassThrough
+  - GroWeed
+  - GroWeedInactive
   - 
   - 
   - 

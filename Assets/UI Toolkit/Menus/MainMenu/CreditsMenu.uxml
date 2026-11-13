@@ -1,0 +1,14 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Universal%20Stylesheets/Universal.uss?fileID=7433441132597879392&amp;guid=26e9159df86912247bab5dc10a8e07d8&amp;type=3#Universal"/>
+    <Style src="project://database/Assets/UI%20Toolkit/Menus/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=036d353d9df5b464394d7c2925c8e7c4&amp;type=3#MainMenu"/>
+    <ui:VisualElement name="Background" class="centered-container background">
+        <ui:Button text="&lt; Return" name="ReturnButton" class="return-button"/>
+        <ui:VisualElement name="Heading" class="heading-container" style="padding-bottom: 65px;">
+            <ui:Label text="Credits&#10;" name="Title" class="title-text header-text heading-text" style="width: 407px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="Container" style="flex-grow: 0; flex-direction: row;"/>
+        <ui:ScrollView style="height: 364px; width: 585px;">
+            <ui:Label text="Label" name="Label" class="body-text"/>
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

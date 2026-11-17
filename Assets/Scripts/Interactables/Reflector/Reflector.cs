@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class Reflector : BaseInteractable
@@ -18,9 +17,12 @@ public class Reflector : BaseInteractable
     [SerializeField] private Direction[] recievingDirections;
     [SerializeField] private Direction[] sendingDirections;
 
-
+    // Reflection visuals
     [SerializeField] private Material nonReflectMaterial;
     [SerializeField] private Material reflectMaterial;
+
+    [SerializeField] private GameObject reflectionSide1;
+    [SerializeField] private GameObject reflectionSide2;
     #endregion
 
     [SerializeField] private bool isReflective = false;
@@ -320,6 +322,9 @@ public class Reflector : BaseInteractable
         {
             matSwitch.material = nonReflectMaterial;
         }
+
+        reflectionSide1.SetActive(isReflective);
+        reflectionSide2.SetActive(isReflective);
     }
 
     private void boxCastChecker(Vector3 localDirection, ref GameObject hitLocation)

@@ -31,6 +31,10 @@ public class MainMenuEvents : MonoBehaviour
 
     private void Awake()
     {
+        // Ensuring cursor is unlocked
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
+
         // Query root visual elements for each menu screen
 
 

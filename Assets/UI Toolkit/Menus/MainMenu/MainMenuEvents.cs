@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 using UnityEditorInternal.VersionControl;
 using System.Security.Cryptography;
+using UnityEngine.Audio;
 
 public class MainMenuEvents : MonoBehaviour
 {
@@ -73,6 +74,7 @@ public class MainMenuEvents : MonoBehaviour
         // Options Menu
         optionsReturnButton.clicked += () => MenuEnter(_titleMenuRoot);
 
+
         // Credits Menu
         creditsReturnButton.clicked += () => MenuEnter(_titleMenuRoot);
 
@@ -84,6 +86,37 @@ public class MainMenuEvents : MonoBehaviour
 
     }
     #endregion
+
+    public class SoundManager : MonoBehaviour
+    {
+        public Slider Music;
+        void Start()
+        {
+            if (PlayerPrefs.HasKey("Music"))
+                LoadVolume();
+            else
+            {
+                PlayerPrefs.SetFloat("Music", 1);
+                LoadVolume();
+            }
+        }
+
+        public void SetVolume()
+        {
+            AudioListener.volume = Music.value;
+            SaveVolume();
+        }
+
+        public void SaveVolume()
+        {
+            PlayerPrefs.SetFloat("Music",Music.value);
+        }
+
+        public void LoadVolume()
+        {
+            Music.value = PlayerPrefs.GetFloat("Music");
+        }
+    }
 
     #region Title Menu Button Events
     private void MenuEnter(VisualElement enter)

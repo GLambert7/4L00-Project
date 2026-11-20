@@ -20,6 +20,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private string _dolphinInteract = "DolphinInteract";
     [SerializeField] private string _octopusInteract = "OctopusInteract";
     [SerializeField] private string _eelInteract = "EelInteract";
+    [SerializeField] private string _cutsceneSkip = "CutsceneSkip";
 
 
     // Input action references
@@ -34,6 +35,7 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction _dolphinInteractAction;
     private InputAction _octopusInteractAction;
     private InputAction _eelInteractAction;
+    private InputAction _cutsceneSkipAction;
 
     // Public values to be accessed by other scripts
     public Vector2 MoveInput { get; private set; }
@@ -47,6 +49,7 @@ public class PlayerInputHandler : MonoBehaviour
     public bool DolphinInteractInput { get; private set; }
     public bool OctopusInteractInput { get; private set; }
     public bool EelInteractInput { get; private set; }
+    public bool CutsceneSkipInput { get; private set; }
 
 
     public static PlayerInputHandler Instance { get; private set; }
@@ -76,6 +79,7 @@ public class PlayerInputHandler : MonoBehaviour
         _dolphinInteractAction = _inputActions.FindActionMap(_actionMapName).FindAction(_dolphinInteract);
         _octopusInteractAction = _inputActions.FindActionMap(_actionMapName).FindAction(_octopusInteract);
         _eelInteractAction = _inputActions.FindActionMap(_actionMapName).FindAction(_eelInteract);
+        _cutsceneSkipAction = _inputActions.FindActionMap(_actionMapName).FindAction(_cutsceneSkip);
         RegisterInputAction();
 
 
@@ -119,6 +123,7 @@ public class PlayerInputHandler : MonoBehaviour
         DolphinInteractInput = _dolphinInteractAction?.IsPressed() ?? false;
         OctopusInteractInput = _octopusInteractAction?.IsPressed() ?? false;
         EelInteractInput = _eelInteractAction?.IsPressed() ?? false;
+        CutsceneSkipInput = _cutsceneSkipAction?.IsPressed() ?? false;
     }
 
     private void OnEnable()
@@ -134,6 +139,7 @@ public class PlayerInputHandler : MonoBehaviour
         _dolphinInteractAction?.Enable();
         _octopusInteractAction?.Enable();
         _eelInteractAction?.Enable();
+        _cutsceneSkipAction?.Enable();
     }
 
     private void OnDisable()
@@ -151,5 +157,6 @@ public class PlayerInputHandler : MonoBehaviour
         _dolphinInteractAction?.Disable();
         _octopusInteractAction?.Disable();
         _eelInteractAction?.Disable();
+        _cutsceneSkipAction?.Disable();
     }
 }

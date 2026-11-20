@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 
-public class GroweedCutsceneTrigger : MonoBehaviour
+public class GroweedCutsceneTrigger : BaseInteractable
 {
     [SerializeField] private VideoPlayer cutscenePlayer;
 
@@ -13,6 +13,15 @@ public class GroweedCutsceneTrigger : MonoBehaviour
     {
         // Listen for when the cutscene finishes
         cutscenePlayer.loopPointReached += EndCutscene;
+    }
+    private void Update()
+    {
+        if (_inputHandler.CutsceneSkipInput)
+        {
+            // Skip the cutscene
+            cutscenePlayer.Stop();
+            EndCutscene(cutscenePlayer);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

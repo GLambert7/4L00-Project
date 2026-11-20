@@ -53,6 +53,7 @@ public class BaseInteractable : MonoBehaviour
     #region Unity Methods
     void Update()
     {
+        if (_inputHandler == null) { _inputHandler = FindObjectOfType<PlayerInputHandler>(); }
         InteractionCheck();
     }
     #endregion
@@ -129,6 +130,7 @@ public class BaseInteractable : MonoBehaviour
     {
         if (!canInteract) return;
         if (!interactableByPlayer && !interactableByDolphin && !interactableByOctopus && !interactableByEel) return;
+        if (_inputHandler == null) return;
         if (!_inputHandler.PlayerInteractInput && !_inputHandler.DolphinInteractInput && !_inputHandler.OctopusInteractInput && !_inputHandler.EelInteractInput)
         {
             hasInteracted = false;

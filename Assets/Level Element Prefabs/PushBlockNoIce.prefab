@@ -399,12 +399,12 @@ MonoBehaviour:
   interactableByPlayer: 0
   _inputHandler: {fileID: 0}
   interactionArea: {fileID: 3639020634799807211}
+  PlayerRef: {fileID: 0}
   cantUseSound: {fileID: 1923749450488585745}
   useSound: {fileID: 0}
   useSoundDolphin: {fileID: 0}
   useSoundOctopus: {fileID: 0}
   useSoundEel: {fileID: 0}
-  PlayerRef: {fileID: 0}
   canInteract: 0
   hasInteracted: 0
   timeToMove: 5

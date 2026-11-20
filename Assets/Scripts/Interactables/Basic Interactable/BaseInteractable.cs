@@ -1,28 +1,53 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class BaseInteractable : MonoBehaviour
 {
+
     #region Variables
     // Who can interact with this object? These booleans can be set in the Unity Inspector for each interactable object.
+    [Header("Interactable Booleans")]
+    [Tooltip("Can the dolphin interact with this object?")] 
     public bool interactableByDolphin = false; // Can the dolphin interact with this object?
+    [Tooltip("Can the octopus interact with this object?")] 
     public bool interactableByOctopus = false; // Can the octopus interact with this object?
+    [Tooltip("Can the eel interact with this object?")] 
     public bool interactableByEel = false; // Can the eel interact with this object?
+    [Tooltip("Can the player interact with this object independently from the companions?")] 
     public bool interactableByPlayer = false; // Can player interact with this object?
 
     // Basic requirements for each interactable object to function properly.
-    [Header("Player Input Handler")]
+    [Header("Object References")]
+    [Tooltip("This should be filled with the object titled \"InputHandler\", which should be placed in the scene already. If this variable is empty, click the target icon in this variable and it should pull up the correct object.")]
     [SerializeField] protected PlayerInputHandler _inputHandler; // Reference to the PlayerInputHandler script, which handles player input. This should be set up in the Unity Editor.
+    [Tooltip("This should be filled with a sphere collider placed on the object, which is <b>SEPERATE FROM THE MAIN COLLIDER and SET TO BE A TRIGGER</b>, as this is what detects if the player is near the object and allows for interaction.")]
     [SerializeField] protected Collider interactionArea; // The area in which the creature can interact with the object. This is a trigger collider that should be set up in the Unity Editor.
-    [SerializeField] protected AudioSource cantUseSound; // The sound that plays when the creature tries to interact with the object but cannot. This should be set up in the Unity Editor.
-    [SerializeField] protected AudioSource useSound; // The sound that plays when the creature interacts with the object. This should be set up in the Unity Editor.
-    [SerializeField] protected AudioSource useSoundDolphin; // The sound that plays when the dolphin interacts with the object. This should be set up in the Unity Editor.
-    [SerializeField] protected AudioSource useSoundOctopus; // The sound that plays when the octopus interacts with the object. This should be set up in the Unity Editor.
-    [SerializeField] protected AudioSource useSoundEel; // The sound that plays when the eel interacts with the object. This should be set up in the Unity Editor.
+    [Tooltip("This should be filled with a reference to the Player object. If this is empty, find the object in the scene named \"Player\" or \"Finley\", then drag and drop it from the hierarchy to here.")]
     [SerializeField] protected GameObject PlayerRef; // Reference to our player object
+    
+    [Header("Sound References")]
+    [Tooltip("This should be filled with the appropriate audio file for when the player attempts to use the object in the wrong way, such as interacting with a Dolphin related object with the Eel.")]
+    [SerializeField] protected AudioSource cantUseSound; // The sound that plays when the creature tries to interact with the object but cannot. This should be set up in the Unity Editor.
+    [Tooltip("This should be filled with the appropriate sound for when <b>The Player</b> successfully interacts with an object. <b>If your sound is not playing when you interact with an object, make sure to check if it is assigned to the correct variable!</b>")]
+    [SerializeField] protected AudioSource useSound; // The sound that plays when the creature interacts with the object. This should be set up in the Unity Editor.
+    [Tooltip("This should be filled with the appropriate sound for when <b>The Dolphin</b> successfully interacts with an object. <b>If your sound is not playing when you interact with an object, make sure to check if it is assigned to the correct variable!</b>")]
+    [SerializeField] protected AudioSource useSoundDolphin; // The sound that plays when the dolphin interacts with the object. This should be set up in the Unity Editor.
+    [Tooltip("This should be filled with the appropriate sound for when <b>The Octopus</b> successfully interacts with an object. <b>If your sound is not playing when you interact with an object, make sure to check if it is assigned to the correct variable!</b>")]
+    [SerializeField] protected AudioSource useSoundOctopus; // The sound that plays when the octopus interacts with the object. This should be set up in the Unity Editor.
+    [Tooltip("This should be filled with the appropriate sound for when <b>The Eel</b> successfully interacts with an object. <b>If your sound is not playing when you interact with an object, make sure to check if it is assigned to the correct variable!</b>")]
+    [SerializeField] protected AudioSource useSoundEel; // The sound that plays when the eel interacts with the object. This should be set up in the Unity Editor.
 
-    public bool canInteract = false; // Is the creature in range to interact with the object? This is set to true when the creature enters the interaction area, and false when it exits.
-    public bool hasInteracted = false; // Has the creature already interacted with the object? This is set to true when the creature interacts with the object, and false when the interaction key for all creatures is in the released state.
+
+    [HideInInspector] public bool canInteract = false; // Is the creature in range to interact with the object? This is set to true when the creature enters the interaction area, and false when it exits.
+    [HideInInspector] public bool hasInteracted = false; // Has the creature already interacted with the object? This is set to true when the creature interacts with the object, and false when the interaction key for all creatures is in the released state.
+
+    // Ignore the things going on below here I just want to put a line of text notating where the BaseInteractable variables end so I can seperate them from the inheritor class variables
+    [Serializable] private struct EmptySpace { }
+
+    [Header("---End of BaseInteractable Variables---")]
+    [SerializeField] private EmptySpace _footer;
+
     #endregion
 
     #region Unity Methods

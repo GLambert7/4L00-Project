@@ -2,14 +2,27 @@ using UnityEngine;
 
 public class BreakableBlock : BaseInteractable
 {
+    [Tooltip("Does this breakable block drop another item when broken?")]
+    [SerializeField] private bool dropsItemOnBreak = false;
+    [Tooltip("The item that is dropped when the block is broken.")]
+    [SerializeField] private GameObject payload;
+
     public override void DolphinInteract()
     {
         base.DolphinInteract();
         if (interactableByDolphin)
         {
-            // Implement breakable block logic here
-            Debug.Log("Dolphin broke the block: " + gameObject.name);
-            Destroy(gameObject);
-        } 
+            HandleBreaking();
+        }
+    }
+
+    private void HandleBreaking()
+    {
+        // Implement breakable block logic here
+        if (dropsItemOnBreak && payload != null)
+        {
+            Instantiate(payload, transform.position, Quaternion.identity);
+        }
+        this.gameObject.SetActive(false);
     }
 }

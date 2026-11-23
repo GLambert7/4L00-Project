@@ -22,6 +22,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private string _octopusInteract = "OctopusInteract";
     [SerializeField] private string _eelInteract = "EelInteract";
     [SerializeField] private string _cutsceneSkip = "CutsceneSkip";
+    [SerializeField] private string _cancelInteraction = "CancelInteraction";
 
 
     // Input action references
@@ -37,6 +38,7 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction _octopusInteractAction;
     private InputAction _eelInteractAction;
     private InputAction _cutsceneSkipAction;
+    private InputAction _cancelInteractionAction;
 
     // Public values to be accessed by other scripts
     public Vector2 MoveInput { get; private set; }
@@ -49,6 +51,11 @@ public class PlayerInputHandler : MonoBehaviour
     public bool PlayerInteractInput { get; private set; }
     public bool DolphinInteractInput { get; private set; }
     public bool OctopusInteractInput { get; private set; }
+    //these fix a bug I made (huzzah). holding the button would break everything and this basically just detects when its first pressed
+    public bool DolphinJustPressed => _dolphinInteractAction?.WasPressedThisFrame() ?? false;
+    public bool OctopusJustPressed => _octopusInteractAction?.WasPressedThisFrame() ?? false;
+    public bool EelJustPressed => _eelInteractAction?.WasPressedThisFrame() ?? false;
+    public bool CancelJustPressed => _cancelInteractionAction?.WasPressedThisFrame() ?? false;
     public bool EelInteractInput { get; private set; }
     public bool CutsceneSkipInput { get; private set; }
 
@@ -81,6 +88,7 @@ public class PlayerInputHandler : MonoBehaviour
         _octopusInteractAction = _inputActions.FindActionMap(_actionMapName).FindAction(_octopusInteract);
         _eelInteractAction = _inputActions.FindActionMap(_actionMapName).FindAction(_eelInteract);
         _cutsceneSkipAction = _inputActions.FindActionMap(_actionMapName).FindAction(_cutsceneSkip);
+        _cancelInteractionAction = _inputActions.FindActionMap(_actionMapName).FindAction(_cancelInteraction);
         RegisterInputAction();
 
 
@@ -141,6 +149,7 @@ public class PlayerInputHandler : MonoBehaviour
         _octopusInteractAction?.Enable();
         _eelInteractAction?.Enable();
         _cutsceneSkipAction?.Enable();
+        _cancelInteractionAction?.Enable();
     }
 
     private void OnDisable()
@@ -159,5 +168,6 @@ public class PlayerInputHandler : MonoBehaviour
         _octopusInteractAction?.Disable();
         _eelInteractAction?.Disable();
         _cutsceneSkipAction?.Disable();
+        _cancelInteractionAction?.Disable();
     }
 }

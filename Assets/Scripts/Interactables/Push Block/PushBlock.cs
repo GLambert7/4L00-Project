@@ -100,6 +100,13 @@ public class PushBlock : BaseInteractable
         beingLifted = lifted;
     }
 
+    //saves the position fo the block
+    private Vector3 savedPushPosition;
+    private bool hasSavedPushPosition = false;
+    
+   
+  
+
     #endregion
 
     #region Unity Methods
@@ -317,6 +324,15 @@ public class PushBlock : BaseInteractable
         }
     }
 
+    //I finally got the interaction stuff working but the blocks are moving based off where the player is and not where they were (this is reminding me of that missle meme lol) but this is bound to fix it
+    public void SavePushPosition()
+    {
+        if (PlayerRef == null) return;
+
+        savedPushPosition = PlayerRef.transform.position;
+        hasSavedPushPosition = true;
+    }
+
     // Honestly all this directional shit can be optimized but I gotta make sure everything's good on the front end before I start optimizing and refactoring. ~Emilyyyyyyyyyy
     public override void DolphinInteract()
     {
@@ -326,7 +342,9 @@ public class PushBlock : BaseInteractable
         {
             // Get the difference in positions between objects
             if (PlayerRef == null) return;
-            Vector3 difference = PlayerRef.transform.position - transform.position;
+            //more position stuff for the move blocks
+           Vector3 difference = (hasSavedPushPosition ? savedPushPosition : PlayerRef.transform.position) - transform.position;
+            hasSavedPushPosition = false;
 
             // Compare the distances along the X and Z axises
             if (Mathf.Abs(difference.z) > Mathf.Abs(difference.x))

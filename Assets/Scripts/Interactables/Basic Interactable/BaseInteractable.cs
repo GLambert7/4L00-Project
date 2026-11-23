@@ -42,11 +42,18 @@ public class BaseInteractable : MonoBehaviour
     [HideInInspector] public bool canInteract = false; // Is the creature in range to interact with the object? This is set to true when the creature enters the interaction area, and false when it exits.
     [HideInInspector] public bool hasInteracted = false; // Has the creature already interacted with the object? This is set to true when the creature interacts with the object, and false when the interaction key for all creatures is in the released state.
 
+    //stores the objects that creatures are assigned to 
+    private static BaseInteractable dolphinStandby;
+    private static BaseInteractable octopusStandby;
+    private static BaseInteractable eelStandby;
+
     // Ignore the things going on below here I just want to put a line of text notating where the BaseInteractable variables end so I can seperate them from the inheritor class variables
     [Serializable] private struct EmptySpace { }
 
     [Header("---End of BaseInteractable Variables---")]
     [SerializeField] private EmptySpace _footer;
+
+
 
     #endregion
 
@@ -125,41 +132,124 @@ public class BaseInteractable : MonoBehaviour
     }
 
     // Check if the player is in range and has pressed the interact button, if so, set isMoving to true, starting the movement of the block
-    protected void InteractionCheck()
-    // Each creature has its own interact button, so we check for each one separately. If the player is in range and presses the interact button, we call the appropriate interaction method for that creature.
+  protected void InteractionCheck()
+{
+    if (_inputHandler == null)
     {
-        if (!canInteract) return;
-        if (!interactableByPlayer && !interactableByDolphin && !interactableByOctopus && !interactableByEel) return;
+        _inputHandler = PlayerInputHandler.Instance;
         if (_inputHandler == null) return;
-        if (!_inputHandler.PlayerInteractInput && !_inputHandler.DolphinInteractInput && !_inputHandler.OctopusInteractInput && !_inputHandler.EelInteractInput)
-        {
-            hasInteracted = false;
-        }
+    }
+    //checks if the player is canceling one of the companions
+    CancelStandby();
 
-        if (hasInteracted) return;
+    if (!_inputHandler.PlayerInteractInput)
+        hasInteracted = false;
 
-        if (canInteract && _inputHandler.PlayerInteractInput)
+    if (canInteract && _inputHandler.PlayerInteractInput && !hasInteracted)
+    {
+        hasInteracted = true;
+        PlayerInteract();
+    }
+
+    // Missy
+    if (_inputHandler.DolphinJustPressed)
+    {
+        //if Missy is already assigned to an object, activate her
+        if (dolphinStandby == this)
         {
-            hasInteracted = true;
-            PlayerInteract();
-        }
-        else if (canInteract && _inputHandler.DolphinInteractInput)
-        {
-            hasInteracted = true;
+            dolphinStandby = null;
             DolphinInteract();
         }
-        else if (canInteract && _inputHandler.OctopusInteractInput)
+        //if she isnt assigned to an object assign her
+        else if (dolphinStandby == null && canInteract && interactableByDolphin)
         {
-            hasInteracted = true;
-            OctopusInteract();
-        }
-        else if (canInteract && _inputHandler.EelInteractInput)
-        {
-            hasInteracted = true;
-            EelInteract();
+            dolphinStandby = this;
+            //saves blocks position
+            if (this is PushBlock pushBlock)
+            {
+                pushBlock.SavePushPosition();
+            }
+            Debug.Log("Dolphin assigned to " + gameObject.name);
         }
     }
 
+    // Dumbo
+    if (_inputHandler.OctopusJustPressed)
+    {
+        //activate if dumbo si assigned 
+        if (octopusStandby == this)
+        {
+            octopusStandby = null;
+            OctopusInteract();
+        }
+        //if not assigned activcate
+        else if (octopusStandby == null && canInteract && interactableByOctopus)
+        {
+            octopusStandby = this;
+            Debug.Log("Octopus assigned to " + gameObject.name);
+        }
+    }
+
+    // Sparky (Shaqeel O'Neel)
+    if (_inputHandler.EelJustPressed)
+    {
+        //activatse if SParky is assigned 
+        if (eelStandby == this)
+        {
+            eelStandby = null;
+            EelInteract();
+        }
+        //if sparky not assigned assign him
+        else if (eelStandby == null && canInteract && interactableByEel)
+        {
+            eelStandby = this;
+            Debug.Log("Eel assigned to " + gameObject.name);
+        }
+    }
+}
+
+
+private void CancelStandby()
+{
+    // Only check when the cancel button is pressed
+    if (!_inputHandler.CancelJustPressed) return;
+
+    // Find the player's camera
+    Camera playerCamera = Camera.main;
+    if (playerCamera == null) return;
+
+   //raycast
+    Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+
+    if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+    {
+        // What player is looking at
+        BaseInteractable target = hit.collider.GetComponentInParent<BaseInteractable>();
+
+        // Only cancel if pklayer is looking at the object
+        if (target != this) return;
+
+        //clears Missy standby
+        if (dolphinStandby == this)
+        {
+            dolphinStandby = null;
+            Debug.Log("Dolphin standby cancelled");
+        }
+        //clears Dumbo standy
+        if (octopusStandby == this)
+        {
+            octopusStandby = null;
+            Debug.Log("Octopus standby cancelled");
+        }
+
+        //clears Sparky standby
+        if (eelStandby == this)
+        {
+            eelStandby = null;
+            Debug.Log("Eel standby cancelled");
+        }
+    }
+}
     public virtual void Activate()
     {
         // Implement activation logic here

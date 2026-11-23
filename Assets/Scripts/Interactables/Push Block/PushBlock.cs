@@ -34,9 +34,40 @@ public class PushBlock : BaseInteractable
 
     //Inspector Variables
     [Header("Push Block Specifics")]
+    [Tooltip("How long it takes for the block to move from one point to another")]
     [SerializeField] private float timeToMove = 1f;
 
+    [Header("Falling Block Specifics")]
+    [Tooltip("Can the block fall?")]
+    [SerializeField] private bool canFall = true;
+    [Tooltip("How fast the block falls")]
+    [SerializeField] private float fallSpeed = 5f;
+
+    [Header("Boxcast Vars")]
+    [Tooltip("What layer is the block looking for to move to?")]
+    [SerializeField] private LayerMask TargetLayer;
+    [Tooltip("What layer is the block checking for that will inhibit its movement?")]
+    [SerializeField] private LayerMask BlockLayer;
+
+    [Header("Block Type Variants")]
+    [Tooltip("Is the block an ice block? If so, it will slide until it hits an obstacle.")]
+    [SerializeField] private bool iceBlock = false;
+    [Tooltip("If the block is an ice block, should it rebound back to its original position after hitting an obstacle? <b>DO NOT USE WITHOUT ICE TOGGLED ON, IT WILL NOT WORK</b>")]
+    [SerializeField] private bool rebound = false;
+
+
+
+    // DrawGizmos Variables
+    [Header("Gizmos")]
+    [Tooltip("Should the boxcasts be drawn in the scene view?")]
+    [SerializeField] private bool drawBoxCasts = true;
+
+
+
+
     //Non-Inspector Variables
+    // "What do all of these variables do?" "Don't worry about it kitten." "Okay, yay!"
+
     private bool isMoving = false;
     public bool IsMoving => isMoving;
     private bool interactable = true;
@@ -45,17 +76,9 @@ public class PushBlock : BaseInteractable
 
     private float timeElapsed = 0f;
 
-    [Header("Boxcast Vars")]
     private Vector3 boxSize = Vector3.one;
     private float MaxCheckDistance = 4f; 
-    [SerializeField] private LayerMask TargetLayer;
-    [SerializeField] private LayerMask BlockLayer;
-    [Header("Variants")]
-    [SerializeField] private bool iceBlock = false;
     private int lastDirectionPushed = 0;
-
-    // DrawGizmos Variables
-    [SerializeField] private bool drawBoxCasts = true;
 
     // Stored Positions for move
     private GameObject northHit = null;
@@ -63,9 +86,8 @@ public class PushBlock : BaseInteractable
     private GameObject eastHit = null;
     private GameObject westHit = null;
 
-    private GameObject fallHit = null;
-    [SerializeField] private float fallSpeed = 5f;
-    [SerializeField] private bool canFall = true;
+    private bool reboundActive = false;
+    private bool reboundInProgress = false;
 
     private bool beingLifted = false;
 
@@ -110,6 +132,7 @@ public class PushBlock : BaseInteractable
         // Check if the block is allowed to move
         if (!isMoving || startPoint == null || endPoint == null)
         {
+            reboundInProgress = false;
             return;
         }
 
@@ -135,9 +158,7 @@ public class PushBlock : BaseInteractable
             {
                 iceSlide();
             }
-                
-        }
-        
+        }        
     }
 
     private void FallCheck()
@@ -173,6 +194,7 @@ public class PushBlock : BaseInteractable
         }
     }
 
+    // One day I will optimize this code, but today is not that day. I will refactor this code in the future to make it cleaner and more efficient. ~Emilyyyyyyyyyy
     public void iceSlide()
     {
 
@@ -187,6 +209,11 @@ public class PushBlock : BaseInteractable
             else 
             {
                 Debug.Log("Ice Slide stopped");
+                reboundActive = true;
+                if (rebound && reboundActive && !reboundInProgress)
+                {
+                    Rebound();
+                }
                 return; 
             }
         }
@@ -201,6 +228,11 @@ public class PushBlock : BaseInteractable
             else
             {
                 Debug.Log("Ice Slide stopped");
+                reboundActive = true;
+                if (rebound && reboundActive && !reboundInProgress)
+                {
+                    Rebound();
+                }
                 return;
             }
 
@@ -216,6 +248,11 @@ public class PushBlock : BaseInteractable
             else
             {
                 Debug.Log("Ice Slide stopped");
+                reboundActive = true;
+                if (rebound && reboundActive && !reboundInProgress)
+                {
+                    Rebound();
+                }
                 return;
             }
 
@@ -231,6 +268,11 @@ public class PushBlock : BaseInteractable
             else
             {
                 Debug.Log("Ice Slide stopped");
+                reboundActive = true;
+                if (rebound && reboundActive && !reboundInProgress)
+                {
+                    Rebound();
+                }
                 return;
             }
 
@@ -240,6 +282,42 @@ public class PushBlock : BaseInteractable
 
     }
 
+    public void Rebound()
+    {
+        if (!reboundActive) return;
+        reboundActive = false;
+        reboundInProgress = true;
+        if (lastDirectionPushed == 1) // North
+        {
+            boxCastChecker(Vector3.back, ref southHit); // South Check
+            endPoint = southHit.transform;
+            lastDirectionPushed = 2;
+            isMoving = true;
+        }
+        else if (lastDirectionPushed == 2) // South
+        {
+            boxCastChecker(Vector3.forward, ref northHit); // North Check
+            endPoint = northHit.transform;
+            lastDirectionPushed = 1;
+            isMoving = true;
+        }
+        else if (lastDirectionPushed == 3) // East
+        {
+            boxCastChecker(Vector3.right, ref eastHit); // East Check
+            endPoint = westHit.transform;
+            lastDirectionPushed = 4;
+            isMoving = true;
+        }
+        else if (lastDirectionPushed == 4) // West
+        {
+            boxCastChecker(Vector3.left, ref westHit); // West Check
+            endPoint = eastHit.transform;
+            lastDirectionPushed = 3;
+            isMoving = true;
+        }
+    }
+
+    // Honestly all this directional shit can be optimized but I gotta make sure everything's good on the front end before I start optimizing and refactoring. ~Emilyyyyyyyyyy
     public override void DolphinInteract()
     {
         base.DolphinInteract();
@@ -394,7 +472,7 @@ public class PushBlock : BaseInteractable
 
         );
 
-        // FOR NOW the only thing we are checking for is other moving blocks. Adding other raycasts that detect things in the way will be easy as copying the above code for obstructed and switching the target layer, but since we haven't set up normal wall obstacles or anything yet between the grid, I'll leave it to take care of at a later date
+        // Old comment was outdated, just add the other layers in inspector to the BlockLayer and they'll be checked for obstruction. ~Emilyyyyyyyyyy
 
         if ( obstructed ) { 
             canMove = false; 
@@ -425,11 +503,11 @@ public class PushBlock : BaseInteractable
 
     }
 
-#endregion
+    #endregion
 
-#region DrawGizmos
-
-private void OnDrawGizmos()
+    #region DrawGizmos
+    // Shapes and colours the likes of which I've never seen before! ~Emilyyyyyyyyyy
+    private void OnDrawGizmos()
     {
         boxCastChecker(Vector3.forward, ref northHit); // North Check
         boxCastChecker(Vector3.right, ref eastHit); // East Check

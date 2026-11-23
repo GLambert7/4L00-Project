@@ -3,14 +3,22 @@ using UnityEngine;
 
 public class Groweed : MonoBehaviour
 {
+    // Inspector Vars
+    [Header("Plant Growth Settings")]
+    [Tooltip("How fast the plant grows/shrinks")]
     [SerializeField] private float growthSpeed = 0.5f;
+    [Tooltip("The starting size of the plant")]
     [SerializeField] private float startingSize = 0.2f;
+    [Tooltip("The maximum size the plant can grow to")]
     [SerializeField] private float maxSize = 1f;
+    [Tooltip("The layer mask for detecting blocks above the plant")]
     [SerializeField] private LayerMask blockLayer;
 
-    [Space(10)]
+    [Header("Groweed Variants")]
+    [Tooltip("Whether the plant can shrink when not receiving light")]
     [SerializeField] private bool canShrink = false; // Whether the plant can shrink when not receiving light
 
+    // Non-Inspector Vars
     private float currentSize;
     private bool receivingLight;
     private Vector3 startingPosition;
@@ -179,7 +187,7 @@ public class Groweed : MonoBehaviour
 
         float heightDifference = (currentSize - startingSize) * originalHeight;
 
-        transform.localPosition = startingPosition + Vector3.up * (heightDifference / 2f);
+        transform.localPosition = startingPosition + transform.up * (heightDifference / 2f);
     }
 
     public void Shrink()
@@ -191,7 +199,7 @@ public class Groweed : MonoBehaviour
         //What grayson said above, but down instead of up
         transform.localScale = new Vector3(transform.localScale.x, currentSize, transform.localScale.z);
         float heightDifference = (currentSize - startingSize) * originalHeight;
-        transform.localPosition = startingPosition + Vector3.up * (heightDifference / 2f);
+        transform.localPosition = startingPosition + transform.up * (heightDifference / 2f);
     }
 
     public void ReceiveLight()

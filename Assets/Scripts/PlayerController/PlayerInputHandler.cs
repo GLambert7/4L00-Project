@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    [Header("<u>DO NOT TOUCH:</u> Input Action Settings")]
     [SerializeField] private InputActionAsset _inputActions;
 
     [SerializeField] private string _actionMapName = "Player";

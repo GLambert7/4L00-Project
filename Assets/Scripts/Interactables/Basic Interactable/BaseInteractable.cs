@@ -58,6 +58,14 @@ public class BaseInteractable : MonoBehaviour
     #endregion
 
     #region Unity Methods
+
+    private void Awake()
+    {
+        if (PlayerRef == null) { 
+            PlayerController1Script playerFinder = FindObjectOfType<PlayerController1Script>();
+            PlayerRef = playerFinder.gameObject;
+        }
+    }
     void Update()
     {
         if (_inputHandler == null) { _inputHandler = FindObjectOfType<PlayerInputHandler>(); }

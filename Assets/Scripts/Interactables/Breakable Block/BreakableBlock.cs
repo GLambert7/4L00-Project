@@ -21,7 +21,7 @@ public class BreakableBlock : BaseInteractable
         // Implement breakable block logic here
         if (dropsItemOnBreak && payload != null)
         {
-            Instantiate(payload, transform.position, Quaternion.identity);
+            Instantiate(payload, transform.position, transform.rotation);
         }
         this.gameObject.SetActive(false);
     }

@@ -7,11 +7,21 @@ public class Current : MonoBehaviour
     [Tooltip("Which layers can the current affect?")]
     [SerializeField] private string affectedByCurrent;
 
+    [SerializeField] private bool isActive = true;
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag(affectedByCurrent))
+        if (isActive)
         {
-            other.transform.position += (transform.rotation * Vector3.up) * currentSpeed * Time.fixedDeltaTime;
+            if (other.CompareTag(affectedByCurrent))
+            {
+                other.transform.position += (transform.rotation * Vector3.up) * currentSpeed * Time.fixedDeltaTime;
+            }
         }
+    }
+
+    public void switchState(bool state)
+    {
+        isActive = state;
     }
 }

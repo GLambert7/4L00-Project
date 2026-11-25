@@ -74936,6 +74936,10 @@ PrefabInstance:
       propertyPath: _inputHandler
       value: 
       objectReference: {fileID: 157606751}
+    - target: {fileID: 1685788657393540721, guid: 1b8d4247b79b135448a13b80d713e1c7, type: 3}
+      propertyPath: dolphinPrefab
+      value: 
+      objectReference: {fileID: 509147068}
     - target: {fileID: 2685031021524995236, guid: 1b8d4247b79b135448a13b80d713e1c7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.2951202

@@ -38,14 +38,33 @@ public class BaseInteractable : MonoBehaviour
     [Tooltip("This should be filled with the appropriate sound for when <b>The Eel</b> successfully interacts with an object. <b>If your sound is not playing when you interact with an object, make sure to check if it is assigned to the correct variable!</b>")]
     [SerializeField] protected AudioSource useSoundEel; // The sound that plays when the eel interacts with the object. This should be set up in the Unity Editor.
 
-
-    [HideInInspector] public bool canInteract = false; // Is the creature in range to interact with the object? This is set to true when the creature enters the interaction area, and false when it exits.
-    [HideInInspector] public bool hasInteracted = false; // Has the creature already interacted with the object? This is set to true when the creature interacts with the object, and false when the interaction key for all creatures is in the released state.
-
+    [Header("Companion Assignments")]
+    [Tooltip("This is where you put Missys prefab")]
+    [SerializeField] private GameObject dolphinPrefab;
+    [Tooltip("This is where you put Dumbos prefab")]
+    [SerializeField] private GameObject octopusPrefab;
+    [Tooltip("This is where you put Sparkys prefab")]
+    [SerializeField] private GameObject eelPrefab;
+    [Tooltip("This is where you put the empty where you want Missy to spawn")]
+    [SerializeField] private Transform dolphinSpawnPoint;
+    [Tooltip("This is where you put the empty where you want Dumbo to spawn")]
+    [SerializeField] private Transform octopusSpawnPoint;
+    [Tooltip("This is where you put the empty where you want Sparky to spawn")]
+    [SerializeField] private Transform eelSpawnPoint;
+    private GameObject spawnedDolphin;
+    private GameObject spawnedOctopus;
+    private GameObject spawnedEel;
     //stores the objects that creatures are assigned to 
     private static BaseInteractable dolphinStandby;
     private static BaseInteractable octopusStandby;
     private static BaseInteractable eelStandby;
+
+
+
+    [HideInInspector] public bool canInteract = false; // Is the creature in range to interact with the object? This is set to true when the creature enters the interaction area, and false when it exits.
+    [HideInInspector] public bool hasInteracted = false; // Has the creature already interacted with the object? This is set to true when the creature interacts with the object, and false when the interaction key for all creatures is in the released state.
+
+
 
     // Ignore the things going on below here I just want to put a line of text notating where the BaseInteractable variables end so I can seperate them from the inheritor class variables
     [Serializable] private struct EmptySpace { }
@@ -74,6 +93,32 @@ public class BaseInteractable : MonoBehaviour
     #endregion
 
     #region Interaction Methods
+
+    //spawn companion function
+    private GameObject SpawnCompanion(GameObject prefab, Transform spawnPoint)
+    {
+        //null referances
+        if (prefab == null || spawnPoint == null)
+        {
+            return null;
+        }
+        return Instantiate(
+        prefab,
+        spawnPoint.position,
+        spawnPoint.rotation
+        );
+    }
+
+    //kill companion fiunction 
+    private void RemoveCompanion(ref GameObject companion)
+    {
+        if (companion != null)
+        {
+            Destroy(companion);
+            companion = null;
+        }
+    }
+
     public virtual void DolphinInteract()
     {
         if (interactableByDolphin)
@@ -166,12 +211,18 @@ public class BaseInteractable : MonoBehaviour
         if (dolphinStandby == this)
         {
             dolphinStandby = null;
+            RemoveCompanion(ref spawnedDolphin);
             DolphinInteract();
         }
         //if she isnt assigned to an object assign her
         else if (dolphinStandby == null && canInteract && interactableByDolphin)
         {
             dolphinStandby = this;
+            //spawns Missy prefab
+            if (spawnedDolphin == null)
+            {
+                spawnedDolphin = SpawnCompanion(dolphinPrefab, dolphinSpawnPoint);
+            }
             //saves blocks position
             if (this is PushBlock pushBlock)
             {
@@ -188,12 +239,18 @@ public class BaseInteractable : MonoBehaviour
         if (octopusStandby == this)
         {
             octopusStandby = null;
+            RemoveCompanion(ref spawnedOctopus);
             OctopusInteract();
         }
         //if not assigned activcate
         else if (octopusStandby == null && canInteract && interactableByOctopus)
         {
             octopusStandby = this;
+            //spawns dumbo prefab
+            if (spawnedOctopus == null)
+            {
+             spawnedOctopus = SpawnCompanion(octopusPrefab, octopusSpawnPoint);
+            }
             Debug.Log("Octopus assigned to " + gameObject.name);
         }
     }
@@ -205,12 +262,18 @@ public class BaseInteractable : MonoBehaviour
         if (eelStandby == this)
         {
             eelStandby = null;
+            RemoveCompanion(ref spawnedEel);
             EelInteract();
         }
         //if sparky not assigned assign him
         else if (eelStandby == null && canInteract && interactableByEel)
         {
             eelStandby = this;
+             //spawns sparky prefab
+            if (spawnedEel == null)
+            {
+                spawnedEel = SpawnCompanion(eelPrefab, eelSpawnPoint);
+            }
             Debug.Log("Eel assigned to " + gameObject.name);
         }
     }
@@ -241,12 +304,14 @@ private void CancelStandby()
         if (dolphinStandby == this)
         {
             dolphinStandby = null;
+            RemoveCompanion(ref spawnedDolphin);
             Debug.Log("Dolphin standby cancelled");
         }
         //clears Dumbo standy
         if (octopusStandby == this)
         {
             octopusStandby = null;
+            RemoveCompanion(ref spawnedOctopus);
             Debug.Log("Octopus standby cancelled");
         }
 
@@ -254,6 +319,7 @@ private void CancelStandby()
         if (eelStandby == this)
         {
             eelStandby = null;
+            RemoveCompanion(ref spawnedEel);
             Debug.Log("Eel standby cancelled");
         }
     }

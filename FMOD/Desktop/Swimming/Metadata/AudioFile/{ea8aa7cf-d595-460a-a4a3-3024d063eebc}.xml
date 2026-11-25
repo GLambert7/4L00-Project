@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{ea8aa7cf-d595-460a-a4a3-3024d063eebc}">
+		<property name="assetPath">
+			<value>SFX/Swim Up - Pixabay_Whoosh_3.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.3759999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b9e02f46-d2d0-4f58-ae39-f8f41bd6cbe3}</destination>
+		</relationship>
+	</object>
+</objects>

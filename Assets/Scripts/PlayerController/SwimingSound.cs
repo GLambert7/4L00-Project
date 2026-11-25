@@ -17,7 +17,7 @@ public class SwimingSound : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if (playerController.isSwimming)
+        if (playerController.isMoving)
         {
             if (time >= rate)
             {

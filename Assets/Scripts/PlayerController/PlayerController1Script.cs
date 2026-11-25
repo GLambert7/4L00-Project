@@ -14,6 +14,7 @@ public class PlayerController1Script : MonoBehaviour
     [SerializeField] private float _deceleration = 3f;
     [SerializeField] private float _runMultiplier = 1.5f;
     [SerializeField] private bool _canRun = true;
+    public bool isMoving => _currentMovement.magnitude > 0.1f; // Public property to check if the player is moving
     [Space(10)]
     [SerializeField] private float _riseSpeed = 2f;
     [SerializeField] private float _fallSpeed = 2f;
@@ -50,7 +51,7 @@ public class PlayerController1Script : MonoBehaviour
     private Camera _mainCam;
     private float _manualVerticalMovement = 0f;
 
-    private Vector3 _currentMovement = Vector3.zero;
+    public Vector3 _currentMovement = Vector3.zero;
     private Vector3 _dashInput = Vector3.zero;
 
     private float _horizontalRotation;

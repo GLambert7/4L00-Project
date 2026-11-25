@@ -53,13 +53,14 @@ public class PushBlock : BaseInteractable
     [Tooltip("How far are we checking for the next move location?")]
     [SerializeField]private float MaxCheckDistance = 4f;
     [Tooltip("How far to check below to stop falling?")]
-    [SerializeField] private float distanceToFall = 0.5f;
+    [SerializeField] private float fallCheckDepth = 0.2f;
 
     [Header("Block Type Variants")]
     [Tooltip("Is the block an ice block? If so, it will slide until it hits an obstacle.")]
     [SerializeField] private bool iceBlock = false;
     [Tooltip("If the block is an ice block, should it rebound back to its original position after hitting an obstacle? <b>DO NOT USE WITHOUT ICE TOGGLED ON, IT WILL NOT WORK</b>")]
     [SerializeField] private bool rebound = false;
+    [SerializeField] private bool bigBlock = false;
 
 
 
@@ -108,6 +109,8 @@ public class PushBlock : BaseInteractable
     private Vector3 savedPushPosition;
     private bool hasSavedPushPosition = false;
 
+    private CompanionLimiter limiter;
+
     [SerializeField] private bool displayDuringRun = true;
 
 
@@ -117,13 +120,14 @@ public class PushBlock : BaseInteractable
 
     #region Unity Methods
 
-    private void Awake()
+    public override void Awake()
     {
-        if(PlayerRef == null)
+        base.Awake();
+        if (limiter == null && bigBlock)
         {
-            PlayerController1Script playerRefFinder = FindFirstObjectByType<PlayerController1Script>();
-            PlayerRef = playerRefFinder.gameObject;
+            limiter = GetComponent<CompanionLimiter>();
         }
+
         PostMoveReset();
     }
 
@@ -181,31 +185,43 @@ public class PushBlock : BaseInteractable
 
     private void FallCheck()
     {
+        BoxCollider box = GetComponent<BoxCollider>();
+
         //Grab our position
-        Vector3 origin = transform.position;
+        Vector3 origin = box.bounds.center;
+        origin.y = box.bounds.min.y - (fallCheckDepth/2f);
 
         //halfExtents is half the size of the box bc that's what the method checks for
-        Vector3 halfExtents = boxSize * 0.5f;
+        Vector3 halfExtents = new Vector3(box.bounds.extents.x * 0.9f, fallCheckDepth / 2f, box.bounds.extents.z * 0.9f);
 
-        // Convert the local direction into world space.
-        Vector3 direction = transform.TransformDirection(Vector3.down).normalized;
+        //Checks the direction, always straight down
+        Vector3 direction = Vector3.down;
 
         // Use the same rotation for both the cast and the Gizmos.
         Quaternion boxRotation = transform.rotation;
+        boxRotation.y = Quaternion.identity.y;
 
         LayerMask fallMask = ~LayerMask.GetMask("MoveTargets", "Player");
 
         // Do the BoxCast with our calc'd info
-        bool floorDetected = Physics.BoxCast(
+        Collider[] hits = Physics.OverlapBox(
             origin, // position the cast starts from
             halfExtents, // how big the cast area is (half of the size of our box)
-            direction, // Which way we're casting the box
-            out RaycastHit hit, // The Raycast
             boxRotation, // In case the box is rotated this will correct it
-            distanceToFall, // How far is being checked
             fallMask // Exclusive layermask so we don't hit the moveTarget objects or the player
-
         );
+
+        bool floorDetected = false;
+
+        foreach (Collider hit in hits) 
+        {
+            if (hit.transform == transform || hit.transform.IsChildOf(transform)) continue;
+
+            floorDetected = true;
+            break;
+        }
+
+
         if (!floorDetected) {
             transform.Translate( Vector3.down * fallSpeed * Time.deltaTime);
         }
@@ -213,14 +229,17 @@ public class PushBlock : BaseInteractable
 
     public void FallCheckDrawGizmos()
     {
+        BoxCollider box = GetComponent<BoxCollider>();
+
         //Grab our position
-        Vector3 origin = transform.position;
+        Vector3 origin = box.bounds.center;
+        origin.y = box.bounds.min.y - 1f;
 
         //halfExtents is half the size of the box bc that's what the method checks for
-        Vector3 halfExtents = boxSize * 0.5f;
+        Vector3 halfExtents = new Vector3(box.bounds.extents.x * 0.9f, 0.05f, box.bounds.extents.z * 0.9f);
 
-        // Convert the local direction into world space.
-        Vector3 direction = transform.TransformDirection(Vector3.down).normalized;
+        //Checks the direction, always straight down
+        Vector3 direction = Vector3.down;
 
         // Use the same rotation for both the cast and the Gizmos.
         Quaternion boxRotation = transform.rotation;
@@ -228,35 +247,29 @@ public class PushBlock : BaseInteractable
         LayerMask fallMask = ~LayerMask.GetMask("MoveTargets", "Player");
 
         // Do the BoxCast with our calc'd info
-        bool floorDetected = Physics.BoxCast(
+        bool floorDetected = Physics.CheckBox(
             origin, // position the cast starts from
             halfExtents, // how big the cast area is (half of the size of our box)
-            direction, // Which way we're casting the box
-            out RaycastHit hit, // The Raycast
             boxRotation, // In case the box is rotated this will correct it
-            distanceToFall, // How far is being checked
             fallMask // Exclusive layermask so we don't hit the moveTarget objects or the player
-
         );
 
         if (drawBoxCasts)
         {
-            #if UNITY_EDITOR
-            if (!Application.isPlaying || displayDuringRun) { 
+#if UNITY_EDITOR
+            if (!Application.isPlaying || displayDuringRun)
+            {
+                // Red if the ground is detected, green if it isn't
                 Gizmos.color = floorDetected ? UnityEngine.Color.red : UnityEngine.Color.green;
 
-                // Draw Start Box
-                DrawBox(origin, boxSize, boxRotation);
-
-                // Draw the end box, plus the line to it from start pos
-                float distance = floorDetected ? hit.distance : distanceToFall;
-                Vector3 endPointCalc = origin + direction * distance;
-
-                Gizmos.DrawLine(origin, endPointCalc);
-                DrawBox(endPointCalc, boxSize, boxRotation );
+                // Draw the detection box
+                DrawBox(
+                    origin,
+                    halfExtents,
+                    boxRotation
+                );
             }
-            #endif
-
+#endif
         }
 
     }
@@ -281,7 +294,11 @@ public class PushBlock : BaseInteractable
                 {
                     Rebound();
                 }
-                return; 
+                else if (bigBlock)
+                {
+                    limiter.DolphinInteract();
+                }
+                    return; 
             }
         }
         else if (lastDirectionPushed == 2) // South
@@ -300,7 +317,11 @@ public class PushBlock : BaseInteractable
                 {
                     Rebound();
                 }
-                return;
+                else if (bigBlock)
+                {
+                    limiter.DolphinInteract();
+                }
+                    return;
             }
 
         }
@@ -320,7 +341,11 @@ public class PushBlock : BaseInteractable
                 {
                     Rebound();
                 }
-                return;
+                else if (bigBlock)
+                {
+                    limiter.DolphinInteract();
+                }
+                    return;
             }
 
         }
@@ -339,8 +364,11 @@ public class PushBlock : BaseInteractable
                 if (rebound && reboundActive && !reboundInProgress)
                 {
                     Rebound();
+                }else if (bigBlock)
+                {
+                    limiter.DolphinInteract();
                 }
-                return;
+                    return;
             }
 
         }

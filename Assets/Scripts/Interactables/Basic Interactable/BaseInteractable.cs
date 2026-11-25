@@ -50,6 +50,8 @@ public class BaseInteractable : MonoBehaviour
     private static BaseInteractable octopusStandby;
     private static BaseInteractable eelStandby;
 
+    protected PlayerController1Script script;
+
     // Ignore the things going on below here I just want to put a line of text notating where the BaseInteractable variables end so I can seperate them from the inheritor class variables
     [Serializable] private struct EmptySpace { }
 
@@ -62,7 +64,7 @@ public class BaseInteractable : MonoBehaviour
 
     #region Unity Methods
 
-    private void Awake()
+    public virtual void Awake()
     {
         if (_inputHandler == null)
         {
@@ -78,6 +80,8 @@ public class BaseInteractable : MonoBehaviour
             interactionArea = GetComponent<SphereCollider>();
         }
 
+        script = PlayerRef.GetComponent<PlayerController1Script>();
+
         interactionArea.radius = interactableRange;
     }
     void Update()
@@ -90,6 +94,7 @@ public class BaseInteractable : MonoBehaviour
     #region Interaction Methods
     public virtual void DolphinInteract()
     {
+        if (!script.canUseDolphin) return;
         if (interactableByDolphin)
         {
             // Implement dolphin interaction logic here
@@ -106,6 +111,7 @@ public class BaseInteractable : MonoBehaviour
     }
     public virtual void OctopusInteract()
     {
+        if (!script.canUseOctopus) return;
         if (interactableByOctopus)
         {
             // Implement octopus interaction logic here
@@ -122,6 +128,7 @@ public class BaseInteractable : MonoBehaviour
     }
     public virtual void EelInteract()
     {
+        if (!script.canUseEel) return;
         if (interactableByEel)
         {
             // Implement eel interaction logic here

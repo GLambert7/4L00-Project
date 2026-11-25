@@ -36,6 +36,11 @@ public class PlayerController1Script : MonoBehaviour
     [SerializeField] private float _dashCooldown = 3f;
     private float _timeSinceLastDash = 99f;
 
+    [Header("Can Interact Settings")]
+    public bool canUseDolphin = true;
+    public bool canUseOctopus = true;
+    public bool canUseEel = true;
+
 
     [Header("Player Input Handler")]
     [SerializeField] private PlayerInputHandler _inputHandler;
@@ -252,6 +257,29 @@ public class PlayerController1Script : MonoBehaviour
         // Apply the movement to the CharacterController
         _characterController.Move(_currentMovement * Time.deltaTime);
     }
+    #endregion
+
+    #region Interaction Methods
+
+    public void interactToggle(int whoToggles)
+    {
+        if (whoToggles == 0)
+        {
+            Debug.Log("Dolphin Accessibility Changed");
+            canUseDolphin = !canUseDolphin;
+        }
+        else if (whoToggles == 1)
+        {
+            Debug.Log("Octopus Accessibility Changed");
+            canUseOctopus = !canUseOctopus;
+        }
+        else if (whoToggles == 2)
+        {
+            Debug.Log("Eel Accessibility Changed");
+            canUseEel = !canUseEel;
+        }
+    }
+
     #endregion
 
 }

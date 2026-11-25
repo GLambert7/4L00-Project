@@ -882,6 +882,10 @@ PrefabInstance:
       value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
+      propertyPath: invertGrowth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: startingSize
       value: 2
       objectReference: {fileID: 0}
@@ -1534,6 +1538,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: canShrink
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
+      propertyPath: invertGrowth
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
@@ -4331,6 +4339,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
+      propertyPath: invertGrowth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: startingSize
       value: 4
       objectReference: {fileID: 0}
@@ -5102,6 +5114,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
+      propertyPath: invertGrowth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: startingSize
       value: 4
       objectReference: {fileID: 0}
@@ -5615,6 +5631,14 @@ PrefabInstance:
     - target: {fileID: 6927509135249984971, guid: 44442fa8bd3de6c418ab06be2ca5f597, type: 3}
       propertyPath: resetTimer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927509135249984971, guid: 44442fa8bd3de6c418ab06be2ca5f597, type: 3}
+      propertyPath: interactableRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927509135249984971, guid: 44442fa8bd3de6c418ab06be2ca5f597, type: 3}
+      propertyPath: interactableByPlayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6927509135249984971, guid: 44442fa8bd3de6c418ab06be2ca5f597, type: 3}
       propertyPath: groweedsToFlip.Array.size
@@ -8550,6 +8574,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6371625920612147639, guid: 44442fa8bd3de6c418ab06be2ca5f597, type: 3}
+      propertyPath: m_Radius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927509135249984971, guid: 44442fa8bd3de6c418ab06be2ca5f597, type: 3}
+      propertyPath: interactableRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927509135249984971, guid: 44442fa8bd3de6c418ab06be2ca5f597, type: 3}
+      propertyPath: interactableByPlayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6927509135249984971, guid: 44442fa8bd3de6c418ab06be2ca5f597, type: 3}
       propertyPath: 'groweedsToFlip.Array.data[0]'
       value: 
@@ -8828,6 +8864,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
+      propertyPath: invertGrowth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: startingSize
       value: 4
       objectReference: {fileID: 0}
@@ -9029,6 +9069,10 @@ PrefabInstance:
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: canShrink
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
+      propertyPath: invertGrowth
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: startingSize

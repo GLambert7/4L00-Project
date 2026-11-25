@@ -48,6 +48,12 @@ public class PushBlock : BaseInteractable
     [SerializeField] private LayerMask TargetLayer;
     [Tooltip("What layer is the block checking for that will inhibit its movement?")]
     [SerializeField] private LayerMask BlockLayer;
+    [Tooltip("How big is the boxcast?")]
+    [SerializeField] private Vector3 boxSize = Vector3.one;
+    [Tooltip("How far are we checking for the next move location?")]
+    [SerializeField]private float MaxCheckDistance = 4f;
+    [Tooltip("How far to check below to stop falling?")]
+    [SerializeField] private float distanceToFall = 0.5f;
 
     [Header("Block Type Variants")]
     [Tooltip("Is the block an ice block? If so, it will slide until it hits an obstacle.")]
@@ -74,11 +80,9 @@ public class PushBlock : BaseInteractable
     private Transform startPoint;
     private Transform endPoint;
 
-    private float timeElapsed = 0f;
-
-    private Vector3 boxSize = Vector3.one;
-    private float MaxCheckDistance = 4f; 
     private int lastDirectionPushed = 0;
+    
+    private float timeElapsed = 0f;
 
     // Stored Positions for move
     private GameObject northHit = null;
@@ -103,9 +107,11 @@ public class PushBlock : BaseInteractable
     //saves the position fo the block
     private Vector3 savedPushPosition;
     private bool hasSavedPushPosition = false;
-    
-   
-  
+
+    [SerializeField] private bool displayDuringRun = true;
+
+
+
 
     #endregion
 
@@ -113,6 +119,11 @@ public class PushBlock : BaseInteractable
 
     private void Awake()
     {
+        if(PlayerRef == null)
+        {
+            PlayerController1Script playerRefFinder = FindFirstObjectByType<PlayerController1Script>();
+            PlayerRef = playerRefFinder.gameObject;
+        }
         PostMoveReset();
     }
 
@@ -191,14 +202,63 @@ public class PushBlock : BaseInteractable
             direction, // Which way we're casting the box
             out RaycastHit hit, // The Raycast
             boxRotation, // In case the box is rotated this will correct it
-            0.5f, // How far is being checked
+            distanceToFall, // How far is being checked
+            fallMask // Exclusive layermask so we don't hit the moveTarget objects or the player
+
+        );
+        if (!floorDetected) {
+            transform.Translate( Vector3.down * fallSpeed * Time.deltaTime);
+        }
+    }
+
+    public void FallCheckDrawGizmos()
+    {
+        //Grab our position
+        Vector3 origin = transform.position;
+
+        //halfExtents is half the size of the box bc that's what the method checks for
+        Vector3 halfExtents = boxSize * 0.5f;
+
+        // Convert the local direction into world space.
+        Vector3 direction = transform.TransformDirection(Vector3.down).normalized;
+
+        // Use the same rotation for both the cast and the Gizmos.
+        Quaternion boxRotation = transform.rotation;
+
+        LayerMask fallMask = ~LayerMask.GetMask("MoveTargets", "Player");
+
+        // Do the BoxCast with our calc'd info
+        bool floorDetected = Physics.BoxCast(
+            origin, // position the cast starts from
+            halfExtents, // how big the cast area is (half of the size of our box)
+            direction, // Which way we're casting the box
+            out RaycastHit hit, // The Raycast
+            boxRotation, // In case the box is rotated this will correct it
+            distanceToFall, // How far is being checked
             fallMask // Exclusive layermask so we don't hit the moveTarget objects or the player
 
         );
 
-        if (!floorDetected) {
-            transform.Translate( Vector3.down * fallSpeed * Time.deltaTime);
+        if (drawBoxCasts)
+        {
+            #if UNITY_EDITOR
+            if (!Application.isPlaying || displayDuringRun) { 
+                Gizmos.color = floorDetected ? UnityEngine.Color.red : UnityEngine.Color.green;
+
+                // Draw Start Box
+                DrawBox(origin, boxSize, boxRotation);
+
+                // Draw the end box, plus the line to it from start pos
+                float distance = floorDetected ? hit.distance : distanceToFall;
+                Vector3 endPointCalc = origin + direction * distance;
+
+                Gizmos.DrawLine(origin, endPointCalc);
+                DrawBox(endPointCalc, boxSize, boxRotation );
+            }
+            #endif
+
         }
+
     }
 
     // One day I will optimize this code, but today is not that day. I will refactor this code in the future to make it cleaner and more efficient. ~Emilyyyyyyyyyy
@@ -501,7 +561,7 @@ public class PushBlock : BaseInteractable
         if (drawBoxCasts)
         {
             #if UNITY_EDITOR
-            if (!Application.isPlaying) { 
+            if (!Application.isPlaying || displayDuringRun) { 
                 Gizmos.color = canMove ? UnityEngine.Color.red : UnityEngine.Color.green;
 
                 // Draw Start Box
@@ -531,6 +591,7 @@ public class PushBlock : BaseInteractable
         boxCastChecker(Vector3.right, ref eastHit); // East Check
         boxCastChecker(Vector3.back, ref southHit); // South Check
         boxCastChecker(Vector3.left, ref westHit); // West Check
+        FallCheckDrawGizmos();
     }
 
     private void DrawBox(Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation)

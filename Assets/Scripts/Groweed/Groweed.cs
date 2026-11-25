@@ -27,7 +27,7 @@ public class Groweed : MonoBehaviour
     private float growTowards;
     private float growAwayFrom;
 
-    private bool invertGrowth = false;
+    [SerializeField] private bool invertGrowth = false;
 
     private PushBlock liftedBlock;
 

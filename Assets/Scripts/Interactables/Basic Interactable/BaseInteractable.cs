@@ -17,12 +17,15 @@ public class BaseInteractable : MonoBehaviour
     [Tooltip("Can the player interact with this object independently from the companions?")] 
     public bool interactableByPlayer = false; // Can player interact with this object?
 
+    [Tooltip("How far awayt does the player need to be to interact with this object?")]
+    public float interactableRange = 2f;
+
     // Basic requirements for each interactable object to function properly.
     [Header("Object References")]
     [Tooltip("This should be filled with the object titled \"InputHandler\", which should be placed in the scene already. If this variable is empty, click the target icon in this variable and it should pull up the correct object.")]
     [SerializeField] protected PlayerInputHandler _inputHandler; // Reference to the PlayerInputHandler script, which handles player input. This should be set up in the Unity Editor.
     [Tooltip("This should be filled with a sphere collider placed on the object, which is <b>SEPERATE FROM THE MAIN COLLIDER and SET TO BE A TRIGGER</b>, as this is what detects if the player is near the object and allows for interaction.")]
-    [SerializeField] protected Collider interactionArea; // The area in which the creature can interact with the object. This is a trigger collider that should be set up in the Unity Editor.
+    [SerializeField] protected SphereCollider interactionArea; // The area in which the creature can interact with the object. This is a trigger collider that should be set up in the Unity Editor.
     [Tooltip("This should be filled with a reference to the Player object. If this is empty, find the object in the scene named \"Player\" or \"Finley\", then drag and drop it from the hierarchy to here.")]
     [SerializeField] protected GameObject PlayerRef; // Reference to our player object
     
@@ -61,10 +64,21 @@ public class BaseInteractable : MonoBehaviour
 
     private void Awake()
     {
+        if (_inputHandler == null)
+        {
+            PlayerInputHandler inputHandler = FindObjectOfType<PlayerInputHandler>();
+            _inputHandler = inputHandler;
+        }
         if (PlayerRef == null) { 
             PlayerController1Script playerFinder = FindObjectOfType<PlayerController1Script>();
             PlayerRef = playerFinder.gameObject;
         }
+        if (interactionArea == null)
+        {
+            interactionArea = GetComponent<SphereCollider>();
+        }
+
+        interactionArea.radius = interactableRange;
     }
     void Update()
     {

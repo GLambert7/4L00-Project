@@ -1,29 +1,44 @@
+using FMOD;
+using FMOD.Studio;
 using FMODUnity;
+using Mono.Cecil.Cil;
 using UnityEngine;
 
 public class SwimingSound : MonoBehaviour
 {
-    [SerializeField] EventReference swimSoundEvent;
-    [SerializeField] float rate;
-    [SerializeField] GameObject player;
-    [SerializeField] PlayerController1Script playerController;
+    public PlayerController1Script playerController;
 
-    float time;
-    public void PlaySwimSound()
-    {
-        RuntimeManager.PlayOneShotAttached(swimSoundEvent, player);
-    }
+    public EventReference waterSwimSound;
 
-    void Update()
+    private EventInstance loopSoundInstance;
+
+    private bool isPlayingLoopSound = false;
+ void Update()
+{
+    if (playerController.isMoving)
     {
-        time += Time.deltaTime;
-        if (playerController.isMoving)
+        if (!isPlayingLoopSound)
         {
-            if (time >= rate)
-            {
-                PlaySwimSound();
-                time = 0;
-            }
+        loopSoundInstance = FMODUnity.RuntimeManager.CreateInstance(waterSwimSound);
+
+        loopSoundInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(loopSoundInstance, gameObject);
+
+        loopSoundInstance.start();
+
+        isPlayingLoopSound = true;
         }
     }
+    else
+    {
+        if (isPlayingLoopSound)
+        {
+            loopSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            loopSoundInstance.release();
+
+            isPlayingLoopSound = false;
+        }
+    }
+}
+
 }

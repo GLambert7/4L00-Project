@@ -3776,6 +3776,7 @@ GameObject:
   - component: {fileID: 559214746}
   - component: {fileID: 559214745}
   - component: {fileID: 559214744}
+  - component: {fileID: 559214748}
   m_Layer: 3
   m_Name: PlayerPlaceholder
   m_TagString: Player
@@ -3865,6 +3866,26 @@ Transform:
   - {fileID: 305593184}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 282.91998, z: 0}
+--- !u!114 &559214748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559214742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ecd0d049d66db4d9d03215d3ad3101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwimingSound
+  playerController: {fileID: 559214745}
+  waterSwimSound:
+    Guid:
+      Data1: 1245501389
+      Data2: 1212124606
+      Data3: -2016501362
+      Data4: 384394797
+    Path: event:/Swimming
 --- !u!1 &568601796
 GameObject:
   m_ObjectHideFlags: 0
@@ -9223,7 +9244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1555814764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9236,16 +9257,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ecd0d049d66db4d9d03215d3ad3101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwimingSound
-  swimSoundEvent:
-    Guid:
-      Data1: -1241502325
-      Data2: 1282479928
-      Data3: 783369348
-      Data4: -1706877932
-    Path: event:/Char/Swim
-  rate: 1
-  player: {fileID: 559214742}
   playerController: {fileID: 559214745}
+  waterSwimSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!4 &1555814765
 Transform:
   m_ObjectHideFlags: 0

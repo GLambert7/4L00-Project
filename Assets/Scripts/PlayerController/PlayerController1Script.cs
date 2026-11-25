@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,6 +6,7 @@ using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class PlayerController1Script : MonoBehaviour
 {
+    
     #region Variables
     [Header("Player Movement Settings")]
     [SerializeField] private float _moveSpeed = 5f;
@@ -185,7 +187,6 @@ public class PlayerController1Script : MonoBehaviour
 
     private void HandleMovement()
     {
-
         // Check for Rise or Sink input and set the vertical movement accordingly
 
         if (_inputHandler.RiseInput)

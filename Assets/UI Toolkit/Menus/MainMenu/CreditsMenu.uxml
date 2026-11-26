@@ -2,13 +2,34 @@
     <Style src="project://database/Assets/UI%20Toolkit/Universal%20Stylesheets/Universal.uss?fileID=7433441132597879392&amp;guid=26e9159df86912247bab5dc10a8e07d8&amp;type=3#Universal"/>
     <Style src="project://database/Assets/UI%20Toolkit/Menus/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=036d353d9df5b464394d7c2925c8e7c4&amp;type=3#MainMenu"/>
     <ui:VisualElement name="Background" class="centered-container background">
-        <ui:Button text="&lt; Return" name="ReturnButton" class="return-button"/>
         <ui:VisualElement name="Heading" class="heading-container" style="padding-bottom: 65px;">
             <ui:Label text="Credits&#10;" name="Title" class="title-text header-text heading-text" style="width: 407px;"/>
         </ui:VisualElement>
-        <ui:VisualElement name="Container" style="flex-grow: 0; flex-direction: row;"/>
-        <ui:ScrollView style="height: 364px; width: 585px;">
-            <ui:Label text="Label" name="Label" class="body-text"/>
-        </ui:ScrollView>
+        <ui:VisualElement name="Container" style="flex-grow: 0; flex-direction: column;">
+            <ui:Button text="&lt; Return" name="ReturnButton" class="return-button" style="left: -40%; top: -50%; flex-direction: column;"/>
+            <ui:ScrollView name="Credits" focusable="true" style="height: 364px; width: 585px; flex-direction: column;">
+                <ui:Label text="Alysha McCann " name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Matteo Monteleone" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Grayson Lambert" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Moztabir Islam" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Sitong Wu" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Kylan Rea Joynt" name="LastName" triple-click-selects-line="false" focusable="true" class="body-text"/>
+                <ui:Label text="Ya’el Lederman" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Emily Walton" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Danielle Clapiz" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Megan Smith" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Tomas Galvez" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Griffin Gauthier" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Noah Serpa" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Carl Ferma" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Will Eisner Stanlee D. Castaneda" name="Name" focusable="true" selectable="true" class="body-text"/>
+                <ui:Label text="Nathan Vansickle" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Cadence" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Amelia Gordon" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Carter Sentance" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Dimple" name="Name" focusable="true" class="body-text"/>
+                <ui:Label text="Shayan Owji" name="Name" focusable="true" class="body-text"/>
+            </ui:ScrollView>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

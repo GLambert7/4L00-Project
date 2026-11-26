@@ -42,7 +42,7 @@ public class PopupIndicator : MonoBehaviour
             if (!interactable.hasInteracted)
             {
                 indicator.enabled = true;
-            }            
+            }
         }
         else
         {

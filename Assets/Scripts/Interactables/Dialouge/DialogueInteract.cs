@@ -1,41 +1,51 @@
-
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DialogueInteract : BaseInteractable
 {
     [Header("Dialogue Settings")]
-    [SerializeField] private DialogueUI dialogueUI;
-    [SerializeField] private string characterName;
-
-    [TextArea(3, 5)]
-    [SerializeField] private string dialogue;
-
+    [SerializeField] private GameObject dialogueBox;
+    private DialogueBox dialogueUI;
 
     private bool dialogueOpen = false;
 
+    private void Awake()
+    {
+        dialogueUI = dialogueBox.GetComponent<DialogueBox>();
+    }
+
     public override void PlayerInteract()
     {
-        Debug.Log("Interacting with: " + gameObject.name);
         base.PlayerInteract();
+        if (dialogueBox == null) { return; }
 
         if (dialogueOpen)
         {
-            dialogueUI.HideDialogue();
-            dialogueOpen = false;
+            if (_inputHandler.PlayerInteractInput)
+            {
+                dialogueUI.NextDialogueLine();
+            }
+
+            Debug.Log("Interacting with: ");
         }
         else
         {
-            dialogueUI.ShowDialogue(characterName, dialogue);
+            // Show dialogue
+            dialogueBox.SetActive(true);
             dialogueOpen = true;
+
+            Debug.Log("Interacting with: ");
         }
     }
     protected override void OnTriggerExit(Collider other)
     {
         base.OnTriggerExit(other);
+        if (dialogueBox == null) { return; }
 
         if (other.CompareTag("Player") && dialogueOpen)
         {
-            dialogueUI.HideDialogue();
+            // Hide dialogue
+            dialogueBox.SetActive(false);
             dialogueOpen = false;
         }
     }

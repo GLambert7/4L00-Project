@@ -2,26 +2,37 @@ using UnityEngine;
 
 public class CurrentGroweedBlocker : MonoBehaviour
 {
+    [Tooltip("Put current(s) you want to activate here")]
     [SerializeField] private Current[] currents;
-    [SerializeField] private LayerMask blockLayer;
-    [SerializeField] private Collider detectionArea;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void OnTriggerStay(Collider other)
+    [Tooltip("Put groweeds for the puzzle here")]
+    [SerializeField] private Groweed[] groweeds;
+    [Tooltip("Put Breakable block here")]
+    [SerializeField] private BreakableBlock breakableBlock;
+
+    private void Update()
     {
-        if ((blockLayer.value & (1 << other.gameObject.layer)) == 0) return;
+        
+        bool allWeedsShrunk = true;
+
+    
+        foreach (Groweed weed in groweeds)
+        {
+            if (!weed.IsShrunk)
+            {
+                allWeedsShrunk = false;
+                break;
+            }
+        }
+        //both conditions must be met to activate the current
+        bool activateCurrent = allWeedsShrunk && breakableBlock.IsBroken;
+
         foreach (Current obj in currents)
         {
-            obj.switchState(false);
+            obj.switchState(activateCurrent);
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if ((blockLayer.value & (1 << other.gameObject.layer)) == 0) return;
-        foreach (Current obj in currents)
+        if (activateCurrent)
         {
-            obj.switchState(true);
+            enabled = false;
         }
     }
-
 }

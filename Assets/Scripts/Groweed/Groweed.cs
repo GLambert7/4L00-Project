@@ -20,6 +20,8 @@ public class Groweed : MonoBehaviour
 
     // Non-Inspector Vars
     private float currentSize;
+    //makes it so other scripts can see groweed size for the barn puzzle
+    public bool IsShrunk => currentSize <= startingSize;
     private bool receivingLight;
     private Vector3 startingPosition;
     private float originalHeight;

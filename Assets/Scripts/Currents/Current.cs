@@ -8,8 +8,11 @@ public class Current : MonoBehaviour
     [SerializeField] private string affectedByCurrent;
 
     [SerializeField] private bool isActive = true;
+    //this is so the current can start deactivated and appear when you "solve" the puzzle
+    [Tooltip("Put the current gameobject here")]
+    [SerializeField] private GameObject currentVisuals;
 
-private void OnTriggerEnter(Collider other)
+private void OnTriggerStay(Collider other)
 {
     Debug.Log("Detected: " + other.name);
 
@@ -27,5 +30,9 @@ private void OnTriggerEnter(Collider other)
     public void switchState(bool state)
     {
         isActive = state;
+        if (currentVisuals != null)
+        {
+            currentVisuals.SetActive(state);
+        }
     }
 }

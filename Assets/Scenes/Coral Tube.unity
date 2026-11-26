@@ -4484,15 +4484,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: maxSize
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: invertGrowth
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: startingSize
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5445981201474588038, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: m_LocalScale.x
@@ -5259,15 +5259,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: maxSize
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: invertGrowth
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: startingSize
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5445981201474588038, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: m_LocalScale.x
@@ -9203,15 +9203,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: maxSize
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: invertGrowth
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: startingSize
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5445981201474588038, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: m_LocalScale.x
@@ -9459,7 +9459,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: maxSize
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: canShrink
@@ -9467,11 +9467,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: invertGrowth
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1174550670111947355, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: startingSize
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5445981201474588038, guid: 728a024d06f01aa4bb3176cf215c17cd, type: 3}
       propertyPath: m_LocalScale.x

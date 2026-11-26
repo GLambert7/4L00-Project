@@ -35,7 +35,7 @@ Shader "Custom/Water/BasicProceduralWater"
             Name "Forward"
             Blend SrcAlpha OneMinusSrcAlpha
             ZWrite Off
-            Cull Back
+            Cull Off
 
             HLSLPROGRAM
 

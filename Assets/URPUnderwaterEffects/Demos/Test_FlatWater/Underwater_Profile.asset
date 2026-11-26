@@ -89,7 +89,7 @@ MonoBehaviour:
     m_Value: 1.1
   tiling:
     m_OverrideState: 1
-    m_Value: 21
+    m_Value: 18
   coverage:
     m_OverrideState: 1
     m_Value: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
     m_Value: 1.29
   underwaterOnly:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
 --- !u!114 &8126519855279684698
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -178,7 +178,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.15}
   depthDistance:
     m_OverrideState: 1
-    m_Value: 27
+    m_Value: 150
   edgeStrength:
     m_OverrideState: 1
     m_Value: 2

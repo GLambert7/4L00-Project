@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,6 +6,7 @@ using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class PlayerController1Script : MonoBehaviour
 {
+    
     #region Variables
     [Header("Player Movement Settings")]
     [SerializeField] private float _moveSpeed = 5f;
@@ -12,6 +14,8 @@ public class PlayerController1Script : MonoBehaviour
     [SerializeField] private float _deceleration = 3f;
     [SerializeField] private float _runMultiplier = 1.5f;
     [SerializeField] private bool _canRun = true;
+    public bool isMoving => _currentMovement.magnitude > 0.1f; // Public property to check if the player is moving
+    public bool justDashed => _timeSinceLastDash < _dashDuration; // Public property to check if the player has just dashed
     [Space(10)]
     [SerializeField] private float _riseSpeed = 2f;
     [SerializeField] private float _fallSpeed = 2f;
@@ -33,6 +37,11 @@ public class PlayerController1Script : MonoBehaviour
     [SerializeField] private float _dashCooldown = 3f;
     private float _timeSinceLastDash = 99f;
 
+    [Header("Can Interact Settings")]
+    public bool canUseDolphin = true;
+    public bool canUseOctopus = true;
+    public bool canUseEel = true;
+
 
     [Header("Player Input Handler")]
     [SerializeField] private PlayerInputHandler _inputHandler;
@@ -48,7 +57,7 @@ public class PlayerController1Script : MonoBehaviour
     private Camera _mainCam;
     private float _manualVerticalMovement = 0f;
 
-    private Vector3 _currentMovement = Vector3.zero;
+    public Vector3 _currentMovement = Vector3.zero;
     private Vector3 _dashInput = Vector3.zero;
 
     private float _horizontalRotation;
@@ -185,7 +194,6 @@ public class PlayerController1Script : MonoBehaviour
 
     private void HandleMovement()
     {
-
         // Check for Rise or Sink input and set the vertical movement accordingly
 
         if (_inputHandler.RiseInput)
@@ -250,6 +258,29 @@ public class PlayerController1Script : MonoBehaviour
         // Apply the movement to the CharacterController
         _characterController.Move(_currentMovement * Time.deltaTime);
     }
+    #endregion
+
+    #region Interaction Methods
+
+    public void interactToggle(int whoToggles)
+    {
+        if (whoToggles == 0)
+        {
+            Debug.Log("Dolphin Accessibility Changed");
+            canUseDolphin = !canUseDolphin;
+        }
+        else if (whoToggles == 1)
+        {
+            Debug.Log("Octopus Accessibility Changed");
+            canUseOctopus = !canUseOctopus;
+        }
+        else if (whoToggles == 2)
+        {
+            Debug.Log("Eel Accessibility Changed");
+            canUseEel = !canUseEel;
+        }
+    }
+
     #endregion
 
 }

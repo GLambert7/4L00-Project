@@ -48,12 +48,19 @@ public class PushBlock : BaseInteractable
     [SerializeField] private LayerMask TargetLayer;
     [Tooltip("What layer is the block checking for that will inhibit its movement?")]
     [SerializeField] private LayerMask BlockLayer;
+    [Tooltip("How big is the boxcast?")]
+    [SerializeField] private Vector3 boxSize = Vector3.one;
+    [Tooltip("How far are we checking for the next move location?")]
+    [SerializeField]private float MaxCheckDistance = 4f;
+    [Tooltip("How far to check below to stop falling?")]
+    [SerializeField] private float fallCheckDepth = 0.2f;
 
     [Header("Block Type Variants")]
     [Tooltip("Is the block an ice block? If so, it will slide until it hits an obstacle.")]
     [SerializeField] private bool iceBlock = false;
     [Tooltip("If the block is an ice block, should it rebound back to its original position after hitting an obstacle? <b>DO NOT USE WITHOUT ICE TOGGLED ON, IT WILL NOT WORK</b>")]
     [SerializeField] private bool rebound = false;
+    [SerializeField] private bool bigBlock = false;
 
 
 
@@ -74,11 +81,9 @@ public class PushBlock : BaseInteractable
     private Transform startPoint;
     private Transform endPoint;
 
-    private float timeElapsed = 0f;
-
-    private Vector3 boxSize = Vector3.one;
-    private float MaxCheckDistance = 4f; 
     private int lastDirectionPushed = 0;
+    
+    private float timeElapsed = 0f;
 
     // Stored Positions for move
     private GameObject northHit = null;
@@ -90,6 +95,8 @@ public class PushBlock : BaseInteractable
     private bool reboundInProgress = false;
 
     private bool beingLifted = false;
+
+    private bool floorDetected = false;
 
     private float timeBetweenChecks = .15f;
     private float checksTimer = 0f;
@@ -103,16 +110,26 @@ public class PushBlock : BaseInteractable
     //saves the position fo the block
     private Vector3 savedPushPosition;
     private bool hasSavedPushPosition = false;
-    
-   
-  
+
+    private CompanionLimiter limiter;
+
+    [SerializeField] private bool displayDuringRun = true;
+
+
+
 
     #endregion
 
     #region Unity Methods
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
+        if (limiter == null && bigBlock)
+        {
+            limiter = GetComponent<CompanionLimiter>();
+        }
+
         PostMoveReset();
     }
 
@@ -170,14 +187,62 @@ public class PushBlock : BaseInteractable
 
     private void FallCheck()
     {
+        BoxCollider box = GetComponent<BoxCollider>();
+
         //Grab our position
-        Vector3 origin = transform.position;
+        Vector3 origin = box.bounds.center;
+        origin.y = box.bounds.min.y - (fallCheckDepth/2f);
 
         //halfExtents is half the size of the box bc that's what the method checks for
-        Vector3 halfExtents = boxSize * 0.5f;
+        Vector3 halfExtents = new Vector3(box.bounds.extents.x * 0.9f, fallCheckDepth / 2f, box.bounds.extents.z * 0.9f);
 
-        // Convert the local direction into world space.
-        Vector3 direction = transform.TransformDirection(Vector3.down).normalized;
+        //Checks the direction, always straight down
+        Vector3 direction = Vector3.down;
+
+        // Use the same rotation for both the cast and the Gizmos.
+        Quaternion boxRotation = transform.rotation;
+        boxRotation.y = Quaternion.identity.y;
+
+        LayerMask fallMask = ~LayerMask.GetMask("MoveTargets", "Player", "IgnoreForFalling");
+
+        // Do the BoxCast with our calc'd info
+        Collider[] hits = Physics.OverlapBox(
+            origin, // position the cast starts from
+            halfExtents, // how big the cast area is (half of the size of our box)
+            boxRotation, // In case the box is rotated this will correct it
+            fallMask // Exclusive layermask so we don't hit the moveTarget objects or the player
+        );
+
+        floorDetected = false;
+
+        foreach (Collider hit in hits) 
+        {
+            if (hit.transform == transform || hit.transform.IsChildOf(transform)) continue;
+
+            Debug.Log("Floor found from object: "+hit.gameObject.name);
+            floorDetected = true;
+            break;
+        }
+
+
+        if (!floorDetected) {
+            transform.Translate( Vector3.down * fallSpeed * Time.deltaTime);
+        }
+    }
+
+    public void FallCheckDrawGizmos()
+    {
+        BoxCollider box = GetComponent<BoxCollider>();
+
+        //Grab our position
+        Vector3 origin = box.bounds.center;
+        origin.y = box.bounds.min.y - 1f;
+
+        //halfExtents is half the size of the box bc that's what the method checks for
+        Vector3 halfExtents = new Vector3(box.bounds.extents.x * 0.9f, 0.05f, box.bounds.extents.z * 0.9f);
+
+        //Checks the direction, always straight down
+        Vector3 direction = Vector3.down;
 
         // Use the same rotation for both the cast and the Gizmos.
         Quaternion boxRotation = transform.rotation;
@@ -185,20 +250,31 @@ public class PushBlock : BaseInteractable
         LayerMask fallMask = ~LayerMask.GetMask("MoveTargets", "Player");
 
         // Do the BoxCast with our calc'd info
-        bool floorDetected = Physics.BoxCast(
+        bool floorDetected = Physics.CheckBox(
             origin, // position the cast starts from
             halfExtents, // how big the cast area is (half of the size of our box)
-            direction, // Which way we're casting the box
-            out RaycastHit hit, // The Raycast
             boxRotation, // In case the box is rotated this will correct it
-            0.5f, // How far is being checked
             fallMask // Exclusive layermask so we don't hit the moveTarget objects or the player
-
         );
 
-        if (!floorDetected) {
-            transform.Translate( Vector3.down * fallSpeed * Time.deltaTime);
+        if (drawBoxCasts)
+        {
+#if UNITY_EDITOR
+            if (!Application.isPlaying || displayDuringRun)
+            {
+                // Red if the ground is detected, green if it isn't
+                Gizmos.color = floorDetected ? UnityEngine.Color.red : UnityEngine.Color.green;
+
+                // Draw the detection box
+                DrawBox(
+                    origin,
+                    halfExtents,
+                    boxRotation
+                );
+            }
+#endif
         }
+
     }
 
     // One day I will optimize this code, but today is not that day. I will refactor this code in the future to make it cleaner and more efficient. ~Emilyyyyyyyyyy
@@ -217,11 +293,20 @@ public class PushBlock : BaseInteractable
             {
                 Debug.Log("Ice Slide stopped");
                 reboundActive = true;
-                if (rebound && reboundActive && !reboundInProgress)
+                FallCheck();
+                if (!floorDetected)
+                {
+                    PostMoveReset();
+                }
+                else if (rebound && reboundActive && !reboundInProgress)
                 {
                     Rebound();
                 }
-                return; 
+                else if (bigBlock)
+                {
+                    limiter.DolphinInteract();
+                }
+                    return; 
             }
         }
         else if (lastDirectionPushed == 2) // South
@@ -236,11 +321,21 @@ public class PushBlock : BaseInteractable
             {
                 Debug.Log("Ice Slide stopped");
                 reboundActive = true;
-                if (rebound && reboundActive && !reboundInProgress)
+
+                FallCheck();
+                if (!floorDetected)
+                {
+                    PostMoveReset();
+                }
+                else if (rebound && reboundActive && !reboundInProgress)
                 {
                     Rebound();
                 }
-                return;
+                else if (bigBlock)
+                {
+                    limiter.DolphinInteract();
+                }
+                    return;
             }
 
         }
@@ -256,11 +351,20 @@ public class PushBlock : BaseInteractable
             {
                 Debug.Log("Ice Slide stopped");
                 reboundActive = true;
-                if (rebound && reboundActive && !reboundInProgress)
+                FallCheck();
+                if (!floorDetected)
+                {
+                    PostMoveReset();
+                }
+                else if (rebound && reboundActive && !reboundInProgress)
                 {
                     Rebound();
                 }
-                return;
+                else if (bigBlock)
+                {
+                    limiter.DolphinInteract();
+                }
+                    return;
             }
 
         }
@@ -276,11 +380,19 @@ public class PushBlock : BaseInteractable
             {
                 Debug.Log("Ice Slide stopped");
                 reboundActive = true;
-                if (rebound && reboundActive && !reboundInProgress)
+                FallCheck();
+                if (!floorDetected)
+                {
+                    PostMoveReset();
+                }
+                else if (rebound && reboundActive && !reboundInProgress)
                 {
                     Rebound();
+                }else if (bigBlock)
+                {
+                    limiter.DolphinInteract();
                 }
-                return;
+                    return;
             }
 
         }
@@ -501,7 +613,7 @@ public class PushBlock : BaseInteractable
         if (drawBoxCasts)
         {
             #if UNITY_EDITOR
-            if (!Application.isPlaying) { 
+            if (!Application.isPlaying || displayDuringRun) { 
                 Gizmos.color = canMove ? UnityEngine.Color.red : UnityEngine.Color.green;
 
                 // Draw Start Box
@@ -531,6 +643,7 @@ public class PushBlock : BaseInteractable
         boxCastChecker(Vector3.right, ref eastHit); // East Check
         boxCastChecker(Vector3.back, ref southHit); // South Check
         boxCastChecker(Vector3.left, ref westHit); // West Check
+        FallCheckDrawGizmos();
     }
 
     private void DrawBox(Vector3 boxCenter, Vector3 boxSize, Quaternion boxRotation)

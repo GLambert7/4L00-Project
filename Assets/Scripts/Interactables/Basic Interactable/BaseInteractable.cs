@@ -17,12 +17,15 @@ public class BaseInteractable : MonoBehaviour
     [Tooltip("Can the player interact with this object independently from the companions?")] 
     public bool interactableByPlayer = false; // Can player interact with this object?
 
+    [Tooltip("How far awayt does the player need to be to interact with this object?")]
+    public float interactableRange = 2f;
+
     // Basic requirements for each interactable object to function properly.
     [Header("Object References")]
     [Tooltip("This should be filled with the object titled \"InputHandler\", which should be placed in the scene already. If this variable is empty, click the target icon in this variable and it should pull up the correct object.")]
     [SerializeField] protected PlayerInputHandler _inputHandler; // Reference to the PlayerInputHandler script, which handles player input. This should be set up in the Unity Editor.
     [Tooltip("This should be filled with a sphere collider placed on the object, which is <b>SEPERATE FROM THE MAIN COLLIDER and SET TO BE A TRIGGER</b>, as this is what detects if the player is near the object and allows for interaction.")]
-    [SerializeField] protected Collider interactionArea; // The area in which the creature can interact with the object. This is a trigger collider that should be set up in the Unity Editor.
+    [SerializeField] protected SphereCollider interactionArea; // The area in which the creature can interact with the object. This is a trigger collider that should be set up in the Unity Editor.
     [Tooltip("This should be filled with a reference to the Player object. If this is empty, find the object in the scene named \"Player\" or \"Finley\", then drag and drop it from the hierarchy to here.")]
     [SerializeField] protected GameObject PlayerRef; // Reference to our player object
     
@@ -59,12 +62,10 @@ public class BaseInteractable : MonoBehaviour
     private static BaseInteractable octopusStandby;
     private static BaseInteractable eelStandby;
 
+    protected PlayerController1Script script;
 
-
-    [HideInInspector] public bool canInteract = false; // Is the creature in range to interact with the object? This is set to true when the creature enters the interaction area, and false when it exits.
-    [HideInInspector] public bool hasInteracted = false; // Has the creature already interacted with the object? This is set to true when the creature interacts with the object, and false when the interaction key for all creatures is in the released state.
-
-
+    public bool canInteract = false;
+    public bool hasInteracted = false;
 
     // Ignore the things going on below here I just want to put a line of text notating where the BaseInteractable variables end so I can seperate them from the inheritor class variables
     [Serializable] private struct EmptySpace { }
@@ -77,6 +78,29 @@ public class BaseInteractable : MonoBehaviour
     #endregion
 
     #region Unity Methods
+
+    public virtual void Awake()
+    {
+        if (_inputHandler == null)
+        {
+            PlayerInputHandler inputHandler = FindObjectOfType<PlayerInputHandler>();
+            _inputHandler = inputHandler;
+        }
+        if (PlayerRef == null) { 
+            PlayerController1Script playerFinder = FindObjectOfType<PlayerController1Script>();
+            PlayerRef = playerFinder.gameObject;
+        }
+        if (interactionArea == null)
+        {
+            interactionArea = GetComponent<SphereCollider>();
+        }
+
+        script = PlayerRef.GetComponent<PlayerController1Script>();
+
+        if (script == null) { Debug.LogError("No Player Script Found on "+gameObject.name); }
+
+        interactionArea.radius = interactableRange;
+    }
     void Update()
     {
         if (_inputHandler == null) { _inputHandler = FindObjectOfType<PlayerInputHandler>(); }
@@ -113,6 +137,7 @@ public class BaseInteractable : MonoBehaviour
 
     public virtual void DolphinInteract()
     {
+        if (!script.canUseDolphin) return;
         if (interactableByDolphin)
         {
             // Implement dolphin interaction logic here
@@ -129,6 +154,7 @@ public class BaseInteractable : MonoBehaviour
     }
     public virtual void OctopusInteract()
     {
+        if (!script.canUseOctopus) return;
         if (interactableByOctopus)
         {
             // Implement octopus interaction logic here
@@ -145,6 +171,7 @@ public class BaseInteractable : MonoBehaviour
     }
     public virtual void EelInteract()
     {
+        if (!script.canUseEel) return;
         if (interactableByEel)
         {
             // Implement eel interaction logic here

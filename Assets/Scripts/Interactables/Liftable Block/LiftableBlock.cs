@@ -28,8 +28,9 @@ public class LiftableBlock : BaseInteractable
 
     private Vector3 targetPos;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
         groundHeight = transform.position.y;
         liftedHeight = groundHeight + howHighToLift;
     }
@@ -55,6 +56,7 @@ public class LiftableBlock : BaseInteractable
     {
         if (isLifted)
         {
+            interactionArea.radius = 0.1f;
             targetHeight = liftedHeight;
             // Smoothly move the block to the target height
             targetPos = transform.position;
@@ -70,6 +72,10 @@ public class LiftableBlock : BaseInteractable
             if (targetPos.y < groundHeight) { targetPos.y = groundHeight; }
             transform.position = targetPos;
         }
+
+        if (groundHeight - 1 <= transform.position.y && transform.position.y <= groundHeight + 1) interactionArea.radius = interactableRange;
+
+
     }
 
     void TickTimer()

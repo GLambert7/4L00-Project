@@ -256,6 +256,12 @@ MonoBehaviour:
   useSoundDolphin: {fileID: 934122985204573361}
   useSoundOctopus: {fileID: 0}
   useSoundEel: {fileID: 0}
+  dolphinPrefab: {fileID: 0}
+  octopusPrefab: {fileID: 0}
+  eelPrefab: {fileID: 0}
+  dolphinSpawnPoint: {fileID: 0}
+  octopusSpawnPoint: {fileID: 0}
+  eelSpawnPoint: {fileID: 0}
   canInteract: 0
   hasInteracted: 0
   timeToMove: 0.5
@@ -269,9 +275,10 @@ MonoBehaviour:
     m_Bits: 2176
   boxSize: {x: 1, y: 1, z: 1}
   MaxCheckDistance: 4
-  distanceToFall: 0.5
+  fallCheckDepth: 0.2
   iceBlock: 1
   rebound: 1
+  bigBlock: 0
   drawBoxCasts: 1
   displayDuringRun: 0
 --- !u!82 &4863819425868427100

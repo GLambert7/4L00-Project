@@ -9,36 +9,45 @@ public class SwimingSound : MonoBehaviour
     public PlayerController1Script playerController;
 
     public EventReference waterSwimSound;
+    public EventReference waterDashSound;
 
-    private EventInstance loopSoundInstance;
+    private EventInstance loopSoundSwimInstance;
 
-    private bool isPlayingLoopSound = false;
- void Update()
-{
-    if (playerController.isMoving)
+    private bool isPlayingSwimLoopSound = false;
+    private bool wasDashingLastFrame;
+    void Update()
     {
-        if (!isPlayingLoopSound)
+        if (playerController.isMoving)
         {
-        loopSoundInstance = FMODUnity.RuntimeManager.CreateInstance(waterSwimSound);
+            if (!isPlayingSwimLoopSound)
+            {
+                loopSoundSwimInstance = FMODUnity.RuntimeManager.CreateInstance(waterSwimSound);
 
-        loopSoundInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(loopSoundInstance, gameObject);
+                loopSoundSwimInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+                FMODUnity.RuntimeManager.AttachInstanceToGameObject(loopSoundSwimInstance, gameObject);
 
-        loopSoundInstance.start();
+                loopSoundSwimInstance.start();
 
-        isPlayingLoopSound = true;
+                isPlayingSwimLoopSound = true;
+            }
         }
-    }
-    else
-    {
-        if (isPlayingLoopSound)
+        else
         {
-            loopSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            loopSoundInstance.release();
+            if (isPlayingSwimLoopSound)
+            {
+                loopSoundSwimInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                loopSoundSwimInstance.release();
 
-            isPlayingLoopSound = false;
+                isPlayingSwimLoopSound = false;
+            }
         }
+
+        if (playerController.justDashed && !wasDashingLastFrame && playerController.isMoving)
+        {
+            RuntimeManager.PlayOneShot(waterDashSound, transform.position);
+        }
+
+        wasDashingLastFrame = playerController.justDashed;
     }
 }
 
-}

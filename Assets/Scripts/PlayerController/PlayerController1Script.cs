@@ -15,6 +15,7 @@ public class PlayerController1Script : MonoBehaviour
     [SerializeField] private float _runMultiplier = 1.5f;
     [SerializeField] private bool _canRun = true;
     public bool isMoving => _currentMovement.magnitude > 0.1f; // Public property to check if the player is moving
+    public bool justDashed => _timeSinceLastDash < _dashDuration; // Public property to check if the player has just dashed
     [Space(10)]
     [SerializeField] private float _riseSpeed = 2f;
     [SerializeField] private float _fallSpeed = 2f;

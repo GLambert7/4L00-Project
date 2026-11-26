@@ -247,6 +247,7 @@ MonoBehaviour:
   interactableByOctopus: 0
   interactableByEel: 0
   interactableByPlayer: 0
+  interactableRange: 2
   _inputHandler: {fileID: 0}
   interactionArea: {fileID: 394743921109792788}
   PlayerRef: {fileID: 0}
@@ -266,9 +267,13 @@ MonoBehaviour:
   BlockLayer:
     serializedVersion: 2
     m_Bits: 2176
+  boxSize: {x: 1, y: 1, z: 1}
+  MaxCheckDistance: 4
+  distanceToFall: 0.5
   iceBlock: 1
   rebound: 1
   drawBoxCasts: 1
+  displayDuringRun: 0
 --- !u!82 &4863819425868427100
 AudioSource:
   m_ObjectHideFlags: 0

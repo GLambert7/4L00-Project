@@ -9,16 +9,20 @@ public class Current : MonoBehaviour
 
     [SerializeField] private bool isActive = true;
 
-    private void OnTriggerStay(Collider other)
+private void OnTriggerEnter(Collider other)
+{
+    Debug.Log("Detected: " + other.name);
+
+    if (isActive)
     {
-        if (isActive)
+        if (other.CompareTag(affectedByCurrent))
         {
-            if (other.CompareTag(affectedByCurrent))
-            {
-                other.transform.position += (transform.rotation * Vector3.up) * currentSpeed * Time.fixedDeltaTime;
-            }
+            Debug.Log("Moving: " + other.name);
+
+            other.transform.position += (transform.rotation * Vector3.up) * currentSpeed * Time.fixedDeltaTime;
         }
     }
+}
 
     public void switchState(bool state)
     {

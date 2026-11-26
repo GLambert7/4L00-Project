@@ -751,6 +751,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1110880264214025193}
+  - component: {fileID: 6392725564117776255}
+  - component: {fileID: 3304886326709385834}
   m_Layer: 0
   m_Name: Dumbo
   m_TagString: Untagged
@@ -778,6 +780,61 @@ Transform:
   - {fileID: 3542273420595574475}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6392725564117776255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772472179110026332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f324b585a8df50044ae0b528b1137d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueInteract
+  interactableByDolphin: 0
+  interactableByOctopus: 0
+  interactableByEel: 0
+  interactableByPlayer: 1
+  interactableRange: 4
+  _inputHandler: {fileID: 0}
+  interactionArea: {fileID: 3304886326709385834}
+  PlayerRef: {fileID: 0}
+  cantUseSound: {fileID: 0}
+  useSound: {fileID: 0}
+  useSoundDolphin: {fileID: 0}
+  useSoundOctopus: {fileID: 0}
+  useSoundEel: {fileID: 0}
+  dolphinPrefab: {fileID: 0}
+  octopusPrefab: {fileID: 0}
+  eelPrefab: {fileID: 0}
+  dolphinSpawnPoint: {fileID: 0}
+  octopusSpawnPoint: {fileID: 0}
+  eelSpawnPoint: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
+  dialogueBox1: {fileID: 0}
+--- !u!135 &3304886326709385834
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772472179110026332}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 4
+  m_Center: {x: 0, y: -0.48396587, z: 0}
 --- !u!1 &4986608675189420107
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +845,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8018258984557126068}
   - component: {fileID: 109439110882295705}
+  - component: {fileID: 4786718384344676287}
   m_Layer: 0
   m_Name: Dumbo Body
   m_TagString: Untagged
@@ -903,6 +961,29 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00003852509, y: -0.0005176021, z: 0.000042316038}
     m_Extent: {x: 0.013249312, y: 0.013373888, z: 0.015106171}
   m_DirtyAABB: 0
+--- !u!136 &4786718384344676287
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986608675189420107}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.013373886
+  m_Height: 0.030212345
+  m_Direction: 1
+  m_Center: {x: -0.000038525097, y: -0.000042315976, z: -0.0045175953}
 --- !u!1 &5009057498959667282
 GameObject:
   m_ObjectHideFlags: 0

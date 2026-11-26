@@ -1,30 +1,30 @@
 fileFormatVersion: 2
-guid: 95bcf76c22411b64caa47da4c88acb58
+guid: 643cd53aabd4d024eb603b655f41fb30
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Empty_001/Sphere_007/Sphere_007:000:Material_013
+      name: Empty_001/Sphere_010/Sphere_010:000:Material_013
     second: {fileID: 1886820026795636259, guid: 1d6463f30bcc1554fa4d4f3ba33a3bdb, type: 3}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Empty_001/Sphere_007/Sphere_007:001:Material_011
-    second: {fileID: 6699446615349125189, guid: 004f2c991c270d84f9cafe14052b1048, type: 3}
+      name: Empty_001/Sphere_010/Sphere_010:001:Material_014
+    second: {fileID: 7498461928983958705, guid: 21b1c09f78390d843b4863542944884b, type: 3}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Empty_001/Sphere_007/Sphere_007:002:Material_012
-    second: {fileID: 880774007180850119, guid: 004f2c991c270d84f9cafe14052b1048, type: 3}
+      name: Empty_001/Sphere_010/Sphere_010:002:Material_015
+    second: {fileID: 1886820026795636259, guid: 3da60e5e16d83744599ee431388db9e6, type: 3}
   serializedVersion: 2
   userData: 
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: f53f5fc499d31e44b9deee84d28a9ee8, type: 3}
-  rootGameObjectId: 
-  rootGameObjectName: 
+  rootGameObjectId: Fish_06_Track
+  rootGameObjectName: Fish_06_Track
   importerVersion: 1
   streamSettings:
     normals: 1

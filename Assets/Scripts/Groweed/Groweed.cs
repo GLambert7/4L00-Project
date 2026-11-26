@@ -8,7 +8,7 @@ public class Groweed : MonoBehaviour
     [Tooltip("How fast the plant grows/shrinks")]
     [SerializeField] private float growthSpeed = 0.5f;
     [Tooltip("The starting size of the plant")]
-    [SerializeField] private float startingSize = 0.2f;
+    [SerializeField] public float startingSize = 0.2f;
     [Tooltip("The maximum size the plant can grow to")]
     [SerializeField] private float maxSize = 1f;
     [Tooltip("The layer mask for detecting blocks above the plant")]

@@ -81,15 +81,16 @@ public class PushBlock : BaseInteractable
     private Transform startPoint;
     private Transform endPoint;
 
+    // Change to ENUM
     private int lastDirectionPushed = 0;
     
     private float timeElapsed = 0f;
 
     // Stored Positions for move
-    private GameObject northHit = null;
-    private GameObject southHit = null;
-    private GameObject eastHit = null;
-    private GameObject westHit = null;
+    public GameObject northHit = null;
+    public GameObject southHit = null;
+    public GameObject eastHit = null;
+    public GameObject westHit = null;
 
     private bool reboundActive = false;
     private bool reboundInProgress = false;
@@ -100,6 +101,10 @@ public class PushBlock : BaseInteractable
 
     private float timeBetweenChecks = .15f;
     private float checksTimer = 0f;
+    private bool inCurrent = false;
+    public bool inCurrentMovement = false;
+
+    public bool currentBreaker = false;
 
     // Called by the plant to control if the block is being lifted
     public void SetBeingLifted(bool lifted)
@@ -156,6 +161,7 @@ public class PushBlock : BaseInteractable
         // Check if the block is allowed to move
         if (!isMoving || startPoint == null || endPoint == null)
         {
+            inCurrentMovement = false;
             reboundInProgress = false;
             return;
         }
@@ -168,7 +174,7 @@ public class PushBlock : BaseInteractable
         timeElapsed += Time.deltaTime;
         float t = timeElapsed / timeToMove;
 
-        // Lerp block from set start point to set end point
+        // Lerp block from set start point to set end point DISABLE WHEN WE'RE IN A CURRENT
            
         transform.position = Vector3.Lerp(startPoint.position, endPoint.position, t);
 
@@ -219,7 +225,7 @@ public class PushBlock : BaseInteractable
         {
             if (hit.transform == transform || hit.transform.IsChildOf(transform)) continue;
 
-            Debug.Log("Floor found from object: "+hit.gameObject.name);
+            //Debug.Log("Floor found from object: "+hit.gameObject.name);
             floorDetected = true;
             break;
         }
@@ -445,6 +451,28 @@ public class PushBlock : BaseInteractable
         hasSavedPushPosition = true;
     }
 
+    // You know how I said "Today is not that day"? I LIED
+    public void PushHandling(GameObject hit, int lastDir)
+    {
+        if (hit != null)
+        {
+            endPoint = hit.transform;
+            lastDirectionPushed = lastDir;
+            isMoving = true;
+        }
+        else
+        {
+            inCurrentMovement = false;
+            Debug.Log("No valid spot to push to");
+        }
+    }
+
+    public void currentBreak()
+    {
+        PostMoveReset();
+        currentBreaker = false;
+    }
+
     // Honestly all this directional shit can be optimized but I gotta make sure everything's good on the front end before I start optimizing and refactoring. ~Emilyyyyyyyyyy
     public override void DolphinInteract()
     {
@@ -466,31 +494,13 @@ public class PushBlock : BaseInteractable
                 {
                     // North push logic
                     Debug.Log("Pushing North");
-                    if (northHit != null)
-                    {
-                        endPoint = northHit.transform;
-                        lastDirectionPushed = 1;
-                        isMoving = true;
-                    }
-                    else
-                    {
-                        Debug.Log("No valid spot to push to");
-                    }
+                    PushHandling(northHit, 1);
                 }
                 else
                 {
                     // South push logic
-                    Debug.Log("Pushing South");
-                    if (southHit != null)
-                    {
-                        endPoint = southHit.transform;
-                        lastDirectionPushed = 2;
-                        isMoving = true;
-                    }
-                    else
-                    {
-                        Debug.Log("No valid spot to push to");
-                    }
+                    Debug.Log("Pushing South"); 
+                    PushHandling(southHit, 2);
                 }
             }
             else
@@ -500,31 +510,13 @@ public class PushBlock : BaseInteractable
                 {
                     // East push logic
                     Debug.Log("Pushing East");
-                    if (eastHit != null)
-                    {
-                        endPoint = eastHit.transform;
-                        lastDirectionPushed = 3;
-                        isMoving = true;
-                    }
-                    else
-                    {
-                        Debug.Log("No valid spot to push to");
-                    }
+                    PushHandling(eastHit, 3);
                 }
                 else
                 {
                     // West push logic
                     Debug.Log("Pushing West");
-                    if (westHit != null)
-                    {
-                        endPoint = westHit.transform;
-                        lastDirectionPushed = 4;
-                        isMoving = true;
-                    }
-                    else
-                    {
-                        Debug.Log("No valid spot to push to");
-                    }
+                    PushHandling(westHit, 4);
                 }
             }
         }
@@ -631,6 +623,12 @@ public class PushBlock : BaseInteractable
         }
 
 
+    }
+
+
+    public void currentChange()
+    {
+        inCurrent = !inCurrent;
     }
 
     #endregion

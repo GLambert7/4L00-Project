@@ -175,9 +175,10 @@ GameObject:
   - component: {fileID: 8790541242892250102}
   - component: {fileID: 6039243840501105393}
   - component: {fileID: 1961755493866060128}
+  - component: {fileID: 5965552324156908700}
   m_Layer: 7
   m_Name: BigPushBlockIce
-  m_TagString: Untagged
+  m_TagString: MoveBlocks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,6 +348,12 @@ MonoBehaviour:
   rebound: 1
   bigBlock: 1
   drawBoxCasts: 1
+  northHit: {fileID: 0}
+  southHit: {fileID: 0}
+  eastHit: {fileID: 0}
+  westHit: {fileID: 0}
+  inCurrentMovement: 0
+  currentBreaker: 0
   displayDuringRun: 0
 --- !u!82 &6039243840501105393
 AudioSource:
@@ -481,6 +488,33 @@ MonoBehaviour:
   limitDolphin: 1
   limitOctopus: 0
   limitEel: 0
+--- !u!54 &5965552324156908700
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4350989225026336340}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &931260578782101378
 PrefabInstance:
   m_ObjectHideFlags: 0

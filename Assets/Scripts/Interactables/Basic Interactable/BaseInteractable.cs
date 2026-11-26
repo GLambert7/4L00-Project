@@ -64,6 +64,9 @@ public class BaseInteractable : MonoBehaviour
 
     protected PlayerController1Script script;
 
+    public bool canInteract = false;
+    public bool hasInteracted = false;
+
     // Ignore the things going on below here I just want to put a line of text notating where the BaseInteractable variables end so I can seperate them from the inheritor class variables
     [Serializable] private struct EmptySpace { }
 

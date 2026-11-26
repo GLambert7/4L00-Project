@@ -232,10 +232,10 @@ MonoBehaviour:
     m_Value: 10
   maxDistance:
     m_OverrideState: 1
-    m_Value: 15
+    m_Value: 1000
   jitter:
     m_OverrideState: 1
-    m_Value: 628
+    m_Value: 250
   blurSamples:
     m_OverrideState: 1
     m_Value: 4

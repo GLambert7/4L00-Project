@@ -1,0 +1,53 @@
+fileFormatVersion: 2
+guid: 95bcf76c22411b64caa47da4c88acb58
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Empty_001/Sphere_007/Sphere_007:000:Material_013
+    second: {fileID: 1886820026795636259, guid: 1d6463f30bcc1554fa4d4f3ba33a3bdb, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Empty_001/Sphere_007/Sphere_007:001:Material_011
+    second: {fileID: 6699446615349125189, guid: 004f2c991c270d84f9cafe14052b1048, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Empty_001/Sphere_007/Sphere_007:002:Material_012
+    second: {fileID: 880774007180850119, guid: 004f2c991c270d84f9cafe14052b1048, type: 3}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: f53f5fc499d31e44b9deee84d28a9ee8, type: 3}
+  rootGameObjectId: Fish_07_Track
+  rootGameObjectName: Fish_07_Track
+  importerVersion: 1
+  streamSettings:
+    normals: 1
+    tangents: 1
+    cameraAspectRatio: 2
+    importVisibility: 1
+    scaleFactor: 0.5
+    swapHandedness: 1
+    flipFaces: 0
+    interpolateSamples: 1
+    importPointPolygon: 1
+    importLinePolygon: 1
+    importTrianglePolygon: 1
+    importXform: 1
+    importCameras: 1
+    importMeshes: 1
+    importPoints: 0
+    importCurves: 1
+    createCurveRenderers: 0
+  abcStartTime: 0.041666666666666664
+  abcEndTime: 11.999999999999998
+  startTime: 0.041666666666666664
+  endTime: 11.999999999999998
+  importWarning: 
+  firstImport: 0
+  isHDF5: 0

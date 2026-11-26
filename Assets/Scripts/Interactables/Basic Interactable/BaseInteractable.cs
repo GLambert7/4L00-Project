@@ -99,7 +99,7 @@ public class BaseInteractable : MonoBehaviour
 
         if (script == null) { Debug.LogError("No Player Script Found on "+gameObject.name); }
 
-        interactionArea.radius = interactableRange;
+        if (interactionArea != null) interactionArea.radius = interactableRange;
     }
     void Update()
     {

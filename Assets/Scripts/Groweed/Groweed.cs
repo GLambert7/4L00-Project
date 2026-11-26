@@ -14,6 +14,8 @@ public class Groweed : MonoBehaviour
     [Tooltip("The layer mask for detecting blocks above the plant")]
     [SerializeField] private LayerMask blockLayer;
 
+    [SerializeField] private bool canHoldBlocks = true;
+
     [Header("Groweed Variants")]
     [Tooltip("Whether the plant can shrink when not receiving light")]
     [SerializeField] private bool canShrink = false; // Whether the plant can shrink when not receiving light
@@ -166,10 +168,13 @@ public class Groweed : MonoBehaviour
                 float heightAdjustment = currentPlantTop - blockBottom;
 
                 // Place the bottom of the block on top of the plant
-                Vector3 blockPosition = liftedBlock.transform.position;
-                blockPosition.y += heightAdjustment;
+                if (canHoldBlocks)
+                {
+                    Vector3 blockPosition = liftedBlock.transform.position;
+                    blockPosition.y += heightAdjustment;
 
-                liftedBlock.transform.position = blockPosition;
+                    liftedBlock.transform.position = blockPosition;
+                }
             }
         }
 

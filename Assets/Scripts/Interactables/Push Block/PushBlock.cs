@@ -209,7 +209,7 @@ public class PushBlock : BaseInteractable
         Quaternion boxRotation = transform.rotation;
         boxRotation.y = Quaternion.identity.y;
 
-        LayerMask fallMask = ~LayerMask.GetMask("MoveTargets", "Player", "IgnoreForFalling");
+        LayerMask fallMask = ~LayerMask.GetMask("MoveTargets", "Player", "IgnoreForFalling", "GroWeedInactive");
 
         // Do the BoxCast with our calc'd info
         Collider[] hits = Physics.OverlapBox(
@@ -225,7 +225,7 @@ public class PushBlock : BaseInteractable
         {
             if (hit.transform == transform || hit.transform.IsChildOf(transform)) continue;
 
-            //Debug.Log("Floor found from object: "+hit.gameObject.name);
+            Debug.Log("Floor found from object: "+hit.gameObject.name);
             floorDetected = true;
             break;
         }

@@ -6,6 +6,8 @@ public class BreakableBlock : BaseInteractable
     [SerializeField] private bool dropsItemOnBreak = false;
     [Tooltip("The item that is dropped when the block is broken.")]
     [SerializeField] private GameObject payload;
+    //so other scripts can reference the broken block for barn puzzle
+    public bool IsBroken { get; private set; }
 
     public override void DolphinInteract()
     {
@@ -23,6 +25,7 @@ public class BreakableBlock : BaseInteractable
         {
             Instantiate(payload, transform.position, transform.rotation);
         }
+        IsBroken = true;
         this.gameObject.SetActive(false);
     }
 }

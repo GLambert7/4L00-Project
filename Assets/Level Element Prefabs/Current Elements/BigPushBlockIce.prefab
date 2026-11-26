@@ -296,7 +296,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
+  m_Radius: 1.6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8790541242892250102
 MonoBehaviour:
@@ -314,7 +314,7 @@ MonoBehaviour:
   interactableByOctopus: 0
   interactableByEel: 0
   interactableByPlayer: 0
-  interactableRange: 4
+  interactableRange: 1.6
   _inputHandler: {fileID: 0}
   interactionArea: {fileID: 4515247862749909287}
   PlayerRef: {fileID: 0}
@@ -341,7 +341,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   boxSize: {x: 3, y: 4.5, z: 3}
-  MaxCheckDistance: 6
+  MaxCheckDistance: 4
   fallCheckDepth: 0.2
   iceBlock: 1
   rebound: 1
@@ -461,7 +461,7 @@ MonoBehaviour:
   interactableByOctopus: 0
   interactableByEel: 0
   interactableByPlayer: 0
-  interactableRange: 5
+  interactableRange: 1.6
   _inputHandler: {fileID: 0}
   interactionArea: {fileID: 0}
   PlayerRef: {fileID: 0}

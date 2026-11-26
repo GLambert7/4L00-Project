@@ -4,27 +4,34 @@ using UnityEngine.UIElements;
 public class DialogueInteract : BaseInteractable
 {
     [Header("Dialogue Settings")]
-    [SerializeField] private GameObject dialogueBox1;
+    [SerializeField] private GameObject dialogueBox;
+    private DialogueBox dialogueUI;
 
     private bool dialogueOpen = false;
+
+    private void Awake()
+    {
+        dialogueUI = dialogueBox.GetComponent<DialogueBox>();
+    }
 
     public override void PlayerInteract()
     {
         base.PlayerInteract();
-        if (dialogueBox1 == null) { return; }
+        if (dialogueBox == null) { return; }
 
         if (dialogueOpen)
         {
-            // Hide dialogue
-            dialogueBox1.SetActive(false);
-            dialogueOpen = false;
+            if (_inputHandler.PlayerInteractInput)
+            {
+                dialogueUI.NextDialogueLine();
+            }
 
             Debug.Log("Interacting with: ");
         }
         else
         {
             // Show dialogue
-            dialogueBox1.SetActive(true);
+            dialogueBox.SetActive(true);
             dialogueOpen = true;
 
             Debug.Log("Interacting with: ");
@@ -33,12 +40,12 @@ public class DialogueInteract : BaseInteractable
     protected override void OnTriggerExit(Collider other)
     {
         base.OnTriggerExit(other);
-        if (dialogueBox1 == null) { return; }
+        if (dialogueBox == null) { return; }
 
         if (other.CompareTag("Player") && dialogueOpen)
         {
             // Hide dialogue
-            dialogueBox1.SetActive(false);
+            dialogueBox.SetActive(false);
             dialogueOpen = false;
         }
     }

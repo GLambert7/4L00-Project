@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{b6d3e6cc-8520-4a7b-93b4-d3c3a3578954}">
+		<property name="assetPath">
+			<value>SFX2/Hole Plugged Confirmation - Pixabay .mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.752</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{32067738-4b6b-45f7-95ba-6285fed1f3a6}</destination>
+		</relationship>
+	</object>
+</objects>

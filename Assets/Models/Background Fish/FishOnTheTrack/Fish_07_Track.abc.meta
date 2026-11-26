@@ -41,7 +41,7 @@ ScriptedImporter:
     importXform: 1
     importCameras: 1
     importMeshes: 1
-    importPoints: 0
+    importPoints: 1
     importCurves: 1
     createCurveRenderers: 0
   abcStartTime: 0.041666666666666664

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EventFolder" id="{1b63128b-29b7-4466-afc0-8812eb9b33da}">
+		<property name="name">
+			<value>Pushing Sounds</value>
+		</property>
+		<relationship name="folder">
+			<destination>{1e4ba2cd-da93-49f1-ae0d-01ace77b3234}</destination>
+		</relationship>
+	</object>
+</objects>

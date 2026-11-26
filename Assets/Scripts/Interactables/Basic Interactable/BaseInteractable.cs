@@ -137,7 +137,7 @@ public class BaseInteractable : MonoBehaviour
 
     public virtual void DolphinInteract()
     {
-        if (!script.canUseDolphin) return;
+        //if (!script.canUseDolphin) return;
         if (interactableByDolphin)
         {
             // Implement dolphin interaction logic here

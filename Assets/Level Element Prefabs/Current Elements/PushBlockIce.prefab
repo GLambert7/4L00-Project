@@ -313,24 +313,33 @@ MonoBehaviour:
   interactableByOctopus: 0
   interactableByEel: 0
   interactableByPlayer: 0
+  interactableRange: 2
   _inputHandler: {fileID: 0}
   interactionArea: {fileID: 4515247862749909287}
+  PlayerRef: {fileID: 0}
   cantUseSound: {fileID: 6039243840501105393}
   useSound: {fileID: 0}
-  PlayerRef: {fileID: 0}
+  useSoundDolphin: {fileID: 0}
+  useSoundOctopus: {fileID: 0}
+  useSoundEel: {fileID: 0}
   canInteract: 0
   hasInteracted: 0
   timeToMove: 5
+  canFall: 1
+  fallSpeed: 5
   TargetLayer:
     serializedVersion: 2
     m_Bits: 64
   BlockLayer:
     serializedVersion: 2
     m_Bits: 128
+  boxSize: {x: 1, y: 1, z: 1}
+  MaxCheckDistance: 4
+  distanceToFall: 0.5
   iceBlock: 1
+  rebound: 0
   drawBoxCasts: 1
-  fallSpeed: 5
-  canFall: 1
+  displayDuringRun: 0
 --- !u!82 &6039243840501105393
 AudioSource:
   m_ObjectHideFlags: 0

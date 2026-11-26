@@ -153,7 +153,7 @@ public class Groweed : MonoBehaviour
         if (liftedBlock != null && !liftedBlock.IsMoving)
         {
             // Prevent the block from falling through the plant
-            liftedBlock.SetBeingLifted(true);
+            //liftedBlock.SetBeingLifted(true);
 
             // Find the top of the plant
             float currentPlantTop = plantRenderer.bounds.max.y;

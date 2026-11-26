@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 1318297175392964181}
   m_Layer: 7
   m_Name: PushBlockIceCurrent
-  m_TagString: CurrentMoved
+  m_TagString: MoveBlocks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,6 +347,12 @@ MonoBehaviour:
   rebound: 0
   bigBlock: 0
   drawBoxCasts: 1
+  northHit: {fileID: 0}
+  southHit: {fileID: 0}
+  eastHit: {fileID: 0}
+  westHit: {fileID: 0}
+  inCurrentMovement: 0
+  currentBreaker: 0
   displayDuringRun: 0
 --- !u!82 &6039243840501105393
 AudioSource:

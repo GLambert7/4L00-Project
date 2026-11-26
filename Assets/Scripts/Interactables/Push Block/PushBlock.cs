@@ -225,7 +225,7 @@ public class PushBlock : BaseInteractable
         {
             if (hit.transform == transform || hit.transform.IsChildOf(transform)) continue;
 
-            Debug.Log("Floor found from object: "+hit.gameObject.name);
+            //Debug.Log("Floor found from object: "+hit.gameObject.name);
             floorDetected = true;
             break;
         }

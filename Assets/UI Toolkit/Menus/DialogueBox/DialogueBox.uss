@@ -1,0 +1,16 @@
+VisualElement {
+}
+
+.dialogue-text {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    flex-wrap: wrap;
+    white-space: normal;
+    font-size: 35px;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+}

@@ -4,6 +4,50 @@ using UnityEngine;
 public class Reflector : BaseInteractable
 {
     #region Variables
+    // Inspector Variables
+    [Header("Reflection Directions")]
+    [Tooltip("The directions from which this object can receive light.")]
+    [SerializeField] private Direction[] recievingDirections;
+    [Tooltip("The directions in which this object can send light.")]
+    [SerializeField] private Direction[] sendingDirections;
+
+    // Reflection visuals
+    [Header("Reflection Visuals")]
+    [Tooltip("The material to use when the object is not reflective.")]
+    [SerializeField] private Material nonReflectMaterial;
+    [Tooltip("The material to use when the object is reflective.")]
+    [SerializeField] private Material reflectMaterial;
+
+    // Should be reworked if we return to the reflectors, we should account for all sides of an object like with the LightEmitters. ~Emilyyyyyyyyyy
+    [Tooltip("The GameObject representing the first reflective side.")]
+    [SerializeField] private GameObject reflectionSide1;
+    [Tooltip("The GameObject representing the second reflective side.")]
+    [SerializeField] private GameObject reflectionSide2;
+
+    [Tooltip("Whether this object is currently reflective or not.")]
+    [SerializeField] private bool isReflective = false;
+
+    // Box Cast Variables
+    [Header("Box Cast Settings")]
+    [Tooltip("How far should the box be cast?")]
+    [SerializeField] public float MaxCheckDistance = 0.8f;
+    [Tooltip("What layer are we checking for?")]
+    [SerializeField] public LayerMask TargetLayer;
+    [Tooltip("How big of a box are we casting")]
+    [SerializeField] public Vector3 boxSize = Vector3.one;
+
+    [Tooltip("Are we drawing the boxcasts in scene?")]
+    [SerializeField] public bool drawBoxCasts = false;
+
+    [Header("Light Emitters")]
+    [SerializeField] public GameObject northLightEmitter;
+    [SerializeField] public GameObject eastLightEmitter;
+    [SerializeField] public GameObject southLightEmitter;
+    [SerializeField] public GameObject westLightEmitter;
+    [SerializeField] public GameObject aboveLightEmitter;
+    [SerializeField] public GameObject belowLightEmitter;
+
+    // Non-Inspector Variables
     private enum Direction
     {
         North,
@@ -14,28 +58,6 @@ public class Reflector : BaseInteractable
         Below
     }
 
-    [SerializeField] private Direction[] recievingDirections;
-    [SerializeField] private Direction[] sendingDirections;
-
-    // Reflection visuals
-    [SerializeField] private Material nonReflectMaterial;
-    [SerializeField] private Material reflectMaterial;
-
-    [SerializeField] private GameObject reflectionSide1;
-    [SerializeField] private GameObject reflectionSide2;
-    #endregion
-
-    [SerializeField] private bool isReflective = false;
-    private bool currentlyReflecting = false;
-    Renderer matSwitch;
-
-    // Box Cast Variables
-    [SerializeField] public float MaxCheckDistance = 0.8f;
-    [SerializeField] public LayerMask TargetLayer;
-    [SerializeField] public Vector3 boxSize = Vector3.one;
-    [SerializeField] public bool drawBoxCasts = false;
-
-    // Box Cast Non-Inspector Variables
     private GameObject northHit = null;
     private GameObject southHit = null;
     private GameObject eastHit = null;
@@ -57,13 +79,10 @@ public class Reflector : BaseInteractable
     private bool reflectSendUp = false;
     private bool reflectSendDown = false;
 
-    [SerializeField] public GameObject northLightEmitter;
-    [SerializeField] public GameObject eastLightEmitter;
-    [SerializeField] public GameObject southLightEmitter;
-    [SerializeField] public GameObject westLightEmitter;
-    [SerializeField] public GameObject aboveLightEmitter;
-    [SerializeField] public GameObject belowLightEmitter;
+    private bool currentlyReflecting = false;
+    Renderer matSwitch;
 
+    #endregion
 
     #region Unity Methods
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -12,6 +12,16 @@ public class VideoInteractable : BaseInteractable
         videoPlayer.loopPointReached += OnVideoFinished;
     }
 
+    private void Update()
+    {
+        if (_inputHandler.CutsceneSkipInput)
+        {
+            // Skip the cutscene
+            videoPlayer.Stop();
+        }
+    }
+
+
     public override void PlayerInteract()
     {
         if (!interactableByPlayer)

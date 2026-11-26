@@ -2,12 +2,21 @@ using UnityEngine;
 
 public class SolarPanel : BaseInteractable
 {
+    // Inspector Vars
+    [Header("Solar Panel Settings")]
+    [Tooltip("Which objects get powered by this solar panel?")]
     [SerializeField] private GameObject[] poweredByPanelObjects;
-    [Space(10)]
+    [Header("BoxCast settings")]
+    [Tooltip("How big of a box are we casting")]
     [SerializeField] public Vector3 boxSize = Vector3.one;
-    [SerializeField] public float MaxCheckDistance = 0.8f; 
+    [Tooltip("How far should the box be cast?")]
+    [SerializeField] public float MaxCheckDistance = 0.8f;
+    [Tooltip("What layer are we checking for?")]
     [SerializeField] public LayerMask TargetLayer;
+    [Tooltip("Are we drawing the boxcasts in scene?")]
     [SerializeField] public bool drawBoxCasts = false;
+
+    // Non inspector vars
     private GameObject PanelHit = null;
     private bool powered = false;
 

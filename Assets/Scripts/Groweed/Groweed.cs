@@ -3,23 +3,41 @@ using UnityEngine;
 
 public class Groweed : MonoBehaviour
 {
+    // Inspector Vars
+    [Header("Plant Growth Settings")]
+    [Tooltip("How fast the plant grows/shrinks")]
     [SerializeField] private float growthSpeed = 0.5f;
+    [Tooltip("The starting size of the plant")]
     [SerializeField] private float startingSize = 0.2f;
+    [Tooltip("The maximum size the plant can grow to")]
     [SerializeField] private float maxSize = 1f;
+    [Tooltip("The layer mask for detecting blocks above the plant")]
     [SerializeField] private LayerMask blockLayer;
 
-    [Space(10)]
+    [Header("Groweed Variants")]
+    [Tooltip("Whether the plant can shrink when not receiving light")]
     [SerializeField] private bool canShrink = false; // Whether the plant can shrink when not receiving light
 
+    // Non-Inspector Vars
     private float currentSize;
+    //makes it so other scripts can see groweed size for the barn puzzle
+    public bool IsShrunk => currentSize <= startingSize;
     private bool receivingLight;
     private Vector3 startingPosition;
     private float originalHeight;
+
+    private float growTowards;
+    private float growAwayFrom;
+
+    [SerializeField] private bool invertGrowth = false;
 
     private PushBlock liftedBlock;
 
     private void Start()
     {
+        growTowards = 0; 
+        growAwayFrom = 0;
+
         //this is so we can move the plant as it grows
         startingPosition = transform.localPosition;
 
@@ -40,31 +58,30 @@ public class Groweed : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("GroWeed");
         }
 
-        if (receivingLight && currentSize < maxSize)
+        if (invertGrowth)
         {
-            currentSize += growthSpeed * Time.deltaTime;
-
-            //makes sure that the plant never goes over the max size
-            currentSize = Mathf.Min(currentSize, maxSize);
-
-            //these following 3 lines are for naking the polant grow upwards while moving the object so it looks normal
-            transform.localScale = new Vector3(transform.localScale.x, currentSize, transform.localScale.z);
-
-            float heightDifference = (currentSize - startingSize) * originalHeight;
-
-            transform.localPosition = startingPosition + Vector3.up * (heightDifference / 2f);
+            if (receivingLight && currentSize > startingSize)
+            {
+                Shrink();
+            }
+            else if (!receivingLight && canShrink && currentSize < maxSize)
+            {
+                Grow();
+            }
         }
-        else if (!receivingLight && canShrink && currentSize > startingSize)
+        else
         {
-            currentSize -= growthSpeed * Time.deltaTime;
-            //makes sure that the plant never goes under the min size
-            currentSize = Mathf.Max(currentSize, startingSize);
-
-            //What grayson said above, but down instead of up
-            transform.localScale = new Vector3(transform.localScale.x, currentSize, transform.localScale.z);
-            float heightDifference = (currentSize - startingSize) * originalHeight;
-            transform.localPosition = startingPosition + Vector3.up * (heightDifference / 2f);
+            if (receivingLight && currentSize < maxSize)
+            {
+                Grow();
+            }
+            else if (!receivingLight && canShrink && currentSize > startingSize)
+            {
+                Shrink();
+            }
         }
+
+        
 
         // Check for blocks above the plant, even when it isn't growing
         Renderer plantRenderer = GetComponent<Renderer>();
@@ -160,9 +177,43 @@ public class Groweed : MonoBehaviour
         receivingLight = false;
     }
 
+    public void Grow()
+    {
+        currentSize += growthSpeed * Time.deltaTime;
+
+        //makes sure that the plant never goes over the max size
+        currentSize = Mathf.Min(currentSize, maxSize);
+
+        //these following 3 lines are for naking the polant grow upwards while moving the object so it looks normal
+        transform.localScale = new Vector3(transform.localScale.x, currentSize, transform.localScale.z);
+
+        float heightDifference = (currentSize - startingSize) * originalHeight;
+
+        transform.localPosition = startingPosition + transform.up * (heightDifference / 2f);
+    }
+
+    public void Shrink()
+    {
+        currentSize -= growthSpeed * Time.deltaTime;
+        //makes sure that the plant never goes under the min size
+        currentSize = Mathf.Max(currentSize, startingSize);
+
+        //What grayson said above, but down instead of up
+        transform.localScale = new Vector3(transform.localScale.x, currentSize, transform.localScale.z);
+        float heightDifference = (currentSize - startingSize) * originalHeight;
+        transform.localPosition = startingPosition + transform.up * (heightDifference / 2f);
+    }
+
     public void ReceiveLight()
     {
         //Debug.Log("Plant received light! Current size: " + currentSize);
         receivingLight = true;
+    }
+
+    public void FlipGrowth()
+    {
+        Debug.Log("Growth Flipped on " + gameObject.name);
+        invertGrowth = !invertGrowth;
+        // (growTowards, growAwayFrom) = (growAwayFrom, growTowards);
     }
 }

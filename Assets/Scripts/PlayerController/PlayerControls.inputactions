@@ -115,6 +115,16 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "CancelInteraction",
+                    "type": "Button",
+                    "id": "324270db-842a-4945-a3f7-76a3ccd48cc7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -390,6 +400,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "EelInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f4cded7-6746-47f7-81e4-c4447ecad942",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CancelInteraction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -2440,6 +2440,33 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &366398388 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+  m_PrefabInstance: {fileID: 563129859}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &366398389
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366398388}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 86e5a82ea2bb4e245a9901a7919863ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &403401234
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,6 +3163,82 @@ MonoBehaviour:
   current: {fileID: 0}
   weedsShrunk: 0
   blockBroken: 0
+--- !u!1001 &563129859
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 221.98
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 221.98
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 221.98
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 89.836
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 36.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.21
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_Name
+      value: Krill_Cleaning_Animation
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 366398389}
+  m_SourcePrefab: {fileID: 100100000, guid: ed6c86dd7f715794aa3f51079cd8dd44, type: 3}
 --- !u!1001 &569561801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5659,6 +5762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakableDoor
   breakingObject: {fileID: 1462155355}
+  krill: {fileID: 366398388}
 --- !u!65 &1217404002
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10454,3 +10558,4 @@ SceneRoots:
   - {fileID: 1441304034}
   - {fileID: 858455804}
   - {fileID: 631255173}
+  - {fileID: 563129859}

@@ -8,6 +8,14 @@ using UnityEngine.Audio;
 
 public class MainMenuEvents : MonoBehaviour
 {
+
+    [SerializeField] private AudioSource playerAudioSource;
+
+    private void OnVolumeChanged(ChangeEvent<float> evt)
+    {
+        playerAudioSource.volume = evt.newValue;
+    }
+
     #region Variables and Awake
     // Elements
     private VisualElement _root;
@@ -28,6 +36,11 @@ public class MainMenuEvents : MonoBehaviour
 
     private ScrollView _scrollView;
     private VisualElement _targetItem;
+
+
+
+    //Audio Setting
+    private Slider volumeSlider;
 
 
     private void Awake()
@@ -84,39 +97,26 @@ public class MainMenuEvents : MonoBehaviour
 
         _scrollView.ScrollTo(_targetItem);
 
+        volumeSlider.RegisterValueChangedCallback(evt =>
+        {
+            AudioListener.volume = evt.newValue;
+        });
+
+        volumeSlider.RegisterValueChangedCallback(OnVolumeChanged);
+
+        // Set slider to the current audio volume
+        volumeSlider.SetValueWithoutNotify(playerAudioSource.volume);
+
     }
     #endregion
 
-    public class SoundManager : MonoBehaviour
+    private void OnDisable()
     {
-        public Slider Music;
-        void Start()
-        {
-            if (PlayerPrefs.HasKey("Music"))
-                LoadVolume();
-            else
-            {
-                PlayerPrefs.SetFloat("Music", 1);
-                LoadVolume();
-            }
-        }
+        if (volumeSlider != null)
+            volumeSlider.UnregisterValueChangedCallback(OnVolumeChanged);
 
-        public void SetVolume()
-        {
-            AudioListener.volume = Music.value;
-            SaveVolume();
-        }
-
-        public void SaveVolume()
-        {
-            PlayerPrefs.SetFloat("Music",Music.value);
-        }
-
-        public void LoadVolume()
-        {
-            Music.value = PlayerPrefs.GetFloat("Music");
-        }
     }
+
 
     #region Title Menu Button Events
     private void MenuEnter(VisualElement enter)

@@ -4,12 +4,14 @@ using TMPro;
 
 public class DialogueUI : MonoBehaviour
 {
+
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text characterName;
     [SerializeField] private TMP_Text dialogueText;
 
     private void Start()
     {
+
         dialoguePanel.SetActive(false);
     }
 

@@ -1,0 +1,135 @@
+name: Automated Release
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get Latest Commit Message
+        id: commit
+        run: |
+          echo "message<<EOF" >> $GITHUB_OUTPUT
+          git log -1 --pretty=%B >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Determine Version
+        id: version
+        shell: bash
+        run: |
+          TAG=$(git tag --sort=-version:refname | head -n 1)
+
+          if [ -z "$TAG" ]; then
+            echo "No tags found."
+            echo "release=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          COMMITS=$(git log --pretty=%s ${TAG}..HEAD)
+
+          BUMP=""
+
+          while IFS= read -r COMMIT; do
+            if [[ "$COMMIT" == MID:* ]]; then
+              BUMP="minor"
+              break
+            fi
+
+            if [[ "$COMMIT" == MINOR:* ]] && [ -z "$BUMP" ]; then
+              BUMP="patch"
+            fi
+          done <<< "$COMMITS"
+
+          if [ -z "$BUMP" ]; then
+            echo "No release keywords found."
+            echo "release=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          VERSION=${TAG#v}
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+
+          if [ "$BUMP" = "minor" ]; then
+            MINOR=$((MINOR + 1))
+            PATCH=0
+          else
+            PATCH=$((PATCH + 1))
+          fi
+
+          NEW_TAG="v${MAJOR}.${MINOR}.${PATCH}"
+
+          echo "release=true" >> $GITHUB_OUTPUT
+          echo "tag=$NEW_TAG" >> $GITHUB_OUTPUT
+
+          echo "New Version: $NEW_TAG"
+
+      - name: Create Tag
+        if: steps.version.outputs.release == 'true'
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+          git tag ${{ steps.version.outputs.tag }}
+          git push origin ${{ steps.version.outputs.tag }}
+
+      - name: Build Release Notes
+        id: notes
+        run: |
+          TAG=$(git tag --sort=-version:refname | head -n 1)
+
+          FEATURES=""
+          FIXES=""
+
+          while read -r COMMIT; do
+
+            if [[ "$COMMIT" == MID:* ]]; then
+              TEXT="${COMMIT#MID: }"
+              FEATURES="${FEATURES}- ${TEXT}\n"
+            fi
+
+            if [[ "$COMMIT" == MINOR:* ]]; then
+              TEXT="${COMMIT#MINOR: }"
+              FIXES="${FIXES}- ${TEXT}\n"
+            fi
+
+          done < <(git log --pretty=%s ${TAG}..HEAD)
+
+          {
+            echo "body<<EOF"
+
+            if [ -n "$FEATURES" ]; then
+              echo "## Features"
+              echo
+              echo -e "$FEATURES"
+              echo
+            fi
+
+            if [ -n "$FIXES" ]; then
+              echo "## Fixes"
+              echo
+              echo -e "$FIXES"
+              echo
+            fi
+
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        if: steps.version.outputs.release == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          body: ${{ steps.notes.outputs.body }}
+          generate_release_notes: true

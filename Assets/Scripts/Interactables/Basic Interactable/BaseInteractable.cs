@@ -97,6 +97,8 @@ public class BaseInteractable : MonoBehaviour
 
         script = PlayerRef.GetComponent<PlayerController1Script>();
 
+        if (script == null) { Debug.LogError("No Player Script Found on "+gameObject.name); }
+
         interactionArea.radius = interactableRange;
     }
     void Update()

@@ -314,7 +314,7 @@ MonoBehaviour:
   interactableByOctopus: 0
   interactableByEel: 0
   interactableByPlayer: 0
-  interactableRange: 5
+  interactableRange: 4
   _inputHandler: {fileID: 0}
   interactionArea: {fileID: 4515247862749909287}
   PlayerRef: {fileID: 0}
@@ -323,6 +323,12 @@ MonoBehaviour:
   useSoundDolphin: {fileID: 0}
   useSoundOctopus: {fileID: 0}
   useSoundEel: {fileID: 0}
+  dolphinPrefab: {fileID: 0}
+  octopusPrefab: {fileID: 0}
+  eelPrefab: {fileID: 0}
+  dolphinSpawnPoint: {fileID: 0}
+  octopusSpawnPoint: {fileID: 0}
+  eelSpawnPoint: {fileID: 0}
   canInteract: 0
   hasInteracted: 0
   timeToMove: 5
@@ -334,8 +340,8 @@ MonoBehaviour:
   BlockLayer:
     serializedVersion: 2
     m_Bits: 128
-  boxSize: {x: 3, y: 6, z: 3}
-  MaxCheckDistance: 8
+  boxSize: {x: 3, y: 4.5, z: 3}
+  MaxCheckDistance: 6
   fallCheckDepth: 0.2
   iceBlock: 1
   rebound: 1
@@ -464,6 +470,12 @@ MonoBehaviour:
   useSoundDolphin: {fileID: 0}
   useSoundOctopus: {fileID: 0}
   useSoundEel: {fileID: 0}
+  dolphinPrefab: {fileID: 0}
+  octopusPrefab: {fileID: 0}
+  eelPrefab: {fileID: 0}
+  dolphinSpawnPoint: {fileID: 0}
+  octopusSpawnPoint: {fileID: 0}
+  eelSpawnPoint: {fileID: 0}
   canInteract: 0
   hasInteracted: 0
   limitDolphin: 1

@@ -96,6 +96,8 @@ public class PushBlock : BaseInteractable
 
     private bool beingLifted = false;
 
+    private bool floorDetected = false;
+
     private float timeBetweenChecks = .15f;
     private float checksTimer = 0f;
 
@@ -201,7 +203,7 @@ public class PushBlock : BaseInteractable
         Quaternion boxRotation = transform.rotation;
         boxRotation.y = Quaternion.identity.y;
 
-        LayerMask fallMask = ~LayerMask.GetMask("MoveTargets", "Player");
+        LayerMask fallMask = ~LayerMask.GetMask("MoveTargets", "Player", "IgnoreForFalling");
 
         // Do the BoxCast with our calc'd info
         Collider[] hits = Physics.OverlapBox(
@@ -211,12 +213,13 @@ public class PushBlock : BaseInteractable
             fallMask // Exclusive layermask so we don't hit the moveTarget objects or the player
         );
 
-        bool floorDetected = false;
+        floorDetected = false;
 
         foreach (Collider hit in hits) 
         {
             if (hit.transform == transform || hit.transform.IsChildOf(transform)) continue;
 
+            Debug.Log("Floor found from object: "+hit.gameObject.name);
             floorDetected = true;
             break;
         }
@@ -290,7 +293,12 @@ public class PushBlock : BaseInteractable
             {
                 Debug.Log("Ice Slide stopped");
                 reboundActive = true;
-                if (rebound && reboundActive && !reboundInProgress)
+                FallCheck();
+                if (!floorDetected)
+                {
+                    PostMoveReset();
+                }
+                else if (rebound && reboundActive && !reboundInProgress)
                 {
                     Rebound();
                 }
@@ -313,7 +321,13 @@ public class PushBlock : BaseInteractable
             {
                 Debug.Log("Ice Slide stopped");
                 reboundActive = true;
-                if (rebound && reboundActive && !reboundInProgress)
+
+                FallCheck();
+                if (!floorDetected)
+                {
+                    PostMoveReset();
+                }
+                else if (rebound && reboundActive && !reboundInProgress)
                 {
                     Rebound();
                 }
@@ -337,7 +351,12 @@ public class PushBlock : BaseInteractable
             {
                 Debug.Log("Ice Slide stopped");
                 reboundActive = true;
-                if (rebound && reboundActive && !reboundInProgress)
+                FallCheck();
+                if (!floorDetected)
+                {
+                    PostMoveReset();
+                }
+                else if (rebound && reboundActive && !reboundInProgress)
                 {
                     Rebound();
                 }
@@ -361,7 +380,12 @@ public class PushBlock : BaseInteractable
             {
                 Debug.Log("Ice Slide stopped");
                 reboundActive = true;
-                if (rebound && reboundActive && !reboundInProgress)
+                FallCheck();
+                if (!floorDetected)
+                {
+                    PostMoveReset();
+                }
+                else if (rebound && reboundActive && !reboundInProgress)
                 {
                     Rebound();
                 }else if (bigBlock)

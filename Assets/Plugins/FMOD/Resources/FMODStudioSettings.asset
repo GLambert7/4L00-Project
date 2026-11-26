@@ -405,10 +405,8 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
-  - Swimming/Build/Desktop/Master
   Banks:
   - Char
-  - Swimming/Build/Desktop/Char
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

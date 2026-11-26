@@ -20,7 +20,7 @@ MonoBehaviour:
   - Name: 
     Value: 770
   Exists: 1
---- !u!114 &-4688247654172211308
+--- !u!114 &-7191178760119604447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30,14 +30,69 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Swimming/Build/Desktop/Master.bank
+  m_Name: bank:/Master.bank
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: FMOD/Desktop/Swimming/Build/Desktop/Master.bank
-  Name: Swimming/Build/Desktop/Master
+  Path: FMOD/Desktop/Master.bank
+  Name: Master
   StudioPath: bank:/Master
-  lastModified: 639311591254846817
+  lastModified: 639312255054495734
   FileSizes: []
   Exists: 1
+--- !u!114 &-6774392728780939148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Char/SwimRef 2
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Char/SwimRef 2
+  Guid:
+    Data1: 1992013203
+    Data2: 1297102213
+    Data3: -818218879
+    Data4: -377194756
+  Banks:
+  - {fileID: -3055403658244279860}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2500
+--- !u!114 &-5412469126934950284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Char/Dash
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Char/Dash
+  Guid:
+    Data1: 1499206944
+    Data2: 1146311762
+    Data3: -623257721
+    Data4: -557928404
+  Banks:
+  - {fileID: -3055403658244279860}
+  - {fileID: 2475691941554566930}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1201
 --- !u!114 &-3376177921499806394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,25 +126,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Char.bank
   Name: Char
   StudioPath: bank:/Char
-  lastModified: 639311591253287450
-  FileSizes: []
-  Exists: 1
---- !u!114 &-1964212541905431173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Swimming/Build/Desktop/Char.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: FMOD/Desktop/Swimming/Build/Desktop/Char.bank
-  Name: Swimming/Build/Desktop/Char
-  StudioPath: bank:/Char
-  lastModified: 639311591254836812
+  lastModified: 639312187208747363
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -105,52 +142,24 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
   EditorBanks:
-  - {fileID: 4490446217534210638}
-  - {fileID: -3055403658244279860}
-  - {fileID: 2475691941554566930}
-  - {fileID: -1964212541905431173}
-  - {fileID: -4688247654172211308}
+  - {fileID: 6934230715390461853}
+  - {fileID: 4297926800584412291}
+  - {fileID: -7191178760119604447}
   EditorEvents:
-  - {fileID: 678876774752965332}
-  - {fileID: 5078366260154164905}
+  - {fileID: 3797889317472989214}
+  - {fileID: 7133660726936602952}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 2475691941554566930}
-  - {fileID: -4688247654172211308}
+  - {fileID: -7191178760119604447}
   StringsBanks:
-  - {fileID: 4490446217534210638}
+  - {fileID: 6934230715390461853}
   cacheVersion: 131861
-  cacheTime: 639311591254923764
+  cacheTime: 639312375113183137
   SerializableEventsDict:
-  - key: event:/Char/Swim
+  - key: event:/Char/Dash
     index: 0
---- !u!114 &678876774752965332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Char/Swim
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Char/Swim
-  Guid:
-    Data1: -1241502325
-    Data2: 1282479928
-    Data3: 783369348
-    Data4: -1706877932
-  Banks:
-  - {fileID: -3055403658244279860}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
+  - key: event:/Char/Swimming
+    index: 1
 --- !u!114 &2127206991852709564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +193,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639311591253297462
+  lastModified: 639312187208890258
   FileSizes: []
   Exists: 1
 --- !u!114 &2819477567521443166
@@ -207,6 +216,51 @@ MonoBehaviour:
   - Name: 
     Value: 770
   Exists: 1
+--- !u!114 &3797889317472989214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Char/Dash
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Char/Dash
+  Guid:
+    Data1: -710137979
+    Data2: 1239953351
+    Data3: -444226892
+    Data4: 1913465108
+  Banks:
+  - {fileID: 4297926800584412291}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1201
+--- !u!114 &4297926800584412291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Char.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: FMOD/Desktop/Char.bank
+  Name: Char
+  StudioPath: bank:/Char
+  lastModified: 639312375113183137
+  FileSizes: []
+  Exists: 1
 --- !u!114 &4490446217534210638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,12 +276,12 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639311591253297462
+  lastModified: 639312187208905314
   FileSizes:
   - Name: 
-    Value: 818
+    Value: 870
   Exists: 1
---- !u!114 &5078366260154164905
+--- !u!114 &4717685197317644988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,8 +300,7 @@ MonoBehaviour:
     Data3: 2074291600
     Data4: 1052221077
   Banks:
-  - {fileID: -1964212541905431173}
-  - {fileID: -4688247654172211308}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -282,6 +335,53 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &6934230715390461853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: FMOD/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639312255054505728
+  FileSizes:
+  - Name: 
+    Value: 868
+  Exists: 1
+--- !u!114 &7133660726936602952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Char/Swimming
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Char/Swimming
+  Guid:
+    Data1: 1245501389
+    Data2: 1212124606
+    Data3: -2016501362
+    Data4: 384394797
+  Banks:
+  - {fileID: 4297926800584412291}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1800
 --- !u!114 &8260074587547683396
 MonoBehaviour:
   m_ObjectHideFlags: 0

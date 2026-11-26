@@ -3784,6 +3784,7 @@ GameObject:
   - component: {fileID: 559214746}
   - component: {fileID: 559214745}
   - component: {fileID: 559214744}
+  - component: {fileID: 559214748}
   m_Layer: 3
   m_Name: PlayerPlaceholder
   m_TagString: Player
@@ -3876,6 +3877,33 @@ Transform:
   - {fileID: 305593184}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 282.91998, z: 0}
+--- !u!114 &559214748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559214742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ecd0d049d66db4d9d03215d3ad3101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwimingSound
+  playerController: {fileID: 559214745}
+  waterSwimSound:
+    Guid:
+      Data1: 1245501389
+      Data2: 1212124606
+      Data3: -2016501362
+      Data4: 384394797
+    Path: event:/Char/Swimming
+  waterDashSound:
+    Guid:
+      Data1: -710137979
+      Data2: 1239953351
+      Data3: -444226892
+      Data4: 1913465108
+    Path: event:/Char/Dash
 --- !u!1 &568601796
 GameObject:
   m_ObjectHideFlags: 0
@@ -9254,60 +9282,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554632758}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1555814763
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1555814765}
-  - component: {fileID: 1555814764}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1555814764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555814763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87ecd0d049d66db4d9d03215d3ad3101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SwimingSound
-  swimSoundEvent:
-    Guid:
-      Data1: -1241502325
-      Data2: 1282479928
-      Data3: 783369348
-      Data4: -1706877932
-    Path: event:/Char/Swim
-  rate: 1
-  player: {fileID: 559214742}
-  playerController: {fileID: 559214745}
---- !u!4 &1555814765
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555814763}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1579222921
 GameObject:
   m_ObjectHideFlags: 0
@@ -12834,4 +12808,3 @@ SceneRoots:
   - {fileID: 1267400186}
   - {fileID: 559214747}
   - {fileID: 1434746093}
-  - {fileID: 1555814765}

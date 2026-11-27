@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "com.cqf.urpvolumetricfog": {
-      "version": "file:C:/Users/brad2/Downloads/Unity-URP-Volumetric-Light-main/Unity-URP-Volumetric-Light-main",
+      "version": "file:com.cqf.urpvolumetricfog",
       "depth": 0,
-      "source": "local",
+      "source": "embedded",
       "dependencies": {}
     },
     "com.unity.2d.sprite": {

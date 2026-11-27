@@ -22,6 +22,66 @@ MonoBehaviour:
   gain:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: 0}
+--- !u!114 &-8270691070962804785
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7555d0f82129a34fa6580da036354f2, type: 3}
+  m_Name: UnderwaterSunShaftsVolume
+  m_EditorClassIdentifier: Assembly-CSharp::UnderwaterSunShaftsVolume
+  active: 1
+  inheritCaustics:
+    m_OverrideState: 1
+    m_Value: 1
+  blueNoise:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
+  rayMap:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
+  tint:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  scattering:
+    m_OverrideState: 1
+    m_Value: 0.5
+  threshold:
+    m_OverrideState: 1
+    m_Value: 0.5
+  scale:
+    m_OverrideState: 1
+    m_Value: 50
+  speed:
+    m_OverrideState: 1
+    m_Value: 1
+  steps:
+    m_OverrideState: 1
+    m_Value: 24
+  maxDistance:
+    m_OverrideState: 1
+    m_Value: 75
+  jitter:
+    m_OverrideState: 1
+    m_Value: 250
+  blurSamples:
+    m_OverrideState: 1
+    m_Value: 6
+  blurAmount:
+    m_OverrideState: 1
+    m_Value: 1
+  downsample:
+    m_OverrideState: 1
+    m_Value: 2
 --- !u!114 &-8270506406425502121
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -299,6 +359,46 @@ MonoBehaviour:
   cropToFit:
     m_OverrideState: 1
     m_Value: 1
+--- !u!114 &-4275041296656702743
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e19290877a3fd469072a68b1f38088, type: 3}
+  m_Name: UnderwaterRefractionVolume
+  m_EditorClassIdentifier: Assembly-CSharp::UnderwaterRefractionVolume
+  active: 1
+  largeScale:
+    m_OverrideState: 1
+    m_Value: 50
+  largeStrength:
+    m_OverrideState: 1
+    m_Value: 0.02
+  smallScale:
+    m_OverrideState: 1
+    m_Value: 200
+  smallStrength:
+    m_OverrideState: 1
+    m_Value: 0.01
+  speed:
+    m_OverrideState: 1
+    m_Value: 1
+  flowDirection:
+    m_OverrideState: 1
+    m_Value: {x: 0.5, y: 0.15}
+  depthDistance:
+    m_OverrideState: 1
+    m_Value: 25
+  edgeStrength:
+    m_OverrideState: 1
+    m_Value: 2
+  chromaticStrength:
+    m_OverrideState: 1
+    m_Value: 0.0025
 --- !u!114 &-1410297666881709256
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -436,6 +536,56 @@ MonoBehaviour:
   p31:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &-396402712360918114
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1375eefcf6a9f240b3ed2e052ac0bcb, type: 3}
+  m_Name: UnderwaterCausticsVolume
+  m_EditorClassIdentifier: Assembly-CSharp::UnderwaterCausticsVolume
+  active: 1
+  causticsTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+    dimension: 1
+  range:
+    m_OverrideState: 1
+    m_Value: 20
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  speed:
+    m_OverrideState: 1
+    m_Value: 1
+  tiling:
+    m_OverrideState: 1
+    m_Value: 8
+  coverage:
+    m_OverrideState: 1
+    m_Value: 0
+  lightDirectionBias:
+    m_OverrideState: 1
+    m_Value: 2
+  lightStretch:
+    m_OverrideState: 1
+    m_Value: 1.5
+  rgbSplit:
+    m_OverrideState: 1
+    m_Value: 0.01
+  color:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  depthFade:
+    m_OverrideState: 1
+    m_Value: 1
+  underwaterOnly:
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,6 +619,11 @@ MonoBehaviour:
   - {fileID: 7518938298396184218}
   - {fileID: -1410297666881709256}
   - {fileID: 7113895847165148010}
+  - {fileID: 5123723475437454449}
+  - {fileID: 1156428187445078546}
+  - {fileID: -4275041296656702743}
+  - {fileID: -8270691070962804785}
+  - {fileID: -396402712360918114}
 --- !u!114 &853819529557874667
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -570,6 +725,40 @@ MonoBehaviour:
   highlightsEnd:
     m_OverrideState: 1
     m_Value: 1
+--- !u!114 &1156428187445078546
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2cc2ac6cac4d40e18e13d0b9d0fac79, type: 3}
+  m_Name: UnderwaterFogVolume
+  m_EditorClassIdentifier: Assembly-CSharp::UnderwaterFogVolume
+  active: 1
+  fogColor:
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0.6, b: 0.8, a: 1}
+  vision:
+    m_OverrideState: 1
+    m_Value: 10
+  absorption:
+    m_OverrideState: 1
+    m_Value: 1
+  desaturation:
+    m_OverrideState: 1
+    m_Value: 0.65
+  redAbsorption:
+    m_OverrideState: 1
+    m_Value: 0.95
+  greenAbsorption:
+    m_OverrideState: 1
+    m_Value: 0.55
+  debugView:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &1666464333004379222
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -857,6 +1046,49 @@ MonoBehaviour:
   intensity:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &5123723475437454449
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ebd5637e5134349b68f4d7a71fca81, type: 3}
+  m_Name: UnderwaterBlurredWaterLineVolume
+  m_EditorClassIdentifier: Assembly-CSharp::UnderwaterBlurredWaterLineVolume
+  active: 1
+  color:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  thickness:
+    m_OverrideState: 1
+    m_Value: 4
+  softness:
+    m_OverrideState: 1
+    m_Value: 0.2
+  verticalBlur:
+    m_OverrideState: 1
+    m_Value: 2
+  highlightThickness:
+    m_OverrideState: 1
+    m_Value: 2
+  refractionStrength:
+    m_OverrideState: 1
+    m_Value: 15
+  highlightIntensity:
+    m_OverrideState: 1
+    m_Value: 1
+  highlightFineNoiseScale:
+    m_OverrideState: 1
+    m_Value: 30
+  highlightBroadNoiseScale:
+    m_OverrideState: 1
+    m_Value: 100
 --- !u!114 &6940869943325143175
 MonoBehaviour:
   m_ObjectHideFlags: 3

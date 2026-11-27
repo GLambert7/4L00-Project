@@ -130,6 +130,7 @@ MonoBehaviour:
   interactableByOctopus: 1
   interactableByEel: 0
   interactableByPlayer: 0
+  interactableRange: 2
   _inputHandler: {fileID: 0}
   interactionArea: {fileID: 3261810713875617373}
   PlayerRef: {fileID: 0}
@@ -138,6 +139,12 @@ MonoBehaviour:
   useSoundDolphin: {fileID: 0}
   useSoundOctopus: {fileID: 0}
   useSoundEel: {fileID: 0}
+  dolphinPrefab: {fileID: 0}
+  octopusPrefab: {fileID: 0}
+  eelPrefab: {fileID: 0}
+  dolphinSpawnPoint: {fileID: 0}
+  octopusSpawnPoint: {fileID: 0}
+  eelSpawnPoint: {fileID: 0}
   canInteract: 0
   hasInteracted: 0
   howHighToLift: 5
@@ -145,6 +152,13 @@ MonoBehaviour:
   holdTime: 10
   dropsAfterHoldTime: 1
   dropRate: 2
+  liftSound:
+    Guid:
+      Data1: 466492755
+      Data2: 1157700931
+      Data3: -1624889944
+      Data4: 683853526
+    Path: event:/SFX2/LiftingDropping Sounds/Lifting
 --- !u!135 &3261810713875617373
 SphereCollider:
   m_ObjectHideFlags: 0

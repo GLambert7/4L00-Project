@@ -490,6 +490,7 @@ MonoBehaviour:
   - Master
   Banks:
   - Char
+  - MUSIC MAN
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

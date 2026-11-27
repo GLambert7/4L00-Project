@@ -73,6 +73,7 @@ MonoBehaviour:
   interactableByOctopus: 0
   interactableByEel: 1
   interactableByPlayer: 1
+  interactableRange: 2
   _inputHandler: {fileID: 0}
   interactionArea: {fileID: 6371625920612147639}
   PlayerRef: {fileID: 0}
@@ -81,6 +82,12 @@ MonoBehaviour:
   useSoundDolphin: {fileID: 0}
   useSoundOctopus: {fileID: 0}
   useSoundEel: {fileID: 0}
+  dolphinPrefab: {fileID: 0}
+  octopusPrefab: {fileID: 0}
+  eelPrefab: {fileID: 0}
+  dolphinSpawnPoint: {fileID: 0}
+  octopusSpawnPoint: {fileID: 0}
+  eelSpawnPoint: {fileID: 0}
   canInteract: 0
   hasInteracted: 0
   groweedsToFlip:
@@ -90,6 +97,13 @@ MonoBehaviour:
   - {fileID: 0}
   useResetTimer: 1
   resetTimer: 5
+  coreSound:
+    Guid:
+      Data1: 616549141
+      Data2: 1318702720
+      Data3: 1567273865
+      Data4: 1031217917
+    Path: event:/SFX2/Groweed Sounds/Plant Core
 --- !u!1 &4611666051374502621
 GameObject:
   m_ObjectHideFlags: 0

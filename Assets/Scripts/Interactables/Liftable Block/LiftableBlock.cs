@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 public class LiftableBlock : BaseInteractable
@@ -16,6 +17,8 @@ public class LiftableBlock : BaseInteractable
     [SerializeField] private bool dropsAfterHoldTime = true; // Whether the block drops after the hold time is up
     [Tooltip("At what rate does the block drop back down after the hold time is up? (In Seconds)")]
     [SerializeField] private float dropRate = 2f; // The rate at which the block drops back down
+
+    public EventReference liftSound;
 
     // Private Vars
     private float groundHeight;
@@ -48,6 +51,7 @@ public class LiftableBlock : BaseInteractable
         Debug.Log("Interacted with a liftable block!");
         if (interactableByOctopus)
         {
+            RuntimeManager.PlayOneShot(liftSound, transform.position);
             ToggleLift();
         }
     }

@@ -149,6 +149,13 @@ MonoBehaviour:
   hasInteracted: 0
   dropsItemOnBreak: 1
   payload: {fileID: 0}
+  breakingSound:
+    Guid:
+      Data1: 1422506228
+      Data2: 1217737841
+      Data3: -349515863
+      Data4: 942407575
+    Path: event:/SFX2/Breaking Sounds/Break Rock Sounds/BRRange
 --- !u!135 &3434764751677458550
 SphereCollider:
   m_ObjectHideFlags: 0

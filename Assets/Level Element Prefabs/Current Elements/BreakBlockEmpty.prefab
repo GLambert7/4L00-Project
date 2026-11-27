@@ -130,6 +130,7 @@ MonoBehaviour:
   interactableByOctopus: 0
   interactableByEel: 0
   interactableByPlayer: 0
+  interactableRange: 2
   _inputHandler: {fileID: 0}
   interactionArea: {fileID: 5324327474092389670}
   PlayerRef: {fileID: 0}
@@ -138,10 +139,23 @@ MonoBehaviour:
   useSoundDolphin: {fileID: 0}
   useSoundOctopus: {fileID: 0}
   useSoundEel: {fileID: 0}
+  dolphinPrefab: {fileID: 0}
+  octopusPrefab: {fileID: 0}
+  eelPrefab: {fileID: 0}
+  dolphinSpawnPoint: {fileID: 0}
+  octopusSpawnPoint: {fileID: 0}
+  eelSpawnPoint: {fileID: 0}
   canInteract: 0
   hasInteracted: 0
   dropsItemOnBreak: 0
   payload: {fileID: 0}
+  breakingSound:
+    Guid:
+      Data1: 1422506228
+      Data2: 1217737841
+      Data3: -349515863
+      Data4: 942407575
+    Path: event:/SFX2/Breaking Sounds/Break Rock Sounds/BRRange
 --- !u!135 &5324327474092389670
 SphereCollider:
   m_ObjectHideFlags: 0

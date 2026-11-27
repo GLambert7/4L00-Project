@@ -97,6 +97,13 @@ MonoBehaviour:
   - {fileID: 0}
   useResetTimer: 1
   resetTimer: 5
+  coreSound:
+    Guid:
+      Data1: 616549141
+      Data2: 1318702720
+      Data3: 1567273865
+      Data4: 1031217917
+    Path: event:/SFX2/Groweed Sounds/Plant Core
 --- !u!1 &4611666051374502621
 GameObject:
   m_ObjectHideFlags: 0

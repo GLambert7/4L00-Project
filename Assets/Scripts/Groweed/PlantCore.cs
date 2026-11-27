@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 public class PlantCore : BaseInteractable
@@ -9,6 +10,8 @@ public class PlantCore : BaseInteractable
     [SerializeField] private bool useResetTimer = true;
     [Tooltip("How long (In Seconds) does the plantcore's effect stay active?")]
     [SerializeField] private float resetTimer = 5f;
+
+    public EventReference coreSound;
 
     // Non-Inspector Vars
     private float timeUntilReset = 0f;
@@ -24,6 +27,7 @@ public class PlantCore : BaseInteractable
         base.EelInteract();
         Debug.Log("Eel Interact Called");
         timeUntilReset = resetTimer;
+        RuntimeManager.PlayOneShot(coreSound, transform.position);
         FlipAll();
     }
 

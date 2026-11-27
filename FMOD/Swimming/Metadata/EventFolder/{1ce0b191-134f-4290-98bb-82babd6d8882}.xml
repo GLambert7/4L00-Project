@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EventFolder" id="{1ce0b191-134f-4290-98bb-82babd6d8882}">
+		<property name="name">
+			<value>LiftingDropping Sounds</value>
+		</property>
+		<relationship name="folder">
+			<destination>{1e4ba2cd-da93-49f1-ae0d-01ace77b3234}</destination>
+		</relationship>
+	</object>
+</objects>

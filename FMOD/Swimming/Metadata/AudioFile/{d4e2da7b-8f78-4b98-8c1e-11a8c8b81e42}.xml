@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{d4e2da7b-8f78-4b98-8c1e-11a8c8b81e42}">
+		<property name="assetPath">
+			<value>SFX/Swim Forward and Backward- Pixabay_Whoosh_4.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.6559999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{741b87ad-33be-4b3e-8ae0-c221993a932e}</destination>
+		</relationship>
+	</object>
+</objects>

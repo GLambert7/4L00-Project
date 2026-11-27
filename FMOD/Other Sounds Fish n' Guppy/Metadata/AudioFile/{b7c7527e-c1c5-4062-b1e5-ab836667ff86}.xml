@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{b7c7527e-c1c5-4062-b1e5-ab836667ff86}">
+		<property name="assetPath">
+			<value>SFX2/Garbage Swept Away - Pixabay .mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>82.152000000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{32067738-4b6b-45f7-95ba-6285fed1f3a6}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,4 +1,6 @@
 using UnityEngine;
+using FMOD.Studio;
+using FMODUnity;
 
 public class BreakableBlock : BaseInteractable
 {
@@ -6,6 +8,8 @@ public class BreakableBlock : BaseInteractable
     [SerializeField] private bool dropsItemOnBreak = false;
     [Tooltip("The item that is dropped when the block is broken.")]
     [SerializeField] private GameObject payload;
+
+    public EventReference breakingSound;
     //so other scripts can reference the broken block for barn puzzle
     public bool IsBroken { get; private set; }
 
@@ -26,6 +30,7 @@ public class BreakableBlock : BaseInteractable
             Instantiate(payload, transform.position, transform.rotation);
         }
         IsBroken = true;
+        RuntimeManager.PlayOneShot(breakingSound, transform.position);
         this.gameObject.SetActive(false);
     }
 }

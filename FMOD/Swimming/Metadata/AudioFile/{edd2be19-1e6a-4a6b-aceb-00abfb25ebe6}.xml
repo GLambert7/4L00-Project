@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{edd2be19-1e6a-4a6b-aceb-00abfb25ebe6}">
+		<property name="assetPath">
+			<value>SFX2/Picking an Object Up - Pixabay .mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.71999999999999997</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{741b87ad-33be-4b3e-8ae0-c221993a932e}</destination>
+		</relationship>
+	</object>
+</objects>

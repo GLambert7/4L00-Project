@@ -759,6 +759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9142535866059068724}
+  - component: {fileID: 4303268496445871515}
   m_Layer: 0
   m_Name: Missie
   m_TagString: Untagged
@@ -784,6 +785,40 @@ Transform:
   - {fileID: 8480869998953414763}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4303268496445871515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6286107509197378305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f324b585a8df50044ae0b528b1137d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueInteract
+  interactableByDolphin: 0
+  interactableByOctopus: 0
+  interactableByEel: 0
+  interactableByPlayer: 1
+  interactableRange: 6
+  _inputHandler: {fileID: 0}
+  interactionArea: {fileID: 0}
+  PlayerRef: {fileID: 0}
+  cantUseSound: {fileID: 0}
+  useSound: {fileID: 0}
+  useSoundDolphin: {fileID: 0}
+  useSoundOctopus: {fileID: 0}
+  useSoundEel: {fileID: 0}
+  dolphinPrefab: {fileID: 0}
+  octopusPrefab: {fileID: 0}
+  eelPrefab: {fileID: 0}
+  dolphinSpawnPoint: {fileID: 0}
+  octopusSpawnPoint: {fileID: 0}
+  eelSpawnPoint: {fileID: 0}
+  canInteract: 0
+  hasInteracted: 0
+  dialogueBox: {fileID: 4768144329575124439}
 --- !u!1 &6404405298864808800
 GameObject:
   m_ObjectHideFlags: 0

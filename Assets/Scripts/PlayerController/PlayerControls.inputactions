@@ -296,7 +296,7 @@
                 {
                     "name": "",
                     "id": "5dbb9ab2-9552-473d-8d16-ee0aa3293549",
-                    "path": "<Keyboard>/tab",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -407,6 +407,17 @@
                     "name": "",
                     "id": "7f4cded7-6746-47f7-81e4-c4447ecad942",
                     "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CancelInteraction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e1d05709-8ee0-4603-8822-555af4dc84bc",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

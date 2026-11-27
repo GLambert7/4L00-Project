@@ -73,6 +73,7 @@ MonoBehaviour:
   interactableByOctopus: 0
   interactableByEel: 1
   interactableByPlayer: 1
+  interactableRange: 6
   _inputHandler: {fileID: 0}
   interactionArea: {fileID: 6371625920612147639}
   PlayerRef: {fileID: 0}
@@ -81,6 +82,12 @@ MonoBehaviour:
   useSoundDolphin: {fileID: 0}
   useSoundOctopus: {fileID: 0}
   useSoundEel: {fileID: 0}
+  dolphinPrefab: {fileID: 0}
+  octopusPrefab: {fileID: 0}
+  eelPrefab: {fileID: 0}
+  dolphinSpawnPoint: {fileID: 0}
+  octopusSpawnPoint: {fileID: 0}
+  eelSpawnPoint: {fileID: 0}
   canInteract: 0
   hasInteracted: 0
   groweedsToFlip:

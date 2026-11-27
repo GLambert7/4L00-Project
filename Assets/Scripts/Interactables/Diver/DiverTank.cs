@@ -5,10 +5,8 @@ public class DiverTank : BaseInteractable
     [SerializeField] private GameObject requiredBlock;
     [SerializeField] private GameObject diver;
     [SerializeField] private float launchSpeed = 5f;
-    [SerializeField] private BlockChecker blockCheckLocation;
 
-
-    //private bool blockInPlace = false;
+    private bool blockInPlace = false;
     private bool launching = false;
 
     private void OnTriggerEnter(Collider other)
@@ -20,7 +18,7 @@ public class DiverTank : BaseInteractable
         }
     }
 
-    /*private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         // Detect the required block
         if (other.gameObject == requiredBlock)
@@ -28,14 +26,14 @@ public class DiverTank : BaseInteractable
             blockInPlace = true;
             Debug.Log("Block detected");
         }
-    }*/
+    }
 
     public override void DolphinInteract()
     {
         base.DolphinInteract();
 
         // Launch if the block has been detected
-        if (blockCheckLocation.blockFound && interactableByDolphin && script.canUseDolphin)
+        if (blockInPlace && interactableByDolphin && script.canUseDolphin)
         {
             launching = true;
             Debug.Log("Launching diver");

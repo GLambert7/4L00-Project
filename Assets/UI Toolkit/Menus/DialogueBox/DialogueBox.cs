@@ -35,8 +35,7 @@ public class DialogueBox : MonoBehaviour
         // Update line count and ensure line is set to first
         totalDialogueLines = dialogueLines.Count;
 
-        currentDialogueLine = 1;
-        UpdateDialogueLine();
+        ResetDialogue();
 
         if (totalDialogueLines < 2)
         {
@@ -44,18 +43,30 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
+    private void ResetDialogue()
+    {
+        currentDialogueLine = 1;
+        _root.style.display = DisplayStyle.Flex;
+        UpdateDialogueLine();
+    }
+
     public void NextDialogueLine()
     {
         if (currentDialogueLine < totalDialogueLines)
         {
             currentDialogueLine++;
+            UpdateDialogueLine();
         }
         else if (currentDialogueLine == totalDialogueLines)
         {
-            currentDialogueLine = totalDialogueLines;
+            // Cap dialogue lines
+            currentDialogueLine = totalDialogueLines + 1;
+            _root.style.display = DisplayStyle.None;
         }
-
-        UpdateDialogueLine();
+        else if (currentDialogueLine == totalDialogueLines + 1)
+        {
+            ResetDialogue();
+        }
     }
 
     private void UpdateDialogueLine()

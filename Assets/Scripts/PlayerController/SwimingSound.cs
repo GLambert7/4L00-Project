@@ -1,7 +1,6 @@
 using FMOD;
 using FMOD.Studio;
 using FMODUnity;
-using Mono.Cecil.Cil;
 using UnityEngine;
 
 public class SwimingSound : MonoBehaviour

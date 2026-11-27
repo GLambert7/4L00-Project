@@ -7337,7 +7337,7 @@ PrefabInstance:
     - target: {fileID: 6392725564117776255, guid: 4edcee6f90d238f4ab77e8771a7760bc, type: 3}
       propertyPath: PlayerRef
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1215485770}
     - target: {fileID: 6392725564117776255, guid: 4edcee6f90d238f4ab77e8771a7760bc, type: 3}
       propertyPath: dialogueBox1
       value: 
@@ -7345,7 +7345,7 @@ PrefabInstance:
     - target: {fileID: 6392725564117776255, guid: 4edcee6f90d238f4ab77e8771a7760bc, type: 3}
       propertyPath: _inputHandler
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1273730291}
     - target: {fileID: 6392725564117776255, guid: 4edcee6f90d238f4ab77e8771a7760bc, type: 3}
       propertyPath: interactableRange
       value: 6
@@ -7355,11 +7355,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4edcee6f90d238f4ab77e8771a7760bc, type: 3}
---- !u!135 &387545314 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 3304886326709385834, guid: 4edcee6f90d238f4ab77e8771a7760bc, type: 3}
-  m_PrefabInstance: {fileID: 387545313}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &408669851 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -391268320553695201, guid: 28c03d7ad94474c4f9d755c494668c50, type: 3}
@@ -10657,6 +10652,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPlaceholder
       objectReference: {fileID: 0}
+    - target: {fileID: 4175886436644020335, guid: f74dde5f48842a0448f122dc83de6618, type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4175886436644020335, guid: f74dde5f48842a0448f122dc83de6618, type: 3}
+      propertyPath: OverrideMinDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8247136592082432518, guid: f74dde5f48842a0448f122dc83de6618, type: 3}
       propertyPath: m_LocalPosition.x
       value: 63.83
@@ -13687,6 +13690,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 792371363}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1215485770 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4126437989526185273, guid: f74dde5f48842a0448f122dc83de6618, type: 3}
+  m_PrefabInstance: {fileID: 858455804}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1217403999
 GameObject:
   m_ObjectHideFlags: 0
@@ -18747,6 +18755,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4303268496445871515, guid: 9b0be69f9d3538445aa68fc8ed992651, type: 3}
+      propertyPath: PlayerRef
+      value: 
+      objectReference: {fileID: 1215485770}
+    - target: {fileID: 4303268496445871515, guid: 9b0be69f9d3538445aa68fc8ed992651, type: 3}
+      propertyPath: _inputHandler
+      value: 
+      objectReference: {fileID: 1273730291}
+    - target: {fileID: 4303268496445871515, guid: 9b0be69f9d3538445aa68fc8ed992651, type: 3}
+      propertyPath: interactionArea
+      value: 
+      objectReference: {fileID: 1976621553}
     - target: {fileID: 4768144329575124439, guid: 9b0be69f9d3538445aa68fc8ed992651, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -18801,9 +18821,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6286107509197378305, guid: 9b0be69f9d3538445aa68fc8ed992651, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1976621554}
-    - targetCorrespondingSourceObject: {fileID: 6286107509197378305, guid: 9b0be69f9d3538445aa68fc8ed992651, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1976621553}
     - targetCorrespondingSourceObject: {fileID: 8387531415934695023, guid: 9b0be69f9d3538445aa68fc8ed992651, type: 3}
       insertIndex: -1
@@ -18840,40 +18857,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 5.746081
   m_Center: {x: 0.1765766, y: 0.31449318, z: -1.7014305e-10}
---- !u!114 &1976621554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976621551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f324b585a8df50044ae0b528b1137d8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueInteract
-  interactableByDolphin: 0
-  interactableByOctopus: 0
-  interactableByEel: 0
-  interactableByPlayer: 1
-  interactableRange: 6
-  _inputHandler: {fileID: 0}
-  interactionArea: {fileID: 387545314}
-  PlayerRef: {fileID: 0}
-  cantUseSound: {fileID: 0}
-  useSound: {fileID: 0}
-  useSoundDolphin: {fileID: 0}
-  useSoundOctopus: {fileID: 0}
-  useSoundEel: {fileID: 0}
-  dolphinPrefab: {fileID: 0}
-  octopusPrefab: {fileID: 0}
-  eelPrefab: {fileID: 0}
-  dolphinSpawnPoint: {fileID: 0}
-  octopusSpawnPoint: {fileID: 0}
-  eelSpawnPoint: {fileID: 0}
-  canInteract: 0
-  hasInteracted: 0
-  dialogueBox: {fileID: 0}
 --- !u!136 &1976621555
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -19597,11 +19580,11 @@ PrefabInstance:
     - target: {fileID: 839494755764899783, guid: 36754e2bfde44b9408f8f564d78a64fa, type: 3}
       propertyPath: PlayerRef
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1215485770}
     - target: {fileID: 839494755764899783, guid: 36754e2bfde44b9408f8f564d78a64fa, type: 3}
       propertyPath: _inputHandler
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1273730291}
     - target: {fileID: 6118105933372585643, guid: 36754e2bfde44b9408f8f564d78a64fa, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -20329,15 +20312,12 @@ SceneRoots:
   - {fileID: 618823117}
   - {fileID: 65791317}
   - {fileID: 1454309166}
-  - {fileID: 387545313}
   - {fileID: 852559787}
   - {fileID: 1086376738}
-  - {fileID: 2064936314}
   - {fileID: 1438000554}
   - {fileID: 643467046}
   - {fileID: 2052597500}
   - {fileID: 1660522152}
-  - {fileID: 1976621550}
   - {fileID: 903200134}
   - {fileID: 642137883}
   - {fileID: 65808612}
@@ -20363,4 +20343,7 @@ SceneRoots:
   - {fileID: 2016839495}
   - {fileID: 112734919}
   - {fileID: 1313114270}
+  - {fileID: 2064936314}
+  - {fileID: 387545313}
+  - {fileID: 1976621550}
   - {fileID: 1043787752}

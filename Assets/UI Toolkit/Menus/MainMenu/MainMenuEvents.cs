@@ -1,9 +1,21 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+using UnityEditorInternal.VersionControl;
+using System.Security.Cryptography;
+using UnityEngine.Audio;
 
 public class MainMenuEvents : MonoBehaviour
 {
+
+    [SerializeField] private AudioSource playerAudioSource;
+
+    private void OnVolumeChanged(ChangeEvent<float> evt)
+    {
+        playerAudioSource.volume = evt.newValue;
+    }
+
     #region Variables and Awake
     // Elements
     private VisualElement _root;
@@ -22,6 +34,15 @@ public class MainMenuEvents : MonoBehaviour
     private Button optionsReturnButton;
     private Button creditsReturnButton;
 
+    private ScrollView _scrollView;
+    private VisualElement _targetItem;
+
+
+
+    //Audio Setting
+    private Slider volumeSlider;
+
+
     private void Awake()
     {
         // Ensuring cursor is unlocked
@@ -29,10 +50,16 @@ public class MainMenuEvents : MonoBehaviour
         UnityEngine.Cursor.visible = true;
 
         // Query root visual elements for each menu screen
+
+
         _root = GetComponent<UIDocument>().rootVisualElement;
         _titleMenuRoot = _root.Q<VisualElement>("TitleMenu");
         _optionsRoot = _root.Q<VisualElement>("OptionsMenu");
         _creditsRoot = _root.Q<VisualElement>("CreditsMenu");
+
+        _scrollView = _root.Q<ScrollView>("Credits");
+        _targetItem = _root.Q<VisualElement>("LastName");
+        
 
         // *** Assign Buttons ***
         // Title Menu
@@ -45,6 +72,9 @@ public class MainMenuEvents : MonoBehaviour
         optionsReturnButton = _optionsRoot.Q("ReturnButton") as Button;
         creditsReturnButton = _creditsRoot.Q("ReturnButton") as Button;
 
+
+
+
         // *** Register Click Events ***
         // Title Menu
         startButton.clicked += () => SceneManager.LoadScene(1);
@@ -52,8 +82,11 @@ public class MainMenuEvents : MonoBehaviour
         creditsButton.clicked += () => MenuEnter(_creditsRoot);
         quitButton.clicked += () => OnQuitClick();
 
+        
+
         // Options Menu
         optionsReturnButton.clicked += () => MenuEnter(_titleMenuRoot);
+
 
         // Credits Menu
         creditsReturnButton.clicked += () => MenuEnter(_titleMenuRoot);
@@ -61,8 +94,29 @@ public class MainMenuEvents : MonoBehaviour
         // *** Default menu visibility ***
         _optionsRoot.style.display = DisplayStyle.None;
         _creditsRoot.style.display = DisplayStyle.None;
+
+        _scrollView.ScrollTo(_targetItem);
+
+        volumeSlider.RegisterValueChangedCallback(evt =>
+        {
+            AudioListener.volume = evt.newValue;
+        });
+
+        volumeSlider.RegisterValueChangedCallback(OnVolumeChanged);
+
+        // Set slider to the current audio volume
+        volumeSlider.SetValueWithoutNotify(playerAudioSource.volume);
+
     }
     #endregion
+
+    private void OnDisable()
+    {
+        if (volumeSlider != null)
+            volumeSlider.UnregisterValueChangedCallback(OnVolumeChanged);
+
+    }
+
 
     #region Title Menu Button Events
     private void MenuEnter(VisualElement enter)
@@ -81,9 +135,10 @@ public class MainMenuEvents : MonoBehaviour
         // Quits game
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#else
             Application.Quit();
-        #endif
+#endif
     }
+
     #endregion
 }

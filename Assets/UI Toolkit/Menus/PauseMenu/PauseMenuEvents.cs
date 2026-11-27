@@ -2,8 +2,20 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
+
 public class PauseMenuEvents : MonoBehaviour
+
 {
+
+
+    [SerializeField] private AudioSource playerAudioSource;
+
+    private void OnVolumeChanged(ChangeEvent<float> evt)
+    {
+        playerAudioSource.volume = evt.newValue;
+    }
+
+
     #region Variables and Awake
     // Elements
     private VisualElement _root;
@@ -20,6 +32,11 @@ public class PauseMenuEvents : MonoBehaviour
 
     //Options Menu
     private Button returnButton;
+
+    //Audio Setting
+    private Slider volumeSlider;
+
+    
 
     private void OnEnable()
     {
@@ -50,8 +67,30 @@ public class PauseMenuEvents : MonoBehaviour
 
         // *** Default menu visibility ***
         _optionsRoot.style.display = DisplayStyle.None;
+
+
+
+        // Options menu
+        returnButton = _optionsRoot.Q<Button>("ReturnButton");
+        volumeSlider = _optionsRoot.Q<Slider>("VolumeSlider");
+
+
+        volumeSlider.RegisterValueChangedCallback(evt =>
+        {
+            AudioListener.volume = evt.newValue;
+        });
+
+        volumeSlider.RegisterValueChangedCallback(OnVolumeChanged);
+
+        // Set slider to the current audio volume
+        volumeSlider.SetValueWithoutNotify(playerAudioSource.volume);
+
+
+      
     }
     #endregion
+
+    
 
     #region Pause Menu Button Events
     private void MenuEnter(VisualElement enter)
@@ -74,4 +113,11 @@ public class PauseMenuEvents : MonoBehaviour
         #endif
     }
     #endregion
+
+    private void OnDisable()
+    {
+        if (volumeSlider != null)
+            volumeSlider.UnregisterValueChangedCallback(OnVolumeChanged);
+
+    }
 }

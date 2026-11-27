@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{aa2ac4be-dcdf-4c13-9080-ee87c2a986be}">
+		<property name="assetPath">
+			<value>SFX2/Rock Breaking - Pixabay .mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>8.9760000000000009</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{32067738-4b6b-45f7-95ba-6285fed1f3a6}</destination>
+		</relationship>
+	</object>
+</objects>

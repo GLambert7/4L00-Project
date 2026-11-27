@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{1c5e8def-aa7c-4a91-8f18-a2025d92c050}">
+		<property name="assetPath">
+			<value>Dropping Object - Pixabay .mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.1159183673469388</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{741b87ad-33be-4b3e-8ae0-c221993a932e}</destination>
+		</relationship>
+	</object>
+</objects>

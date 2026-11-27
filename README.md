@@ -1,4 +1,4 @@
-*** FISH N' GUPPIES WHITEBOX v2.0 ***
+**FISH N' GUPPIES WHITEBOX v2.0**
 
 Instructions to play:
 1. Extract files from Whitebox.zip
